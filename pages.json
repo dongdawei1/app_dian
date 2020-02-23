@@ -1,55 +1,71 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页,
-	{
-		"path": "pages/reg/reg",
-		"style": {
-			"navigationBarTitleText": "注册"
-		}
-	},
 		{
 			"path": "pages/login/login",
 			"style": {
-				"navigationBarTitleText": "登录"
+				//"navigationBarTitleText": "登录"
 			}
 		},
-	
 		{
-			"path": "pages/main/main",
+			"path": "pages/reg/reg",
 			"style": {
-				"navigationBarTitleText": "登录模板"
+				"navigationBarTitleText": "注册"
 			}
-		}, 
+		},
+
+		{
+			"path": "pages/logmain/logmain", //登陆通用组件
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
 		{
 			"path": "pages/pwd/pwd",
 			"style": {
 				"navigationBarTitleText": "找回密码"
 			}
-		}, {
-			"path": "pages/user/user",
+		},
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首页"
+			}
+		},
+
+		{
+			"path": "pages/home/home",
 			"style": {
 				"navigationBarTitleText": "我的"
 			}
+		},
+		{
+			"path": "pages/xieyi/xieyi", //注册协议
+			"style": {}
 		}
 	],
 	"tabBar": {
-		"color": "#7a7e83",
-		"selectedColor": "#0faeff",
-		"backgroundColor": "#ffffff",
+		"color": "#B5B5B5",
+		"selectedColor": "#FEE42B",
+		"borderStyle": "black",
+		"backgroundColor": "#FFFFFF",
 		"list": [{
-			"pagePath": "pages/main/main",
-			"text": "首页",
-			"iconPath": "static/img/home.png",
-			"selectedIconPath": "static/img/homeHL.png"
-		}, {
-			"pagePath": "pages/user/user",
-			"text": "我的",
-			"iconPath": "static/img/user.png",
-			"selectedIconPath": "static/img/userHL.png"
-		}]
+				"pagePath": "pages/index/index",
+				"text": "首页",
+				"iconPath": "/static/tabbar/index.png",
+				"selectedIconPath": "/static/tabbar/indexed.png"
+			},
+			{
+				"pagePath": "pages/home/home",
+				"text": "我的",
+				"iconPath": "/static/tabbar/home.png",
+				"selectedIconPath": "/static/tabbar/homeed.png"
+			}
+		]
 	},
 	"globalStyle": {
-		"navigationBarTextStyle": "white",
-		"navigationBarBackgroundColor": "#0faeff",
-		"backgroundColor": "#fbf9fe"
+		"navigationBarTextStyle": "black",
+		//"navigationBarTitleText": "登陆模板",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
 	}
 }

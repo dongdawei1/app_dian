@@ -1,0 +1,26 @@
+.logUrl {
+	color: #044E0A;
+	font-size: 35upx;
+}
+
+.img-captcha {
+	/*验证码*/
+	width: 150upx;
+	height: 60upx;
+}
+
+.dlbutton {
+	color: #FFFFFF;
+	font-size: 34upx;
+	width: 470upx;
+	height: 100upx;
+	background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6));
+	box-shadow: 0upx 0upx 13upx 0upx rgba(164, 217, 228, 0.4);
+	/* box-shadow: 0upx 0upx 13upx 0upx rgba(164, 217, 228, 0.2);  阴影 */
+	border-radius: 50upx;
+	line-height: 100upx;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 40upx;
+}

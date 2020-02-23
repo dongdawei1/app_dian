@@ -1,21 +1,17 @@
 import Vue from 'vue'
 import App from './App'
 
-import store from './store'
 
 Vue.config.productionTip = false
 // 挂载全局方法
-Vue.prototype.$store = store
-
-import request from "./commons/request.js";
+import request from "./common/request.js";
 Vue.prototype.$http = request;
-import urlconfig from "./commons/urlconfig.js";
+import urlconfig from "./common/urlconfig.js";
 Vue.prototype.$urlconfig = urlconfig;
 
 App.mpType = 'app'
 
 const app = new Vue({
-	store,
 	...App
 })
 app.$mount()
