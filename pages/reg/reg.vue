@@ -78,6 +78,7 @@
 </template>
 
 <script>
+	import logmain_Js from "../../common/log/logmainjs.js";
 	var _this;
 	export default {
 		data() {
@@ -134,7 +135,7 @@
 				};
 				let [err, res] = await this.$http.getV2(this.$urlconfig.logCaptcha, uuidform, {});
 				this.isRequest = false;
-				if (!this.$http.errorCheckRe(err, true)) {
+				if (!logmain_Js.errorCheckRe(err, true)) {
 					this.captchaPathSh = false;
 					return;
 				}
@@ -216,10 +217,10 @@
 				this.isRotate = true;
 				let [err, res] = await this.$http.postV2(this.$urlconfig.logCreate, this.ruleForm, {});
 				this.isRotate = false;
-				if (!this.$http.errorCheckRe(err)) {
+				if (!logmain_Js.errorCheckRe(err)) {
 					return;
 				}
-				if (!this.$http.checkLog(res, true)) {
+				if (!logmain_Js.checkLog(res, true)) {
 					this.getVerCode();
 					return;
 				}
