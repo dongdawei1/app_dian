@@ -92,7 +92,7 @@
 
 				isRequest: false,
 				ruleForm: {
-					name: '',
+					name: ,
 					pass: '',
 					checkPass: '',
 					mobilePhone: '', //手机号码
@@ -140,7 +140,7 @@
 					return;
 				}
 				this.captchaPathSh = true;
-				this.captchaPath = res.data.msg
+				this.captchaPath = res.data.data
 			},
 			async submitForm() {
 				//注册

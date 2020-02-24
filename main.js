@@ -9,6 +9,9 @@ Vue.prototype.$http = request;
 import urlconfig from "./common/urlconfig.js";
 Vue.prototype.$urlconfig = urlconfig;
 
+import user from "./common/user.js";
+Vue.prototype.$user = user;
+
 App.mpType = 'app'
 
 const app = new Vue({

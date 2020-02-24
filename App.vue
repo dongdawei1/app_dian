@@ -1,7 +1,8 @@
 <script>
 	export default {
 		onLaunch: function() {
-			console.log('App Launch');
+			// 初始化用户状态
+			this.$user.__init();
 		},
 		onShow: function() {
 			console.log('App Show');

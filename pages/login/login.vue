@@ -52,7 +52,7 @@
 				isRotate: false, //是否加载旋转
 				isRequest: false, //验证码是否旋转
 				ruleForm: {
-					username: '',
+					username: this.$user.username === ''?'':this.$user.username,
 					password: '',
 					captcha: '', //验证码
 					uuid: '', //生成验证码对应的 id
@@ -64,6 +64,7 @@
 			_this = this;
 		},
 		onReady() {
+			
 			_this.getVerCode();
 			_this.isRequest = false; //后端没有返回验证码前 点击不了
 		},
@@ -91,7 +92,7 @@
 					return;
 				}
 				this.captchaPathSh = true;
-				this.captchaPath = res.data.msg
+				this.captchaPath = res.data.data
 			},
 			async submitForm() {
 				//登陆

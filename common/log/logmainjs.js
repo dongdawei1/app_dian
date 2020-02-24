@@ -16,15 +16,21 @@ export default{
 	checkLog(res, reg) {
 		let dataRes = res.data;
 		if (dataRes.status === 0) {
-			let ss = JSON.parse(dataRes.data);
 			uni.setStorage({
 				key: "dian_token",
-				data: ss.dian_token
+				data: dataRes.data.dian_token
 			})
-			let user = JSON.parse(ss.user);
 			uni.setStorage({
-				key: "username",
-				data: user.username
+				key: "dian_username",
+				data: dataRes.data.user.username
+			})
+			uni.setStorage({
+				key: "dian_isAuthentication",
+				data: dataRes.data.user.isAuthentication
+			})
+			uni.setStorage({
+				key: "dian_role",
+				data: dataRes.data.user.isAuthentication
 			})
 			if (reg) {
 				uni.showToast({
