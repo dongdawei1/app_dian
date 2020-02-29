@@ -1,10 +1,22 @@
 import $http from "./request.js"
 export default {
-	// 用户token 测试token：4cd36bf70649475ac0cd6fae78250954474a4350
+	//+Sync  为同步接口
+	// uni.getStorage	获取本地数据缓存
+	// uni.getStorageSync	获取本地数据缓存
+	// uni.setStorage	设置本地数据缓存
+	// uni.setStorageSync	设置本地数据缓存
+	// uni.getStorageInfo	获取本地缓存的相关信息
+	// uni.getStorageInfoSync	获取本地缓存的相关信息
+	// uni.removeStorage	删除本地缓存内容
+	// uni.removeStorageSync	删除本地缓存内容
+	// uni.clearStorage	清理本地数据缓存
+	// uni.clearStorageSync	清理本地数据缓存
+	
+	// 用户token
 	token:'',
 	// 用户
 	username:'',
-	// 用户相关统计
+	// 用户实名状态
 	isAuthentication:'',
 	role:'',
 	// 初始化
@@ -12,15 +24,21 @@ export default {
 		// 获取用户信息
 		try{
 			this.username = uni.getStorageSync("dian_username");
-			console.log(this.username);
 			this.token = uni.getStorageSync("dian_token");
 			this.isAuthentication = uni.getStorageSync("dian_isAuthentication");
 			this.role = uni.getStorageSync("dian_role");
 		}catch(e){
-			console.log("亲用户来打登陆");
+			console.log("用户来登陆");
 		}
 	},
-	
+	//登录页更新用户实名状态  这里用的同步
+	upUserAu(isAuthentication){
+		uni.setStorageSync({
+			key: "dian_isAuthentication",
+			data: isAuthentication
+		})
+		this.isAuthentication =isAuthentication;
+	}
 	// 登录
 	// async login(options ={}){
 	// 	uni.showLoading({ title: '登录中...', mask: true });

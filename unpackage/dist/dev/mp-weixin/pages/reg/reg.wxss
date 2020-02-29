@@ -1,5 +1,5 @@
 .logUrl {
-	color: #044E0A;
+	color: #373F54;
 	font-size: 35rpx;
 }
 .img-captcha {
@@ -130,7 +130,7 @@
 	/* 字体间距*/
 }
 .xieyi image {
-	width: 45rpx;
-	height: 45rpx;
+	width: 35rpx;
+	height: 35rpx;
 }
 

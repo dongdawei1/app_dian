@@ -15,6 +15,8 @@ export default{
 	//处理登陆注册返回业务
 	checkLog(res, reg) {
 		let dataRes = res.data;
+		console.log(dataRes)
+		//业务成功 只能用  异步存储   setStorage
 		if (dataRes.status === 0) {
 			uni.setStorage({
 				key: "dian_token",
@@ -32,7 +34,7 @@ export default{
 				key: "dian_role",
 				data: dataRes.data.user.isAuthentication
 			})
-			if (reg) {
+			if (reg) {  //注册
 				uni.showToast({
 					title: '注册成功请牢记密码',
 					icon: "none"
@@ -44,11 +46,11 @@ export default{
 			});
 			return true;
 		}
+		//业务处理失败信息提示
 		uni.showToast({
 			title: dataRes.msg,
 			icon: "none"
 		})
 		return false;
-	
 	}
 }

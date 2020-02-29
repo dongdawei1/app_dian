@@ -1,14 +1,16 @@
 <script>
 	export default {
 		onLaunch: function() {
+			//监听网络
+			this.lib.NetWork.On();
 			// 初始化用户状态
 			this.$user.__init();
 		},
 		onShow: function() {
-			console.log('App Show');
+			//console.log('App Show');
 		},
 		onHide: function() {
-			console.log('App Hide');
+			//console.log('App Hide');
 		}
 	}
 </script>

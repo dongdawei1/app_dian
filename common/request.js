@@ -9,9 +9,6 @@ export default {
 		header: {
 			'Content-Type': 'application/x-www-form-urlencoded',
 			'appid': 'a',
-			//'dian_token':uni.getStorageSync("token")
-			//'Content-Type':'application/json;charset=UTF-8',
-			//	'Content-Type':'application/x-www-form-urlencoded'
 		},
 		data: {},
 		method: "GET",
@@ -23,23 +20,18 @@ export default {
 		options.dataType = options.dataType || this.config.dataType;
 		options.url = this.config.baseUrl + options.url;
 		// TODO：token增加等操作,不需要验证,全部由后端验证
-		if (options.token) {
-			// 验证用户是否登录
-			if (!this.checkToken(options.checkToken)) return;
-			// 验证用户操作权限（验证是否绑定手机号码）
-			if (!this.checkAuth(options.checkAuth)) return;
-			options.header.dian_token = User.token;
-		}
-		options.header.dian_token = uni.getStorageSync("dian_token");
 		return uni.request(options);
 	},
-
 
 	get(url, data, options = {}) {
 		options.url = url;
 		options.data = data;
 		options.method = 'GET';
-
+		options.header = {
+			'Content-Type': 'application/x-www-form-urlencoded',
+			'appid': 'a',
+			'dian_token':User.token
+		};
 		return this.request(options);
 	},
 	post(url, data, options = {}) {
@@ -48,7 +40,8 @@ export default {
 		options.method = 'POST';
 		options.header = {
 			'Content-Type': 'application/json;charset=UTF-8',
-			'appid': 'a'
+			'appid': 'a',
+			'dian_token':User.token
 		};
 		return this.request(options);
 	},
@@ -59,20 +52,17 @@ export default {
 		options.dataType = options.dataType || this.config.dataType;
 		options.url = this.config.v2url + options.url;
 		// TODO：token增加等操作,不需要验证,全部由后端验证
-		if (options.token) {
-			// 验证用户是否登录
-			if (!this.checkToken(options.checkToken)) return;
-			// 验证用户操作权限（验证是否绑定手机号码）
-			if (!this.checkAuth(options.checkAuth)) return;
-			options.header.dian_token = User.token;
-		}
-		options.header.dian_token = uni.getStorageSync("dian_token");
 		return uni.request(options);
 	},
 	getV2(url, data, options = {}) {
 		options.url = url;
 		options.data = data;
 		options.method = 'GET';
+		options.header = {
+			'Content-Type': 'application/x-www-form-urlencoded',
+			'appid': 'a',
+			'dian_token':User.token
+		};
 		return this.requestV2(options);
 	},
 	postV2(url, data, options = {}) {
@@ -81,7 +71,8 @@ export default {
 		options.method = 'POST';
 		options.header = {
 			'Content-Type': 'application/json;charset=UTF-8',
-			'appid': 'a'
+			'appid': 'a',
+			'dian_token':User.token
 		};
 		return this.requestV2(options);
 	},
@@ -105,6 +96,7 @@ export default {
 
 		return uni.uploadFile(options);
 	},
+	
 	// 错误处理
 	errorCheck(err, res, errfun = false, resfun = false) {
 		if (err) {

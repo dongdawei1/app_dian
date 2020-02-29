@@ -6,6 +6,9 @@ export default {
 	logCaptcha:'log/captcha',
 	logCreate:'log/create',
 	logLogin : 'log/login',
+	logGetUesr : 'log/get_user_info',
+	
+	
 	
 	// websocket地址11
 	websocketUrl:"wss://ceshi2.dishait.cn:23481",

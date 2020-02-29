@@ -17,9 +17,6 @@
 				<input class="biaoti" v-model="ruleForm.password" type="text" maxlength="18" placeholder="登录密码" :password="!showPassword" />
 				<image class="img" :src="showPassword?'/static/shilu-login/op.png':'/static/shilu-login/cl.png'" @tap="display"></image>
 			</view>
-
-
-
 			<view class="list-call">
 				<image class="img" src="/static/shilu-login/3.png"></image>
 				<input class="biaoti" v-model="ruleForm.captcha" type="text" maxlength="4" placeholder="验证码" />
@@ -36,6 +33,7 @@
 			<navigator url="../reg/reg" open-type="navigate" class="logUrl"> 注册账号 </navigator>
 		</view>
 	</view>
+
 </template>
 
 <script>
@@ -52,7 +50,7 @@
 				isRotate: false, //是否加载旋转
 				isRequest: false, //验证码是否旋转
 				ruleForm: {
-					username: this.$user.username === ''?'':this.$user.username,
+					username: this.$user.username === '' ? '' : this.$user.username,
 					password: '',
 					captcha: '', //验证码
 					uuid: '', //生成验证码对应的 id
@@ -60,15 +58,39 @@
 			}
 		},
 
-		mounted() {
-			_this = this;
+		onLoad() { //页面加载 1
+			this.__init();
 		},
-		onReady() {
-			
+		mounted() {
+			_this = this; //页面加载完成后2
+		},
+
+		onReady() { //3
 			_this.getVerCode();
 			_this.isRequest = false; //后端没有返回验证码前 点击不了
 		},
+		
 		methods: {
+			async __init() {
+				let uuidform = {
+					uuid: this.$http.getUuid()
+				};
+				let [err, res] = await this.$http.getV2(this.$urlconfig.logGetUesr, uuidform, {});
+				if (!logmain_Js.errorCheckRe(err)) {
+					return;
+				}
+
+				if (res.data.status === 0) {
+					if (this.$user.isAuthentication !== res.data.data.isAuthentication) {
+						this.$user.upUserAu(res.data.data.isAuthentication);
+					}
+					uni.switchTab({
+						url: '/pages/index/index'
+					});
+					return false;
+				}
+			},
+
 			display() {
 				this.showPassword = !this.showPassword
 			},
@@ -209,5 +231,10 @@
 		text-align: center;
 		height: 40upx;
 		line-height: 40upx;
+	}
+	.img11 {
+		width: 40upx;
+		height: 40upx;
+		clear: ;
 	}
 </style>

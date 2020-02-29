@@ -1,5 +1,5 @@
 .logUrl {
-	color: #044E0A;
+	color: #373F54;
 	font-size: 35rpx;
 }
 .img-captcha {
@@ -113,5 +113,10 @@
 	text-align: center;
 	height: 40rpx;
 	line-height: 40rpx;
+}
+.img11 {
+	width: 40rpx;
+	height: 40rpx;
+	clear: ;
 }
 

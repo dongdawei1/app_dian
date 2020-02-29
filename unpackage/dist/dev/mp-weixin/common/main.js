@@ -19,8 +19,11 @@ var _request = _interopRequireDefault(__webpack_require__(/*! ./common/request.j
 var _urlconfig = _interopRequireDefault(__webpack_require__(/*! ./common/urlconfig.js */ 16));
 
 
-var _user = _interopRequireDefault(__webpack_require__(/*! ./common/user.js */ 17));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}_vue.default.config.productionTip = false; // 挂载全局方法
-_vue.default.prototype.$http = _request.default;_vue.default.prototype.$urlconfig = _urlconfig.default;_vue.default.prototype.$user = _user.default;
+var _user = _interopRequireDefault(__webpack_require__(/*! ./common/user.js */ 17));
+
+
+var _lib = _interopRequireDefault(__webpack_require__(/*! ./common/lib.js */ 92));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}_vue.default.config.productionTip = false; // 挂载全局方法
+_vue.default.prototype.$http = _request.default;_vue.default.prototype.$urlconfig = _urlconfig.default;_vue.default.prototype.$user = _user.default;_vue.default.prototype.lib = _lib.default;
 
 _App.default.mpType = 'app';
 
@@ -106,14 +109,16 @@ __webpack_require__.r(__webpack_exports__);
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
 {
   onLaunch: function onLaunch() {
+    //监听网络
+    this.lib.NetWork.On();
     // 初始化用户状态
     this.$user.__init();
   },
   onShow: function onShow() {
-    console.log('App Show');
+    //console.log('App Show');
   },
   onHide: function onHide() {
-    console.log('App Hide');
+    //console.log('App Hide');
   } };exports.default = _default;
 
 /***/ }),

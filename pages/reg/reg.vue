@@ -92,7 +92,7 @@
 
 				isRequest: false,
 				ruleForm: {
-					name: ,
+					name:'',
 					pass: '',
 					checkPass: '',
 					mobilePhone: '', //手机号码
@@ -309,7 +309,7 @@
 	}
 
 	.xieyi image {
-		width: 45upx;
-		height: 45upx;
+		width: 35upx;
+		height: 35upx;
 	}
 </style>

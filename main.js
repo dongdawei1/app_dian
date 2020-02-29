@@ -12,6 +12,9 @@ Vue.prototype.$urlconfig = urlconfig;
 import user from "./common/user.js";
 Vue.prototype.$user = user;
 
+import lib from "./common/lib.js"
+Vue.prototype.lib=lib
+
 App.mpType = 'app'
 
 const app = new Vue({
