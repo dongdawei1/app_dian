@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "mv-count-down": "/components/comjishi/jishi30",
+    "mv-count-down12": "/components/comjishi/jishi12",
+    "mv-count-down15": "/components/comjishi/jishi15"
+  }
+}

@@ -1,6 +1,5 @@
-import $http from "./request.js"
 export default {
-	//+Sync  为同步接口
+	//+Sync  为同步接口  需要加  try 
 	// uni.getStorage	获取本地数据缓存
 	// uni.getStorageSync	获取本地数据缓存
 	// uni.setStorage	设置本地数据缓存
@@ -11,33 +10,89 @@ export default {
 	// uni.removeStorageSync	删除本地缓存内容
 	// uni.clearStorage	清理本地数据缓存
 	// uni.clearStorageSync	清理本地数据缓存
-	
+
 	// 用户token
-	token:'',
+	token: '',
 	// 用户
-	username:'',
+	username: '',
 	// 用户实名状态
-	isAuthentication:'',
-	role:'',
+	isAuthentication: '',
+	role: '',
 	// 初始化
-	__init(){
+	__init() {
 		// 获取用户信息
-		try{
+		try {
 			this.username = uni.getStorageSync("dian_username");
 			this.token = uni.getStorageSync("dian_token");
 			this.isAuthentication = uni.getStorageSync("dian_isAuthentication");
 			this.role = uni.getStorageSync("dian_role");
-		}catch(e){
+		} catch (e) {
 			console.log("用户来登陆");
 		}
 	},
 	//登录页更新用户实名状态  这里用的同步
-	upUserAu(isAuthentication){
-		uni.setStorageSync({
-			key: "dian_isAuthentication",
-			data: isAuthentication
+	upUserAu(isAuthentication) {
+		try {
+			uni.setStorageSync("dian_isAuthentication", isAuthentication);
+			this.isAuthentication = isAuthentication;
+		} catch (e) {
+			this.isAuthentication = isAuthentication;
+		}
+		
+	},
+	/*处理登陆操作*/
+	// 网络错误处理
+	eck(err, msg) {
+		if (err) {
+			typeof errfun === 'function' && errfun();
+			uni.showToast({
+				title: msg === true ? '验证码获取失败请重启app' : '请求失败请重试',
+				icon: "none"
+			});
+			return false;
+		}
+		return true;
+	},
+	//处理登陆注册返回业务
+	checkLog(res, reg) {
+		let dataRes = res.data;
+		//业务成功 只能用  异步存储   setStorage
+		if (dataRes.status === 0) {
+			try {
+				uni.setStorageSync("dian_token", dataRes.data.dian_token);
+				uni.setStorageSync("dian_username", dataRes.data.user.username);
+				uni.setStorageSync("dian_isAuthentication", dataRes.data.user.isAuthentication);
+				uni.setStorageSync("dian_role", dataRes.data.user.role);
+				
+				this.username = dataRes.data.user.username;
+				this.token = dataRes.data.dian_token;
+				this.isAuthentication = dataRes.data.user.isAuthentication;
+				this.role = dataRes.data.user.role;
+			} catch (e) {
+				//TODO handle the exception
+			}
+			//跳转至tab 只能用switchTab,不能用 navigateTo
+			uni.switchTab({
+				url: '/pages/index/index'
+			});
+			return true;
+		}
+		//业务处理失败信息提示
+		uni.showToast({
+			title: dataRes.msg,
+			icon: "none"
 		})
-		this.isAuthentication =isAuthentication;
+		return false;
+	},
+
+	uprule(userrole) {
+		try {
+			uni.setStorageSync("dian_role", userrole);
+			this.role = userrole;
+		} catch (e) {
+			this.role = userrole;
+		}
+		
 	}
 	// 登录
 	// async login(options ={}){
@@ -93,7 +148,7 @@ export default {
 	// },
 
 
-	
+
 	// // userinfo格式转换
 	// __formatUserinfo(obj){
 	// 	// 手机/邮箱/账号登录
@@ -104,5 +159,5 @@ export default {
 	// 	}
 
 
-	
+
 }

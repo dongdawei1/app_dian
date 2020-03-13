@@ -16,13 +16,13 @@ var _App = _interopRequireDefault(__webpack_require__(/*! ./App */ 9));
 
 var _request = _interopRequireDefault(__webpack_require__(/*! ./common/request.js */ 15));
 
-var _urlconfig = _interopRequireDefault(__webpack_require__(/*! ./common/urlconfig.js */ 16));
 
+var _urlconfig = _interopRequireDefault(__webpack_require__(/*! ./common/urlconfig.js */ 16));
 
 var _user = _interopRequireDefault(__webpack_require__(/*! ./common/user.js */ 17));
 
 
-var _lib = _interopRequireDefault(__webpack_require__(/*! ./common/lib.js */ 92));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}_vue.default.config.productionTip = false; // 挂载全局方法
+var _lib = _interopRequireDefault(__webpack_require__(/*! ./common/lib.js */ 18));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};var ownKeys = Object.keys(source);if (typeof Object.getOwnPropertySymbols === 'function') {ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {return Object.getOwnPropertyDescriptor(source, sym).enumerable;}));}ownKeys.forEach(function (key) {_defineProperty(target, key, source[key]);});}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}_vue.default.config.productionTip = false; // 挂载全局方法
 _vue.default.prototype.$http = _request.default;_vue.default.prototype.$urlconfig = _urlconfig.default;_vue.default.prototype.$user = _user.default;_vue.default.prototype.lib = _lib.default;
 
 _App.default.mpType = 'app';

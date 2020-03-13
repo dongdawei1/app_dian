@@ -6,6 +6,7 @@ export default {
 	config: {
 		baseUrl: config.webUrl,
 		v2url: config.v2Url,
+		v1Url: config.v1Url,
 		header: {
 			'Content-Type': 'application/x-www-form-urlencoded',
 			'appid': 'a',
@@ -18,9 +19,32 @@ export default {
 		options.header = options.header || this.config.header; //options.header=如果有传就是options.header || 如果没传就等于默认值
 		options.method = options.method || this.config.method;
 		options.dataType = options.dataType || this.config.dataType;
-		options.url = this.config.baseUrl + options.url;
-		// TODO：token增加等操作,不需要验证,全部由后端验证
-		return uni.request(options);
+		options.url = this.config.v1Url + options.url;
+		// TODO：token增加等操作,不需要验证,全部由后端验证	
+		return uni.request(options).then(data => {
+			let [err, res] = data;
+			if (!User.eck(err)) {
+				return null;
+			}
+			
+			if (res.data.status != 0) {
+				let msg = res.data.msg
+				uni.showToast({
+					title: msg,
+					icon: "none"
+				});
+				if (msg === '用户登陆已过期' || msg === '用户未登录,无法获取当前用户的信息') {
+					uni.navigateTo({
+						url: '/pages/login/login'
+					});
+				} else if (msg === '没有权限') {
+					uni.switchTab({
+						url: '/pages/index/index'
+					});
+				}
+			}
+			return res.data.data;
+		});
 	},
 
 	get(url, data, options = {}) {
@@ -30,7 +54,7 @@ export default {
 		options.header = {
 			'Content-Type': 'application/x-www-form-urlencoded',
 			'appid': 'a',
-			'dian_token':User.token
+			'dian_token': User.token
 		};
 		return this.request(options);
 	},
@@ -41,7 +65,7 @@ export default {
 		options.header = {
 			'Content-Type': 'application/json;charset=UTF-8',
 			'appid': 'a',
-			'dian_token':User.token
+			'dian_token': User.token
 		};
 		return this.request(options);
 	},
@@ -61,7 +85,7 @@ export default {
 		options.header = {
 			'Content-Type': 'application/x-www-form-urlencoded',
 			'appid': 'a',
-			'dian_token':User.token
+			'dian_token': User.token
 		};
 		return this.requestV2(options);
 	},
@@ -72,7 +96,7 @@ export default {
 		options.header = {
 			'Content-Type': 'application/json;charset=UTF-8',
 			'appid': 'a',
-			'dian_token':User.token
+			'dian_token': User.token
 		};
 		return this.requestV2(options);
 	},
@@ -96,7 +120,7 @@ export default {
 
 		return uni.uploadFile(options);
 	},
-	
+
 	// 错误处理
 	errorCheck(err, res, errfun = false, resfun = false) {
 		if (err) {
@@ -118,7 +142,7 @@ export default {
 		return true;
 	},
 
-	
+
 
 	// 验证用户是否登录User.token 初始值为 false 登陆后有值
 	checkToken(checkToken) {

@@ -1,4 +1,6 @@
 {
   "navigationBarTitleText": "首页",
-  "usingComponents": {}
+  "usingComponents": {
+    "purchase-conduct-order": "/components/comindord/PurchaseConductOrder"
+  }
 }

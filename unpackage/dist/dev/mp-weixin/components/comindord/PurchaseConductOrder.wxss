@@ -1,0 +1,46 @@
+
+.xia {
+	/*底部边框，样式，颜色*/
+	border-top-width: thin;
+	border-top-style: double;
+	border-top-color: #c6c2c0;
+	padding: 10rpx 0 0 0;
+}
+.ords {
+	padding: 0 20rpx 0 20rpx;
+	font-size: 35rpx;
+	line-height: 45rpx;
+}
+.demo-table-expand label {
+	width: 90px;
+	color: #99a9bf;
+}
+.fromDataClass {
+	border: 1px solid #E7E3E6;
+	padding: 5px 0px 10px 10px;
+	color: #918D90;
+}
+.fromDataTitleClass {
+	font-size: 16px;
+	color: #6F6B6E;
+}
+.pingjiaClass {
+	font-size: 10px;
+}
+.forFromData {
+	background: #F4FBFD;
+	display: inline
+}
+.voSocketClass {
+	padding: 3px 45px 10px 0px;
+	color: #6F6B6E;
+	font-size: 18px;
+	float: right
+}
+.orderStatuNameClass {
+	color: #FC1A40;
+}
+.dialogClass {
+	text-align: center
+}
+

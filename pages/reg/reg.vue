@@ -34,32 +34,32 @@
 		<view class="danxuan">
 			<radio-group name="radio" @change="radioRole">
 				<label>
-					<radio value="2" color="#FFCC33" style="transform:scale(0.6)" /><text>餐饮/酒店</text>
+					<radio value="2" color="#d4e0ff" style="transform:scale(0.6)" /><text>餐饮/酒店</text>
 				</label>
 				<label>
-					<radio value="3" color="#FFCC33" style="transform:scale(0.6)" /><text>厨电维修/销售</text>
+					<radio value="3" color="#d4e0ff" style="transform:scale(0.6)" /><text>厨电维修/销售</text>
 				</label>
 				<label>
-					<radio value="4" color="#FFCC33" style="transform:scale(0.6)" /><text>米面粮油菜送货</text>
+					<radio value="4" color="#d4e0ff" style="transform:scale(0.6)" /><text>米面粮油菜送货</text>
 				</label>
 				<label>
-					<radio value="5" color="#FFCC33" style="transform:scale(0.6)" /><text>酒水/消毒餐具</text>
+					<radio value="5" color="#d4e0ff" style="transform:scale(0.6)" /><text>酒水/消毒餐具</text>
 				</label>
 				<label>
-					<radio value="6" color="#FFCC33" style="transform:scale(0.6)" /><text>商铺/摊位出租</text>
+					<radio value="6" color="#d4e0ff" style="transform:scale(0.6)" /><text>商铺/摊位出租</text>
 				</label>
 				<label>
-					<radio value="7" color="#FFCC33" style="transform:scale(0.6)" /><text>装修/菜谱/广告牌/杀虫</text>
+					<radio value="7" color="#d4e0ff" style="transform:scale(0.6)" /><text>装修/菜谱/广告牌/杀虫</text>
 				</label>
 				<label>
-					<radio value="11" color="#FFCC33" style="transform:scale(0.6)" /><text>求职</text>
+					<radio value="11" color="#d4e0ff" style="transform:scale(0.6)" /><text>求职</text>
 				</label>
 				<label>
-					<radio value="12" color="#FFCC33" style="transform:scale(0.6)" /><text>工服/百货/绿植</text>
+					<radio value="12" color="#d4e0ff" style="transform:scale(0.6)" /><text>工服/百货/绿植</text>
 				</label>
-				<label>
-					<radio value="13" color="#FFCC33" style="transform:scale(0.6)" /><text>米面粮油菜批发</text>
-				</label>
+				<!-- <label>
+					<radio value="13" color="#d4e0ff" style="transform:scale(0.6)" /><text>米面粮油菜批发</text>
+				</label> -->
 			</radio-group>
 		</view>
 		<view class="dlbutton" @tap="submitForm">
@@ -78,7 +78,6 @@
 </template>
 
 <script>
-	import logmain_Js from "../../common/log/logmainjs.js";
 	var _this;
 	export default {
 		data() {
@@ -135,7 +134,7 @@
 				};
 				let [err, res] = await this.$http.getV2(this.$urlconfig.logCaptcha, uuidform, {});
 				this.isRequest = false;
-				if (!logmain_Js.errorCheckRe(err, true)) {
+				if (!this.$user.eck(err,true)) {
 					this.captchaPathSh = false;
 					return;
 				}
@@ -217,10 +216,10 @@
 				this.isRotate = true;
 				let [err, res] = await this.$http.postV2(this.$urlconfig.logCreate, this.ruleForm, {});
 				this.isRotate = false;
-				if (!logmain_Js.errorCheckRe(err)) {
+				if (!this.$user.eck(err)) {
 					return;
 				}
-				if (!logmain_Js.checkLog(res, true)) {
+				if (!this.$user.checkLog(res, true)) {
 					this.getVerCode();
 					return;
 				}

@@ -37,7 +37,6 @@
 </template>
 
 <script>
-	import logmain_Js from "../../common/log/logmainjs.js";
 	var _this;
 	export default {
 		data() {
@@ -66,29 +65,40 @@
 		},
 
 		onReady() { //3
-			_this.getVerCode();
 			_this.isRequest = false; //后端没有返回验证码前 点击不了
 		},
-		
+
 		methods: {
 			async __init() {
 				let uuidform = {
 					uuid: this.$http.getUuid()
 				};
 				let [err, res] = await this.$http.getV2(this.$urlconfig.logGetUesr, uuidform, {});
-				if (!logmain_Js.errorCheckRe(err)) {
+				if (!this.$user.eck(err)) {
 					return;
 				}
-
+			
 				if (res.data.status === 0) {
+					
 					if (this.$user.isAuthentication !== res.data.data.isAuthentication) {
+						// uni.setStorageSync({
+						// 	key: "dian_isAuthentication",
+						// 	data: isAuthentication
+						// })
+						
 						this.$user.upUserAu(res.data.data.isAuthentication);
 					}
+					if (this.$user.role !== res.data.data.role) {
+
+						this.$user.uprule(res.data.data.role);
+					}
+			
 					uni.switchTab({
 						url: '/pages/index/index'
 					});
 					return false;
 				}
+				_this.getVerCode();
 			},
 
 			display() {
@@ -109,7 +119,7 @@
 				};
 				let [err, res] = await this.$http.getV2(this.$urlconfig.logCaptcha, uuidform, {});
 				this.isRequest = false;
-				if (!logmain_Js.errorCheckRe(err, true)) {
+				if (!this.$user.eck(err, true)) {
 					this.captchaPathSh = false;
 					return;
 				}
@@ -150,10 +160,10 @@
 				this.isRotate = true;
 				let [err, res] = await this.$http.postV2(this.$urlconfig.logLogin, this.ruleForm, {});
 				this.isRotate = false;
-				if (!logmain_Js.errorCheckRe(err)) {
+				if (!this.$user.eck(err)) {
 					return;
 				}
-				if (!logmain_Js.checkLog(res)) {
+				if (!this.$user.checkLog(res)) {
 					this.getVerCode();
 					return;
 				}
@@ -232,6 +242,7 @@
 		height: 40upx;
 		line-height: 40upx;
 	}
+
 	.img11 {
 		width: 40upx;
 		height: 40upx;
