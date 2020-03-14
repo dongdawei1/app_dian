@@ -10,7 +10,7 @@ export default {
 	logGetUesr : 'log/get_user_info',
 	getbuuer:'bunner/getpguang',
     getordls:'order/get_conduct_purchase_order',
-	gepayos:'order/get_pay_order_all',
+	getpayos:'order/get_pay_order_all',
 	
 	// websocket地址11
 	websocketUrl:"wss://ceshi2.dishait.cn:23481",

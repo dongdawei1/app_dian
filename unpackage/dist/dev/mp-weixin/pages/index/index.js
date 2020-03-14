@@ -230,12 +230,15 @@ var _self;var _default =
     },
     //TODO跳转未完成
     tiaozhuan: function tiaozhuan(row) {
-      console.log(row);
+
       if (!_self.chenggong) {
         uni.showToast({
           title: '实名完成后才能查看信息',
           icon: "none" });
 
+      }
+      if (row === null || row === '') {
+        return false;
       }
       // uni.navigateTo({
       // 	url: row
@@ -255,8 +258,6 @@ var _self;var _default =
         if (data !== null) {
 
           for (var i = 0; i < data.length; i++) {
-            var pushs = JSON.parse(data[i].imgUrl);
-            var pictureUrl = JSON.parse(data[i].imgUrl)[0].pictureUrl;
             arr.push({
               id: data[i].id,
               url: JSON.parse(data[i].imgUrl)[0].pictureUrl,
@@ -332,17 +333,22 @@ var _self;var _default =
       //查询有没有近3天订单
       this.$http.get(this.$urlconfig.getordls, uuidform, {}).then(function (data) {
         if (data !== null) {
+          // 商品转list
+          for (var i = 0; i < data.listPurchaseSeeOrderVo.length; i++) {
+            var commoditySnapshot = JSON.parse(data.listPurchaseSeeOrderVo[i].voOrder.commoditySnapshot);
+            data.listPurchaseSeeOrderVo[i].voOrder.commoditySnapshot = commoditySnapshot;
+          }
           _this2.ordls = data;
-          console.log(data);
+          console.log(_this2.ordls);
           _this2.isPuCoOrder = true;
           if (_this2.ordls.voSocket === 0) {
-            _this2.initList(0.2);
+            _this2.initList(1);
           } else {
             //查询有没有待支付订单
             _this2.$http.get(_this2.$urlconfig.getpayos, uuidform, {}).then(function (data) {
               if (data === 'YES') {
                 _this2.voSocketPay = true;
-                _this2.initList(1);
+                _this2.initList(0.3);
               } else {
                 _this2.voSocketPay = false;
                 _this2.beforeDestroyPay();

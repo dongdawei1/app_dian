@@ -83,6 +83,37 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
+  var g0 = new Date().getTime()
+  var g1 = new Date().getTime()
+  var g2 = new Date().getTime()
+  var g3 = new Date().getTime()
+
+  var l0 = _vm.__map(_vm.item.listPurchaseSeeOrderVo, function(it, index) {
+    var m0 = _vm.headercell(it)
+    var m1 = _vm.headercel8(it)
+    var m2 = _vm.headercel3(it, 15)
+    var m3 = _vm.headercel3(it, 15)
+    return {
+      $orig: _vm.__get_orig(it),
+      m0: m0,
+      m1: m1,
+      m2: m2,
+      m3: m3
+    }
+  })
+
+  _vm.$mp.data = Object.assign(
+    {},
+    {
+      $root: {
+        g0: g0,
+        g1: g1,
+        g2: g2,
+        g3: g3,
+        l0: l0
+      }
+    }
+  )
 }
 var recyclableRender = false
 var staticRenderFns = []
@@ -183,6 +214,93 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {
   props: {
     item: Object,
@@ -192,6 +310,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     MvCountDown: MvCountDown,
     MvCountDown12: MvCountDown12,
     MvCountDown15: MvCountDown15 },
+
 
   data: function data() {
     return {
@@ -209,6 +328,13 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   },
 
   methods: {
+
+
+
+    checke_isButtenz: function checke_isButtenz() {
+      this.$emit("getordlist");
+    },
+
     //操作相关
     operationRow: function operationRow(row, type) {
       console.log(row);
@@ -266,7 +392,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     },
     countDownE: function countDownE() {
       // 结束倒计时回调
-      this.checke_isButten();
+      this.checke_isButtenz();
     }
     //倒计时相关结束
   } };exports.default = _default;

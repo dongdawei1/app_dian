@@ -1,24 +1,33 @@
 /* flex布局 */
-.u-f,.u-f-ac,.u-f-ajc{
+.u-f,
+.u-f-ac,
+.u-f-ajc {
 	display: flex;
 }
-.u-f-ac,.u-f-ajc{
+
+.u-f-ac,
+.u-f-ajc {
 	align-items: center;
 }
-.u-f-ajc{
+
+.u-f-ajc {
 	justify-content: center;
 }
-.u-f-jsb{
+
+.u-f-jsb {
 	justify-content: space-between;
 }
-.u-f1{
+
+.u-f1 {
 	flex: 1;
 }
-.u-f-column{
+
+.u-f-column {
 	flex-direction: column;
 }
+
 /*个页面操作按钮样式*/
-.caozuoClass{
+.caozuoClass {
 	display: flex;
 	justify-content: space-around;
 	/*上边是按钮 布局设置  */
@@ -26,12 +35,37 @@
 	/* margin : 5upx 0 0 0; */
 	/* padding: 0 10upx 0 0 0; */
 }
-.buttonClass{
-		font-size: 28upx;
-		padding: 10upx 20upx 10upx 20upx;
-		/* margin: 0 10upx 0 0; */
-		color: #FFFFFF;
-		/* 圆角 */
-		border-radius: 50upx;
-		background: #82E679;
+
+.buttonClass {
+	font-size: 30upx;
+	padding: 1upx 10upx 1upx 10upx;
+	/* margin: 0 10upx 0 0; */
+	color: #FFFFFF;
+	/* 圆角 */
+	border-radius: 10upx;
+	background: #1BAD5A;
+}
+
+.buttonhui {
+	font-size: 30upx;
+	padding: 1upx 10upx 1upx 10upx;
+	/* margin: 0 10upx 0 0; */
+	color: #FFFFFF;
+	/* 圆角 */
+	border-radius: 10upx;
+	background: #bdbdbd;
+}
+
+.jinggao {
+	padding: 10upx 10upx 10upx 30upx;
+	color: #f10000;
+	font-size: 35upx;
+
+}
+
+.daojishi {
+	padding: 0 20upx 0 20upx;
+	font-size: 35upx;
+	line-height: 45upx;
+	color: #f10000;
 }

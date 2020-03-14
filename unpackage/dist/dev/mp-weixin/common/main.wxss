@@ -4763,39 +4763,42 @@ to {
 }
 /* 公共样式 */
 /* flex布局 */
-.u-f,.u-f-ac,.u-f-ajc{
+.u-f,
+.u-f-ac,
+.u-f-ajc {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
 }
-.u-f-ac,.u-f-ajc{
+.u-f-ac,
+.u-f-ajc {
 	-webkit-box-align: center;
 	-webkit-align-items: center;
 	        align-items: center;
 }
-.u-f-ajc{
+.u-f-ajc {
 	-webkit-box-pack: center;
 	-webkit-justify-content: center;
 	        justify-content: center;
 }
-.u-f-jsb{
+.u-f-jsb {
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;
 	        justify-content: space-between;
 }
-.u-f1{
+.u-f1 {
 	-webkit-box-flex: 1;
 	-webkit-flex: 1;
 	        flex: 1;
 }
-.u-f-column{
+.u-f-column {
 	-webkit-box-orient: vertical;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: column;
 	        flex-direction: column;
 }
 /*个页面操作按钮样式*/
-.caozuoClass{
+.caozuoClass {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -4806,14 +4809,34 @@ to {
 	/* margin : 5upx 0 0 0; */
 	/* padding: 0 10upx 0 0 0; */
 }
-.buttonClass{
-		font-size: 28rpx;
-		padding: 10rpx 20rpx 10rpx 20rpx;
-		/* margin: 0 10upx 0 0; */
-		color: #FFFFFF;
-		/* 圆角 */
-		border-radius: 50rpx;
-		background: #82E679;
+.buttonClass {
+	font-size: 30rpx;
+	padding: 1rpx 10rpx 1rpx 10rpx;
+	/* margin: 0 10upx 0 0; */
+	color: #FFFFFF;
+	/* 圆角 */
+	border-radius: 10rpx;
+	background: #1BAD5A;
+}
+.buttonhui {
+	font-size: 30rpx;
+	padding: 1rpx 10rpx 1rpx 10rpx;
+	/* margin: 0 10upx 0 0; */
+	color: #FFFFFF;
+	/* 圆角 */
+	border-radius: 10rpx;
+	background: #bdbdbd;
+}
+.jinggao {
+	padding: 10rpx 10rpx 10rpx 30rpx;
+	color: #f10000;
+	font-size: 35rpx;
+}
+.daojishi {
+	padding: 0 20rpx 0 20rpx;
+	font-size: 35rpx;
+	line-height: 45rpx;
+	color: #f10000;
 }
 
 

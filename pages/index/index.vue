@@ -3,7 +3,7 @@
 
 		<!--首页-->
 		<!-- 轮播图 -->
-		<swiper class="topic-swiper" :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000">
+		<swiper  :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000">
 			<block v-for="(item,index) in topic.swiper" :key="index">
 				<swiper-item>
 					<image :src="item.url" mode="scaleToFill" lazy-load @click="tiaozhuan(item.paths)"></image>
@@ -30,7 +30,7 @@
 
 			<!--有无订单显示的文案-->
 			<view v-if="(role===2 || role===1) && chenggong">
-				<PurchaseConductOrder :item="ordls" :voSocketPay="voSocketPay" v-if="isPuCoOrder"> </PurchaseConductOrder>
+				<PurchaseConductOrder :item="ordls" :voSocketPay="voSocketPay" v-if="isPuCoOrder" v-on:getordlist="getordlist"> </PurchaseConductOrder>
 				<view v-if="!isPuCoOrder"> 没有订单给点啥文案</view>
 			</view>
 		</view>
@@ -95,12 +95,15 @@
 			},
 			//TODO跳转未完成
 			tiaozhuan(row) {
-				console.log(row)
+				
 				if (!_self.chenggong) {
 					uni.showToast({
 						title: '实名完成后才能查看信息',
 						icon: "none"
 					});
+				}
+				if(row===null || row==='' ){
+					return false;
 				}
 				// uni.navigateTo({
 				// 	url: row
@@ -120,8 +123,6 @@
 					if (data !== null) {
 
 						for (let i = 0; i < data.length; i++) {
-							let pushs = JSON.parse(data[i].imgUrl);
-							let pictureUrl = JSON.parse(data[i].imgUrl)[0].pictureUrl;
 							arr.push({
 								id: data[i].id,
 								url: JSON.parse(data[i].imgUrl)[0].pictureUrl,
@@ -197,17 +198,22 @@
 				//查询有没有近3天订单
 				this.$http.get(this.$urlconfig.getordls, uuidform, {}).then(data => {
 					if (data !== null) {
+						// 商品转list
+						for(let i=0;i<data.listPurchaseSeeOrderVo.length;i++){
+							let commoditySnapshot=JSON.parse(data.listPurchaseSeeOrderVo[i].voOrder.commoditySnapshot);
+							data.listPurchaseSeeOrderVo[i].voOrder.commoditySnapshot=commoditySnapshot;
+						}
 						this.ordls = data;
-						console.log(data)
+						console.log(this.ordls)
 						this.isPuCoOrder = true;
 						if (this.ordls.voSocket === 0) {
-							this.initList(0.2);
+							this.initList(1);
 						} else {
 							//查询有没有待支付订单
 							this.$http.get(this.$urlconfig.getpayos, uuidform, {}).then(data => {
 								if (data === 'YES') {
 									this.voSocketPay = true;
-									this.initList(1);
+									this.initList(0.3);
 								} else {
 									this.voSocketPay = false;
 									this.beforeDestroyPay();
@@ -249,9 +255,9 @@
 
 <style>
 	/**轮播开始*/
-	.topic-swiper {
+	/* .topic-swiper {
 		padding: 0 20upx 20upx 20upx;
-	}
+	} */
 
 	.topic-swiper image {
 		width: 100%;

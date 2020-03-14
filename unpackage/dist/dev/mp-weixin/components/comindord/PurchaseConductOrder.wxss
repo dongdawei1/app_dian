@@ -11,36 +11,79 @@
 	font-size: 35rpx;
 	line-height: 45rpx;
 }
-.demo-table-expand label {
-	width: 90px;
-	color: #99a9bf;
-}
-.fromDataClass {
-	border: 1px solid #E7E3E6;
-	padding: 5px 0px 10px 10px;
+
+/*商品详情*/
+.zhifuxiangq {
+	/* margin: 50upx 50upx 50upx  50upx ; */
+	padding: 30rpx 60rpx 40rpx 60rpx;
 	color: #918D90;
 }
 .fromDataTitleClass {
-	font-size: 16px;
+	border-top-width: thin;
+	border-top-style: double;
+	border-top-color: #E7E3E6;
+
+	font-size: 33rpx;
+	line-height: 35rpx;
 	color: #6F6B6E;
+	padding: 5rpx 0 5rpx 0;
 }
-.pingjiaClass {
-	font-size: 10px;
+.oxiangqing {
+	display: inline;
+	padding: 0 30rpx 0 0;
 }
-.forFromData {
+.oxiangqing view {
+	padding: 3rpx 10rpx 3rpx 20rpx;
+	font-size: 32rpx;
+	line-height: 34rpx;
 	background: #F4FBFD;
-	display: inline
+	display: inline;
 }
-.voSocketClass {
-	padding: 3px 45px 10px 0px;
-	color: #6F6B6E;
-	font-size: 18px;
-	float: right
+.zxiangqing view {
+	padding: 3rpx 10rpx 3rpx 20rpx;
+	font-size: 32rpx;
+	line-height: 34rpx;
 }
-.orderStatuNameClass {
-	color: #FC1A40;
+.juzhong {
+	text-align: center;
+	font-size: 32rpx;
+	line-height: 34rpx;
 }
-.dialogClass {
-	text-align: center
+.pingjia {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-justify-content: space-around;
+	        justify-content: space-around;
+}
+.pingjiano view {
+	font-size: 30rpx;
+	line-height: 32rpx;
+}
+.shanghubiao {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	/*布局使元素居左*/
+	font-size: 30rpx;
+	line-height: 34rpx;
+}
+.shanghubiao view {
+	padding: 3rpx 30rpx 3rpx 30rpx;
+	text-align: center;
+	border-style: solid;
+	border-width: 3rpx;
+	color: #F9B3CE;
+	/* 圆角 */
+	border-radius: 30rpx;
+}
+.xuaznebutton {
+	font-size: 30rpx;
+	padding: 1rpx 10rpx 1rpx 10rpx;
+	/* margin: 0 10upx 0 0; */
+	color: #FFFFFF;
+	/* 圆角 */
+	border-radius: 10rpx;
+	background: #FCC1C3;
 }
 

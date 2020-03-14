@@ -248,10 +248,16 @@
 
 
 
+
+
+
+
+
+
 	/**轮播开始*/
-.topic-swiper {
-		padding: 0 20rpx 20rpx 20rpx;
-}
+	/* .topic-swiper {
+		padding: 0 20upx 20upx 20upx;
+	} */
 .topic-swiper image {
 		width: 100%;
 

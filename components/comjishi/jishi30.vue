@@ -1,5 +1,5 @@
 <template>
-  <view >
+  <view class="daojishi">
 
       <!--<span v-if="tipShow">{{tipText}}:</span>-->
       <!--<span v-if="!tipShow">{{tipTextEnd}}:</span>-->
@@ -216,9 +216,6 @@ export default {
 }
 </script>
 <style >
-.mv-count-down {
-  /*font-size: 20px;*/
-  /*font-family: "黑体";*/
-}
+
 
 </style>
