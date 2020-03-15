@@ -55,7 +55,9 @@
 	display: flex;
 	-webkit-justify-content: space-around;
 	        justify-content: space-around;
+	padding: 3rpx 0 30rpx 0;
 }
+.pingjiano {}
 .pingjiano view {
 	font-size: 30rpx;
 	line-height: 32rpx;
@@ -74,6 +76,23 @@
 	border-style: solid;
 	border-width: 3rpx;
 	color: #F9B3CE;
+	/* 圆角 */
+	border-radius: 30rpx;
+}
+.shanghupingjia {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	/*布局使元素居左*/
+	font-size: 30rpx;
+	line-height: 34rpx;
+}
+.shanghupingjia view {
+	padding: 3rpx 30rpx 3rpx 30rpx;
+	text-align: center;
+	border-style: solid;
+	border-width: 3rpx;
+	color: #86B2CB;
 	/* 圆角 */
 	border-radius: 30rpx;
 }

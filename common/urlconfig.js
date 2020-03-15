@@ -11,6 +11,8 @@ export default {
 	getbuuer:'bunner/getpguang',
     getordls:'order/get_conduct_purchase_order',
 	getpayos:'order/get_pay_order_all',
+	getoscaozuo:'order/operation_purchase_order',
+	
 	
 	// websocket地址11
 	websocketUrl:"wss://ceshi2.dishait.cn:23481",

@@ -28,9 +28,8 @@ export default {
 			}
 			
 			if (res.data.status != 0) {
-				let msg = res.data.msg
 				uni.showToast({
-					title: msg,
+					title: res.data.msg,
 					icon: "none"
 				});
 				if (msg === '用户登陆已过期' || msg === '用户未登录,无法获取当前用户的信息') {
@@ -43,7 +42,7 @@ export default {
 					});
 				}
 			}
-			return res.data.data;
+			return res.data;
 		});
 	},
 

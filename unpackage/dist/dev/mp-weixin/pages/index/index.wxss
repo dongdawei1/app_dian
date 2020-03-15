@@ -254,46 +254,67 @@
 
 
 
-	/**轮播开始*/
-	/* .topic-swiper {
-		padding: 0 20upx 20upx 20upx;
-	} */
-.topic-swiper image {
-		width: 100%;
 
-		/* border-radius: 10upx; */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**轮播开始*/
+/* .topic-swiper {
+	padding: 0 20upx 20upx 20upx;
+} */
+.topic-swiper image {
+	width: 100%;
+
+	/* border-radius: 10upx; */
 }
-	/**轮播结束*/
-	/*按钮*/
+/**轮播结束*/
+/*按钮*/
 .daohaoClass {
-		display: -webkit-box;
-		display: -webkit-flex;
-		display: flex;
-		-webkit-justify-content: space-around;
-		        justify-content: space-around;
-		/*上边是按钮 布局设置  */
-		margin: 10rpx 0 0 0;
-		/* margin : 5upx 0 0 0; */
-		/* padding: 0 10upx 0 0 0; */
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-justify-content: space-around;
+	        justify-content: space-around;
+	/*上边是按钮 布局设置  */
+	margin: 10rpx 0 0 0;
+	/* margin : 5upx 0 0 0; */
+	/* padding: 0 10upx 0 0 0; */
 }
 .daohaoitem {
-		font-size: 30rpx;
-		padding: 16rpx 10rpx 16rpx 10rpx;
-		/* margin: 0 10upx 0 0; */
-      /* font-weight: bold; 加粗不生效 */
-		border-radius: 8rpx;
+	font-size: 30rpx;
+	padding: 16rpx 10rpx 16rpx 10rpx;
+	/* margin: 0 10upx 0 0; */
+	/* font-weight: bold; 加粗不生效 */
+	border-radius: 8rpx;
 }
 .shang {
-		text-align:center; /*ioc水平居中*/
+	text-align: center;
+	/*ioc水平居中*/
 }
 .shang image {
-		width: 120rpx;
-		height: 120rpx;
+	width: 120rpx;
+	height: 120rpx;
 }
 .a {
-		color: #FD7B6A;
+	color: #FD7B6A;
 }
 .b {
-		color: #323232;
+	color: #323232;
 }
 

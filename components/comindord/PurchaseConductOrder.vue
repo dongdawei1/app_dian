@@ -47,9 +47,8 @@
 					<view class="caozuoClass">
 						<view class="buttonClass" @click="operationRow(it,3)" v-if="it.orderStatu11 || it.orderStatu18 || it.orderStatu12 || it.orderStatu21">关单
 						</view>
-						<!-- <el-button @click="payOrder(it.voOrder.id)" button type="primary" plain="true" v-if="it.orderStatu12 || it.orderStatu21"
-						 :loading="fullscreenLoading">定金二维码(微信扫码)
-							</button> -->
+						<view class="buttonClass" @click="payOrder(it.voOrder.id)"  v-if="it.orderStatu12 || it.orderStatu21">微信支付定金
+							</view>
 						<view class="buttonClass" @click="operationRow(it,11)" v-if="it.orderStatu3 ">再次开启发布
 						</view>
 						<view class="buttonClass" @click="operationRow(it,11)" v-if=" it.orderStatu17">无销售商报价重新发布
@@ -116,7 +115,7 @@
 							联系方式:{{itbao.orderCommonOffer.contact}}
 						</view>
 						<view> 商户地址:{{itbao.orderCommonOffer.saleUserAddressDetailed}} </view>
-						<view class="shanghubiao">
+						<view class="shanghupingjia">
 							<view> 商户评价 </view>
 						</view>
 					</view>
@@ -131,9 +130,8 @@
 							<view>价格中:{{itbao.evaluate.jiagezhong}}人次</view>
 							<view>价格高:{{itbao.evaluate.jiagegao}}人次</view>
 						</view>
-						<view >
-							<!-- v-if="it.orderStatu11 || it.orderStatu18 " @click="choice(itbao,it, 13)" -->
-							<view class="xuaznebutton">选择此家 </view>
+						<view>
+							<view class="xuaznebutton" v-if="it.orderStatu11 || it.orderStatu18 " @click="choice(itbao,it, 13)">选择此家 </view>
 						</view>
 					</view>
 
@@ -165,6 +163,7 @@
 		},
 		data() {
 			return {
+
 				tableData: [],
 				centerDialogVisible: false, //二维码弹窗
 				fullscreenLoading: false,
@@ -177,21 +176,105 @@
 				codes: ''
 			}
 		},
-
+		
 		methods: {
-
-
-
+		
+			
 			checke_isButtenz() {
 				this.$emit("getordlist")
 			},
+			
+			//支付
+			      payOrder(id) {
+			        if (this.fullscreenLoading) {
+			        	uni.showModal({
+			        	    title: '提示',
+			        	    content: '订单生成中请稍后',
+			        	});
+			        	this.fullscreenLoading=false;
+			        	return false;
+			        }
+			        native_pay_order(id).then(res => {
+			          this.fullscreenLoading = false;
+			          if (res.status === 0) {
+			            this.useqrcode(res.msg, id)
+			          } else {
+			            
+			          }
+			        });
+			      },
+			
+			//操作
+			operationRow(scope, type) {
+				if (this.fullscreenLoading) {
+					uni.showModal({
+					    title: '提示',
+					    content: '上一个操作还没有响应，请稍后再试',
+					});
+					this.fullscreenLoading=false;
+					return false;
+				}
+				this.fullscreenLoading = true;
+				let order = {
+					id: scope.voOrder.id,
+					type: type
+				};
+				//操作
+				this.$http.post(this.$urlconfig.getoscaozuo, order, {}).then(data => {
+					this.fullscreenLoading = false;
+					if (data.status === 0) {
+						uni.showToast({
+							title: '操作成功',
+							icon: "none"
+						});
+						this.checke_isButtenz();
+					} else {
+						uni.showToast({
+							title: data.msg,
+							icon: "none"
+						});
+					}
+				});
 
-			//操作相关
-			operationRow(row, type) {
-				console.log(row)
+				//11--》3关单  或者 13 抢单确认-->12 支付按键-->支付成功变成4 （送货者操作4 变成16） --> 16 确认
+
+				// -->状态==5  （去评价）   status==3|| 17   传给后端 11再次开启
+			},
+
+			//选择此家
+			choice(scope, props, type) {
+				if (this.fullscreenLoading) {
+					uni.showToast({
+						title: '操作中请稍后',
+						icon: "none"
+					});
+				}
+				this.fullscreenLoading = true;
+				let order = {};
+				order.id = props.voOrder.id;
+				order.type = type;
+				order.orderCommonOfferId = scope.orderCommonOffer.id;
+				order.commodityZongJiage = scope.orderCommonOffer.commodityZongJiage;
+				//查询有没有待支付订单
+				this.$http.post(this.$urlconfig.getoscaozuo, order, {}).then(data => {
+					this.fullscreenLoading = false;
+					if (data.status === 0) {
+						uni.showToast({
+							title: '操作成功',
+							icon: "none"
+						});
+						this.checke_isButtenz();
+					} else {
+						uni.showToast({
+							title: data.msg,
+							icon: "none"
+						});
+					}
+				});
 			},
 			//倒计时相关开始
 			headercell(row) {
+
 				if (row.orderStatu11 === true) {
 					//获取创建时间
 					let newDateGetTime = new Date().getTime();
@@ -314,11 +397,15 @@
 	.pingjia {
 		display: flex;
 		justify-content: space-around;
+		padding: 3upx 0 30upx 0;
 	}
+
+	.pingjiano {}
 
 	.pingjiano view {
 		font-size: 30upx;
 		line-height: 32upx;
+
 	}
 
 	.shanghubiao {
@@ -338,7 +425,22 @@
 		border-radius: 30upx;
 	}
 
+	.shanghupingjia {
+		display: flex;
+		/*布局使元素居左*/
+		font-size: 30upx;
+		line-height: 34upx;
+	}
 
+	.shanghupingjia view {
+		padding: 3upx 30upx 3upx 30upx;
+		text-align: center;
+		border-style: solid;
+		border-width: 3upx;
+		color: #86B2CB;
+		/* 圆角 */
+		border-radius: 30upx;
+	}
 
 	.xuaznebutton {
 		font-size: 30upx;

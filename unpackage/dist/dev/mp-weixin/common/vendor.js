@@ -737,7 +737,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -7065,7 +7065,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -7086,14 +7086,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7169,7 +7169,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -8508,7 +8508,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@alpha","_id":"@dcloudio/uni-stat@2
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/login/login": {}, "pages/reg/reg": { "navigationBarTitleText": "注册" }, "pages/logmain/logmain": { "navigationBarTitleText": "" }, "pages/pwd/pwd": { "navigationBarTitleText": "找回密码" }, "pages/index/index": { "navigationBarTitleText": "首页" }, "pages/creord/creord": { "navigationBarTitleText": "发布实时采购" }, "pages/qitafabu/qitafabu": { "navigationBarTitleText": "其他需求信息" }, "pages/creqp/creqp": { "navigationBarTitleText": "发布商品服务信息" }, "pages/jinxingorder/jinxingorder": { "navigationBarTitleText": "全部订单" }, "pages/crejiu/crejiu": { "navigationBarTitleText": "发布酒水/消毒餐具信息" }, "pages/crezu/crezu": { "navigationBarTitleText": "发布出租信息" }, "pages/crezhuang/crezhuang": { "navigationBarTitleText": "发布服务信息" }, "pages/crebai/crebai": { "navigationBarTitleText": "发布百货信息" }, "pages/quanbu/quanbu": { "navigationBarTitleText": "全部信息" }, "pages/myRelease/myRelease": { "navigationBarTitleText": "我的发布" }, "pages/yonghu/yonghu": { "navigationBarTitleText": "用户中心" }, "pages/lunbo/lunbo": {}, "pages/xieyi/xieyi": {} }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarBackgroundColor": "#FC5640", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/login/login": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/reg/reg": { "navigationBarTitleText": "注册", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/logmain/logmain": { "navigationBarTitleText": "", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/pwd/pwd": { "navigationBarTitleText": "找回密码", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/index/index": { "navigationBarTitleText": "首页", "usingComponents": { "purchase-conduct-order": "/components/comindord/PurchaseConductOrder" }, "usingAutoImportComponents": {} }, "pages/creord/creord": { "navigationBarTitleText": "发布实时采购", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/qitafabu/qitafabu": { "navigationBarTitleText": "其他需求信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/creqp/creqp": { "navigationBarTitleText": "发布商品服务信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/jinxingorder/jinxingorder": { "navigationBarTitleText": "全部订单", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/crejiu/crejiu": { "navigationBarTitleText": "发布酒水/消毒餐具信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/crezu/crezu": { "navigationBarTitleText": "发布出租信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/crezhuang/crezhuang": { "navigationBarTitleText": "发布服务信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/crebai/crebai": { "navigationBarTitleText": "发布百货信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/quanbu/quanbu": { "navigationBarTitleText": "全部信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/myRelease/myRelease": { "navigationBarTitleText": "我的发布", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/yonghu/yonghu": { "navigationBarTitleText": "用户中心", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/lunbo/lunbo": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/xieyi/xieyi": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/PurchaseCreateOrder/PurchaseCreateOrder": {}, "pages/MvCountDown/MvCountDown": { "usingAutoImportComponents": {}, "usingComponents": {} }, "pages/MvCountDown12/MvCountDown12": { "usingAutoImportComponents": {}, "usingComponents": {} }, "pages/MvCountDown15/MvCountDown15": { "usingAutoImportComponents": {}, "usingComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarBackgroundColor": "#FC5640", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
 /* 8 */
@@ -8685,9 +8685,8 @@ var _user = _interopRequireDefault(__webpack_require__(/*! ./user.js */ 17));fun
       }
 
       if (res.data.status != 0) {
-        var msg = res.data.msg;
         uni.showToast({
-          title: msg,
+          title: res.data.msg,
           icon: "none" });
 
         if (msg === '用户登陆已过期' || msg === '用户未登录,无法获取当前用户的信息') {
@@ -8700,7 +8699,7 @@ var _user = _interopRequireDefault(__webpack_require__(/*! ./user.js */ 17));fun
 
         }
       }
-      return res.data.data;
+      return res.data;
     });
   },
 
@@ -8857,6 +8856,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   getbuuer: 'bunner/getpguang',
   getordls: 'order/get_conduct_purchase_order',
   getpayos: 'order/get_pay_order_all',
+  getoscaozuo: 'order/operation_purchase_order',
+
 
   // websocket地址11
   websocketUrl: "wss://ceshi2.dishait.cn:23481",

@@ -257,105 +257,115 @@ var _this;var _default =
     },
     getVerCode: function () {var _getVerCode = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee() {var uuidform, _ref, _ref2, err, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (!
 
-                this.isRequest) {_context.next = 2;break;}return _context.abrupt("return",
+                this.isRequest) {_context.next = 4;break;}
+                uni.showModal({
+                  title: '提示',
+                  content: '上一个操作还没有响应，请稍后再试',
+                  success: function success(res) {} });
 
-                false);case 2:
+                this.isRequest = false;return _context.abrupt("return",
+                false);case 4:
 
                 this.isRequest = true;
                 //获取验证码
                 this.ruleForm.uuid = this.$http.getUuid();
                 uuidform = {
-                  uuid: this.ruleForm.uuid };_context.next = 7;return (
+                  uuid: this.ruleForm.uuid };_context.next = 9;return (
 
-                  this.$http.getV2(this.$urlconfig.logCaptcha, uuidform, {}));case 7:_ref = _context.sent;_ref2 = _slicedToArray(_ref, 2);err = _ref2[0];res = _ref2[1];
+                  this.$http.getV2(this.$urlconfig.logCaptcha, uuidform, {}));case 9:_ref = _context.sent;_ref2 = _slicedToArray(_ref, 2);err = _ref2[0];res = _ref2[1];
                 this.isRequest = false;if (
-                this.$user.eck(err, true)) {_context.next = 15;break;}
-                this.captchaPathSh = false;return _context.abrupt("return");case 15:
+                this.$user.eck(err, true)) {_context.next = 17;break;}
+                this.captchaPathSh = false;return _context.abrupt("return");case 17:
 
 
                 this.captchaPathSh = true;
-                this.captchaPath = res.data.data;case 17:case "end":return _context.stop();}}}, _callee, this);}));function getVerCode() {return _getVerCode.apply(this, arguments);}return getVerCode;}(),
+                this.captchaPath = res.data.data;case 19:case "end":return _context.stop();}}}, _callee, this);}));function getVerCode() {return _getVerCode.apply(this, arguments);}return getVerCode;}(),
 
     submitForm: function () {var _submitForm = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var _ref3, _ref4, err, res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:if (!
 
-                this.isRotate) {_context2.next = 2;break;}return _context2.abrupt("return",
+                this.isRotate) {_context2.next = 4;break;}
+                uni.showModal({
+                  title: '提示',
+                  content: '上一个操作还没有响应，请稍后再试',
+                  success: function success(res) {} });
 
-                false);case 2:if (!(
+                this.isRequest = false;return _context2.abrupt("return",
+                false);case 4:if (!(
 
-                this.showAgree == false)) {_context2.next = 5;break;}
+                this.showAgree == false)) {_context2.next = 7;break;}
                 uni.showToast({
                   icon: 'none',
                   position: 'bottom',
                   title: '请先同意《协议》' });return _context2.abrupt("return",
 
-                false);case 5:if (!(
+                false);case 7:if (!(
 
-                this.ruleForm.name.length > 18 || this.ruleForm.name.length < 8)) {_context2.next = 8;break;}
+                this.ruleForm.name.length > 18 || this.ruleForm.name.length < 8)) {_context2.next = 10;break;}
                 uni.showToast({
                   icon: 'none',
                   position: 'bottom',
                   title: '用户名在8-18位之间' });return _context2.abrupt("return",
 
-                false);case 8:if (!(
+                false);case 10:if (!(
 
-                this.ruleForm.mobilePhone.length != 11)) {_context2.next = 11;break;}
+                this.ruleForm.mobilePhone.length != 11)) {_context2.next = 13;break;}
                 uni.showToast({
                   icon: 'none',
                   position: 'bottom',
                   title: '手机号不正确' });return _context2.abrupt("return",
 
-                false);case 11:if (!(
+                false);case 13:if (!(
 
-                this.ruleForm.pass.length < 8 || this.ruleForm.pass.length > 18)) {_context2.next = 14;break;}
+                this.ruleForm.pass.length < 8 || this.ruleForm.pass.length > 18)) {_context2.next = 16;break;}
                 uni.showToast({
                   icon: 'none',
                   position: 'bottom',
                   title: '密码要在8-18位' });return _context2.abrupt("return",
 
-                false);case 14:if (!(
+                false);case 16:if (!(
 
 
-                this.ruleForm.checkPass.length < 8 || this.ruleForm.checkPass.length > 18)) {_context2.next = 17;break;}
+                this.ruleForm.checkPass.length < 8 || this.ruleForm.checkPass.length > 18)) {_context2.next = 19;break;}
                 uni.showToast({
                   icon: 'none',
                   position: 'bottom',
                   title: '确认密码要在8-18位' });return _context2.abrupt("return",
 
-                false);case 17:if (!(
+                false);case 19:if (!(
 
 
-                this.ruleForm.pass != this.ruleForm.checkPass)) {_context2.next = 20;break;}
+                this.ruleForm.pass != this.ruleForm.checkPass)) {_context2.next = 22;break;}
                 uni.showToast({
                   icon: 'none',
                   position: 'bottom',
                   title: '两次密码不一致' });return _context2.abrupt("return",
 
-                false);case 20:if (!(
+                false);case 22:if (!(
 
-                this.ruleForm.captcha.length != 4)) {_context2.next = 23;break;}
+                this.ruleForm.captcha.length != 4)) {_context2.next = 25;break;}
                 uni.showToast({
                   icon: 'none',
                   position: 'bottom',
                   title: '验证码不正确' });return _context2.abrupt("return",
 
-                false);case 23:if (!(
+                false);case 25:if (!(
 
-                this.ruleForm.role == '-1')) {_context2.next = 26;break;}
+                this.ruleForm.role == '-1')) {_context2.next = 28;break;}
                 uni.showToast({
                   icon: 'none',
                   position: 'bottom',
                   title: '请选择用户类型' });return _context2.abrupt("return",
 
-                false);case 26:
+                false);case 28:
 
-                this.isRotate = true;_context2.next = 29;return (
-                  this.$http.postV2(this.$urlconfig.logCreate, this.ruleForm, {}));case 29:_ref3 = _context2.sent;_ref4 = _slicedToArray(_ref3, 2);err = _ref4[0];res = _ref4[1];
+                this.isRotate = true;_context2.next = 31;return (
+                  this.$http.postV2(this.$urlconfig.logCreate, this.ruleForm, {}));case 31:_ref3 = _context2.sent;_ref4 = _slicedToArray(_ref3, 2);err = _ref4[0];res = _ref4[1];
                 this.isRotate = false;if (
-                this.$user.eck(err)) {_context2.next = 36;break;}return _context2.abrupt("return");case 36:if (
+                this.$user.eck(err)) {_context2.next = 38;break;}return _context2.abrupt("return");case 38:if (
 
 
-                this.$user.checkLog(res, true)) {_context2.next = 39;break;}
-                this.getVerCode();return _context2.abrupt("return");case 39:case "end":return _context2.stop();}}}, _callee2, this);}));function submitForm() {return _submitForm.apply(this, arguments);}return submitForm;}() } };exports.default = _default;
+                this.$user.checkLog(res, true)) {_context2.next = 41;break;}
+                this.getVerCode();return _context2.abrupt("return");case 41:case "end":return _context2.stop();}}}, _callee2, this);}));function submitForm() {return _submitForm.apply(this, arguments);}return submitForm;}() } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

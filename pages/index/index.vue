@@ -3,7 +3,7 @@
 
 		<!--首页-->
 		<!-- 轮播图 -->
-		<swiper  :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000">
+		<swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000">
 			<block v-for="(item,index) in topic.swiper" :key="index">
 				<swiper-item>
 					<image :src="item.url" mode="scaleToFill" lazy-load @click="tiaozhuan(item.paths)"></image>
@@ -17,7 +17,7 @@
 					<view class="shang">
 						<image :src="item.ioc" mode="aspectFit"></image>
 					</view>
-					<view > {{item.name}}</view>
+					<view> {{item.name}}</view>
 				</view>
 			</block>
 
@@ -30,7 +30,8 @@
 
 			<!--有无订单显示的文案-->
 			<view v-if="(role===2 || role===1) && chenggong">
-				<PurchaseConductOrder :item="ordls" :voSocketPay="voSocketPay" v-if="isPuCoOrder" v-on:getordlist="getordlist"> </PurchaseConductOrder>
+				<PurchaseConductOrder :item="ordls" :voSocketPay="voSocketPay" v-if="isPuCoOrder" v-on:getordlist="getordlist" >
+				</PurchaseConductOrder>
 				<view v-if="!isPuCoOrder"> 没有订单给点啥文案</view>
 			</view>
 		</view>
@@ -95,14 +96,14 @@
 			},
 			//TODO跳转未完成
 			tiaozhuan(row) {
-				
+
 				if (!_self.chenggong) {
 					uni.showToast({
 						title: '实名完成后才能查看信息',
 						icon: "none"
 					});
 				}
-				if(row===null || row==='' ){
+				if (row === null || row === '') {
 					return false;
 				}
 				// uni.navigateTo({
@@ -119,17 +120,23 @@
 					bunnerType: 1
 				};
 				this.$http.get(this.$urlconfig.getbuuer, uuidform, {}).then(data => {
-					let arr = [];
-					if (data !== null) {
-
-						for (let i = 0; i < data.length; i++) {
-							arr.push({
-								id: data[i].id,
-								url: JSON.parse(data[i].imgUrl)[0].pictureUrl,
-								paths: data[i].url
-							})
+					if (data.status === 0) {
+						let arr = [];
+						if (data.data !== null) {
+							for (let i = 0; i < data.data.length; i++) {
+								arr.push({
+									id: data.data[i].id,
+									url: JSON.parse(data.data[i].imgUrl)[0].pictureUrl,
+									paths: data.data[i].url
+								})
+							}
+							this.topic.swiper = arr;
 						}
-						this.topic.swiper = arr;
+					} else {
+						uni.showToast({
+							title: data.msg,
+							icon: "none"
+						});
 					}
 				});
 			},
@@ -197,35 +204,48 @@
 				};
 				//查询有没有近3天订单
 				this.$http.get(this.$urlconfig.getordls, uuidform, {}).then(data => {
-					if (data !== null) {
-						// 商品转list
-						for(let i=0;i<data.listPurchaseSeeOrderVo.length;i++){
-							let commoditySnapshot=JSON.parse(data.listPurchaseSeeOrderVo[i].voOrder.commoditySnapshot);
-							data.listPurchaseSeeOrderVo[i].voOrder.commoditySnapshot=commoditySnapshot;
-						}
-						this.ordls = data;
-						console.log(this.ordls)
-						this.isPuCoOrder = true;
-						if (this.ordls.voSocket === 0) {
-							this.initList(1);
+					if (data.status === 0) {
+						if (data.data !== null) {
+							// 商品转list
+							for (let i = 0; i < data.data.listPurchaseSeeOrderVo.length; i++) {
+								let commoditySnapshot = JSON.parse(data.data.listPurchaseSeeOrderVo[i].voOrder.commoditySnapshot);
+								data.data.listPurchaseSeeOrderVo[i].voOrder.commoditySnapshot = commoditySnapshot;
+							}
+							this.ordls = data.data;
+							this.isPuCoOrder = true;
+							if (this.ordls.voSocket === 0) {
+								this.initList(1);
+							} else {
+								//查询有没有待支付订单
+								this.$http.get(this.$urlconfig.getpayos, uuidform, {}).then(data => {
+									if (data.status === 0) {
+										if (data.data === 'YES') {
+											this.voSocketPay = true;
+											this.initList(0.3);
+										} else {
+											this.voSocketPay = false;
+											this.beforeDestroyPay();
+										}
+									} else {
+										uni.showToast({
+											title: data.msg,
+											icon: "none"
+										});
+									}
+								});
+
+							}
+
+
 						} else {
-							//查询有没有待支付订单
-							this.$http.get(this.$urlconfig.getpayos, uuidform, {}).then(data => {
-								if (data === 'YES') {
-									this.voSocketPay = true;
-									this.initList(0.3);
-								} else {
-									this.voSocketPay = false;
-									this.beforeDestroyPay();
-								}
+							uni.showToast({
+								title: '近期没有订单给个默认文案',
+								icon: "none"
 							});
-
 						}
-
-
 					} else {
 						uni.showToast({
-							title: '近期没有订单给个默认文案',
+							title: data.msg,
 							icon: "none"
 						});
 					}
@@ -266,7 +286,7 @@
 
 	}
 
-	
+
 
 	/**轮播结束*/
 	/*按钮*/
@@ -284,20 +304,24 @@
 		font-size: 30upx;
 		padding: 16upx 10upx 16upx 10upx;
 		/* margin: 0 10upx 0 0; */
-      /* font-weight: bold; 加粗不生效 */
+		/* font-weight: bold; 加粗不生效 */
 		border-radius: 8upx;
 	}
 
 	.shang {
-		text-align:center; /*ioc水平居中*/
+		text-align: center;
+		/*ioc水平居中*/
 	}
+
 	.shang image {
 		width: 120upx;
 		height: 120upx;
 	}
+
 	.a {
 		color: #FD7B6A;
 	}
+
 	.b {
 		color: #323232;
 	}

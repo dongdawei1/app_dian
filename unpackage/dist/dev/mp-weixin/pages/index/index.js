@@ -175,7 +175,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _indexjs = _interopRequireDefault(__webpack_require__(/*! ../../common/indexjs/indexjs.js */ 56));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var PurchaseConductOrder = function PurchaseConductOrder() {return __webpack_require__.e(/*! import() | components/comindord/PurchaseConductOrder */ "components/comindord/PurchaseConductOrder").then(__webpack_require__.bind(null, /*! ../../components/comindord/PurchaseConductOrder.vue */ 144));};
+
+var _indexjs = _interopRequireDefault(__webpack_require__(/*! ../../common/indexjs/indexjs.js */ 56));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var PurchaseConductOrder = function PurchaseConductOrder() {return __webpack_require__.e(/*! import() | components/comindord/PurchaseConductOrder */ "components/comindord/PurchaseConductOrder").then(__webpack_require__.bind(null, /*! ../../components/comindord/PurchaseConductOrder.vue */ 139));};
 
 
 
@@ -254,17 +255,23 @@ var _self;var _default =
         bunnerType: 1 };
 
       this.$http.get(this.$urlconfig.getbuuer, uuidform, {}).then(function (data) {
-        var arr = [];
-        if (data !== null) {
+        if (data.status === 0) {
+          var arr = [];
+          if (data.data !== null) {
+            for (var i = 0; i < data.data.length; i++) {
+              arr.push({
+                id: data.data[i].id,
+                url: JSON.parse(data.data[i].imgUrl)[0].pictureUrl,
+                paths: data.data[i].url });
 
-          for (var i = 0; i < data.length; i++) {
-            arr.push({
-              id: data[i].id,
-              url: JSON.parse(data[i].imgUrl)[0].pictureUrl,
-              paths: data[i].url });
-
+            }
+            _this.topic.swiper = arr;
           }
-          _this.topic.swiper = arr;
+        } else {
+          uni.showToast({
+            title: data.msg,
+            icon: "none" });
+
         }
       });
     },
@@ -332,35 +339,48 @@ var _self;var _default =
 
       //查询有没有近3天订单
       this.$http.get(this.$urlconfig.getordls, uuidform, {}).then(function (data) {
-        if (data !== null) {
-          // 商品转list
-          for (var i = 0; i < data.listPurchaseSeeOrderVo.length; i++) {
-            var commoditySnapshot = JSON.parse(data.listPurchaseSeeOrderVo[i].voOrder.commoditySnapshot);
-            data.listPurchaseSeeOrderVo[i].voOrder.commoditySnapshot = commoditySnapshot;
-          }
-          _this2.ordls = data;
-          console.log(_this2.ordls);
-          _this2.isPuCoOrder = true;
-          if (_this2.ordls.voSocket === 0) {
-            _this2.initList(1);
+        if (data.status === 0) {
+          if (data.data !== null) {
+            // 商品转list
+            for (var i = 0; i < data.data.listPurchaseSeeOrderVo.length; i++) {
+              var commoditySnapshot = JSON.parse(data.data.listPurchaseSeeOrderVo[i].voOrder.commoditySnapshot);
+              data.data.listPurchaseSeeOrderVo[i].voOrder.commoditySnapshot = commoditySnapshot;
+            }
+            _this2.ordls = data.data;
+            _this2.isPuCoOrder = true;
+            if (_this2.ordls.voSocket === 0) {
+              _this2.initList(1);
+            } else {
+              //查询有没有待支付订单
+              _this2.$http.get(_this2.$urlconfig.getpayos, uuidform, {}).then(function (data) {
+                if (data.status === 0) {
+                  if (data.data === 'YES') {
+                    _this2.voSocketPay = true;
+                    _this2.initList(0.3);
+                  } else {
+                    _this2.voSocketPay = false;
+                    _this2.beforeDestroyPay();
+                  }
+                } else {
+                  uni.showToast({
+                    title: data.msg,
+                    icon: "none" });
+
+                }
+              });
+
+            }
+
+
           } else {
-            //查询有没有待支付订单
-            _this2.$http.get(_this2.$urlconfig.getpayos, uuidform, {}).then(function (data) {
-              if (data === 'YES') {
-                _this2.voSocketPay = true;
-                _this2.initList(0.3);
-              } else {
-                _this2.voSocketPay = false;
-                _this2.beforeDestroyPay();
-              }
-            });
+            uni.showToast({
+              title: '近期没有订单给个默认文案',
+              icon: "none" });
 
           }
-
-
         } else {
           uni.showToast({
-            title: '近期没有订单给个默认文案',
+            title: data.msg,
             icon: "none" });
 
         }

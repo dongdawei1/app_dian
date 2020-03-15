@@ -242,64 +242,74 @@ var _this;var _default =
 
     getVerCode: function () {var _getVerCode = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee2() {var uuidform, _ref3, _ref4, err, res;return _regenerator.default.wrap(function _callee2$(_context2) {while (1) {switch (_context2.prev = _context2.next) {case 0:if (!
 
-                this.isRequest) {_context2.next = 2;break;}return _context2.abrupt("return",
+                this.isRequest) {_context2.next = 4;break;}
+                uni.showModal({
+                  title: '提示',
+                  content: '上一个操作还没有响应，请稍后再试',
+                  success: function success(res) {} });
 
-                false);case 2:
+                this.isRequest = false;return _context2.abrupt("return",
+                false);case 4:
 
                 this.isRequest = true;
                 //获取验证码
                 this.ruleForm.uuid = this.$http.getUuid();
                 uuidform = {
-                  uuid: this.ruleForm.uuid };_context2.next = 7;return (
+                  uuid: this.ruleForm.uuid };_context2.next = 9;return (
 
-                  this.$http.getV2(this.$urlconfig.logCaptcha, uuidform, {}));case 7:_ref3 = _context2.sent;_ref4 = _slicedToArray(_ref3, 2);err = _ref4[0];res = _ref4[1];
+                  this.$http.getV2(this.$urlconfig.logCaptcha, uuidform, {}));case 9:_ref3 = _context2.sent;_ref4 = _slicedToArray(_ref3, 2);err = _ref4[0];res = _ref4[1];
                 this.isRequest = false;if (
-                this.$user.eck(err, true)) {_context2.next = 15;break;}
-                this.captchaPathSh = false;return _context2.abrupt("return");case 15:
+                this.$user.eck(err, true)) {_context2.next = 17;break;}
+                this.captchaPathSh = false;return _context2.abrupt("return");case 17:
 
 
                 this.captchaPathSh = true;
-                this.captchaPath = res.data.data;case 17:case "end":return _context2.stop();}}}, _callee2, this);}));function getVerCode() {return _getVerCode.apply(this, arguments);}return getVerCode;}(),
+                this.captchaPath = res.data.data;case 19:case "end":return _context2.stop();}}}, _callee2, this);}));function getVerCode() {return _getVerCode.apply(this, arguments);}return getVerCode;}(),
 
     submitForm: function () {var _submitForm = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee3() {var _ref5, _ref6, err, res;return _regenerator.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:if (!
 
-                this.isRotate) {_context3.next = 2;break;}return _context3.abrupt("return",
+                this.isRotate) {_context3.next = 4;break;}
+                uni.showModal({
+                  title: '提示',
+                  content: '上一个操作还没有响应，请稍后再试',
+                  success: function success(res) {} });
 
-                false);case 2:if (!(
+                this.isRequest = false;return _context3.abrupt("return",
+                false);case 4:if (!(
 
-                this.ruleForm.username.length > 18 || this.ruleForm.username.length < 8)) {_context3.next = 5;break;}
+                this.ruleForm.username.length > 18 || this.ruleForm.username.length < 8)) {_context3.next = 7;break;}
                 uni.showToast({
                   icon: 'none',
                   position: 'bottom',
                   title: '用户名在8-18位之间' });return _context3.abrupt("return",
 
-                false);case 5:if (!(
+                false);case 7:if (!(
 
 
-                this.ruleForm.password.length > 18 || this.ruleForm.password.length < 8)) {_context3.next = 8;break;}
+                this.ruleForm.password.length > 18 || this.ruleForm.password.length < 8)) {_context3.next = 10;break;}
                 uni.showToast({
                   icon: 'none',
                   position: 'bottom',
                   title: '密码在8-18位之间' });return _context3.abrupt("return",
 
-                false);case 8:if (!(
+                false);case 10:if (!(
 
-                this.ruleForm.captcha.length != 4)) {_context3.next = 11;break;}
+                this.ruleForm.captcha.length != 4)) {_context3.next = 13;break;}
                 uni.showToast({
                   icon: 'none',
                   position: 'bottom',
                   title: '验证码不正确' });return _context3.abrupt("return",
 
-                false);case 11:
+                false);case 13:
 
-                this.isRotate = true;_context3.next = 14;return (
-                  this.$http.postV2(this.$urlconfig.logLogin, this.ruleForm, {}));case 14:_ref5 = _context3.sent;_ref6 = _slicedToArray(_ref5, 2);err = _ref6[0];res = _ref6[1];
+                this.isRotate = true;_context3.next = 16;return (
+                  this.$http.postV2(this.$urlconfig.logLogin, this.ruleForm, {}));case 16:_ref5 = _context3.sent;_ref6 = _slicedToArray(_ref5, 2);err = _ref6[0];res = _ref6[1];
                 this.isRotate = false;if (
-                this.$user.eck(err)) {_context3.next = 21;break;}return _context3.abrupt("return");case 21:if (
+                this.$user.eck(err)) {_context3.next = 23;break;}return _context3.abrupt("return");case 23:if (
 
 
-                this.$user.checkLog(res)) {_context3.next = 24;break;}
-                this.getVerCode();return _context3.abrupt("return");case 24:case "end":return _context3.stop();}}}, _callee3, this);}));function submitForm() {return _submitForm.apply(this, arguments);}return submitForm;}() } };exports.default = _default;
+                this.$user.checkLog(res)) {_context3.next = 26;break;}
+                this.getVerCode();return _context3.abrupt("return");case 26:case "end":return _context3.stop();}}}, _callee3, this);}));function submitForm() {return _submitForm.apply(this, arguments);}return submitForm;}() } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),

@@ -77,22 +77,22 @@
 				if (!this.$user.eck(err)) {
 					return;
 				}
-			
+
 				if (res.data.status === 0) {
-					
+
 					if (this.$user.isAuthentication !== res.data.data.isAuthentication) {
 						// uni.setStorageSync({
 						// 	key: "dian_isAuthentication",
 						// 	data: isAuthentication
 						// })
-						
+
 						this.$user.upUserAu(res.data.data.isAuthentication);
 					}
 					if (this.$user.role !== res.data.data.role) {
 
 						this.$user.uprule(res.data.data.role);
 					}
-			
+
 					uni.switchTab({
 						url: '/pages/index/index'
 					});
@@ -108,7 +108,12 @@
 			async getVerCode() {
 				//获取验证码
 				if (this.isRequest) {
-					//判断是否加载中，避免重复点击请求
+					uni.showModal({
+						title: '提示',
+						content: '上一个操作还没有响应，请稍后再试',
+						success: function(res) {}
+					});
+					this.isRequest = false;
 					return false;
 				}
 				this.isRequest = true;
@@ -129,7 +134,12 @@
 			async submitForm() {
 				//登陆
 				if (this.isRotate) {
-					//判断是否加载中，避免重复点击请求
+					uni.showModal({
+						title: '提示',
+						content: '上一个操作还没有响应，请稍后再试',
+						success: function(res) {}
+					});
+					this.isRequest = false;
 					return false;
 				}
 				if (this.ruleForm.username.length > 18 || this.ruleForm.username.length < 8) {
