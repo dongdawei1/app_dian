@@ -28,15 +28,21 @@ export default {
 			}
 			
 			if (res.data.status != 0) {
-				uni.showToast({
-					title: res.data.msg,
-					icon: "none"
-				});
+				let msg=res.data.msg;
+				
 				if (msg === '用户登陆已过期' || msg === '用户未登录,无法获取当前用户的信息') {
+					uni.showToast({
+						title: msg,
+						icon: "none"
+					});
 					uni.navigateTo({
 						url: '/pages/login/login'
 					});
 				} else if (msg === '没有权限') {
+					uni.showToast({
+						title: msg,
+						icon: "none"
+					});
 					uni.switchTab({
 						url: '/pages/index/index'
 					});

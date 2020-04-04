@@ -63,7 +63,6 @@
 		mounted() {
 			_this = this; //页面加载完成后2
 		},
-
 		onReady() { //3
 			_this.isRequest = false; //后端没有返回验证码前 点击不了
 		},
@@ -93,9 +92,16 @@
 						this.$user.uprule(res.data.data.role);
 					}
 
-					uni.switchTab({
-						url: '/pages/index/index'
-					});
+					if (res.data.data.role === 4) {
+						uni.switchTab({
+							url: '/pages/jiedan/jiedan'
+						});
+					} else {
+						uni.switchTab({
+							url: '/pages/index/index'
+						});
+					}
+
 					return false;
 				}
 				_this.getVerCode();

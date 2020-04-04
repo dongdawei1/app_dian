@@ -38,7 +38,7 @@ export default {
 		} catch (e) {
 			this.isAuthentication = isAuthentication;
 		}
-		
+
 	},
 	/*处理登陆操作*/
 	// 网络错误处理
@@ -63,7 +63,7 @@ export default {
 				uni.setStorageSync("dian_username", dataRes.data.user.username);
 				uni.setStorageSync("dian_isAuthentication", dataRes.data.user.isAuthentication);
 				uni.setStorageSync("dian_role", dataRes.data.user.role);
-				
+
 				this.username = dataRes.data.user.username;
 				this.token = dataRes.data.dian_token;
 				this.isAuthentication = dataRes.data.user.isAuthentication;
@@ -72,10 +72,18 @@ export default {
 				//TODO handle the exception
 			}
 			//跳转至tab 只能用switchTab,不能用 navigateTo
-			uni.switchTab({
-				url: '/pages/index/index'
-			});
-			return true;
+
+			if (dataRes.data.user.role === 4) {
+				uni.switchTab({
+					url: '/pages/jiedan/jiedan'
+				});
+				return true;
+			} else {
+				uni.switchTab({
+					url: '/pages/index/index'
+				});
+				return true;
+			}
 		}
 		//业务处理失败信息提示
 		uni.showToast({
@@ -92,7 +100,7 @@ export default {
 		} catch (e) {
 			this.role = userrole;
 		}
-		
+
 	}
 	// 登录
 	// async login(options ={}){

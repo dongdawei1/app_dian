@@ -1,1 +1,0 @@
-<view class="daojishi"><block wx:if="{{msTime.show}}"><text>{{nameText+msTime.minutes+minutesTxt+msTime.seconds+secondsTxt}}</text></block><block wx:if="{{!msTime.show}}"><text>{{endText}}</text></block></view>

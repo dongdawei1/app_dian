@@ -69,3 +69,27 @@
 	line-height: 45upx;
 	color: #f10000;
 }
+/*接单列表开始*/
+	.fromDataTitleClass {
+		border-top-width: thin;
+		border-top-style: double;
+		border-top-color: #E7E3E6;
+
+		font-size: 33upx;
+		line-height: 35upx;
+		color: #6F6B6E;
+		padding: 5upx 0 5upx 0;
+	}
+	.oxiangqing {
+		display: inline;
+		padding: 0 30upx 0 0;
+	
+	}
+	
+	.oxiangqing view {
+		padding: 3upx 10upx 3upx 20upx;
+		font-size: 32upx;
+		line-height: 34upx;
+		background: #F4FBFD;
+		display: inline;
+	}

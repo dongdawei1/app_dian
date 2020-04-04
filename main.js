@@ -12,6 +12,9 @@ Vue.prototype.$urlconfig = urlconfig;
 import user from "./common/user.js";
 Vue.prototype.$user = user;
 
+import chat from "./common/chat.js";
+Vue.prototype.$chat = chat;
+
 import lib from "./common/lib.js"
 Vue.prototype.lib=lib
 

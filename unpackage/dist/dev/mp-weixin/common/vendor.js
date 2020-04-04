@@ -737,7 +737,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -7065,7 +7065,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -7086,14 +7086,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7169,7 +7169,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -8508,7 +8508,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@alpha","_id":"@dcloudio/uni-stat@2
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/login/login": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/reg/reg": { "navigationBarTitleText": "注册", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/logmain/logmain": { "navigationBarTitleText": "", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/pwd/pwd": { "navigationBarTitleText": "找回密码", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/index/index": { "navigationBarTitleText": "首页", "usingComponents": { "purchase-conduct-order": "/components/comindord/PurchaseConductOrder" }, "usingAutoImportComponents": {} }, "pages/creord/creord": { "navigationBarTitleText": "发布实时采购", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/qitafabu/qitafabu": { "navigationBarTitleText": "其他需求信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/creqp/creqp": { "navigationBarTitleText": "发布商品服务信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/jinxingorder/jinxingorder": { "navigationBarTitleText": "全部订单", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/crejiu/crejiu": { "navigationBarTitleText": "发布酒水/消毒餐具信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/crezu/crezu": { "navigationBarTitleText": "发布出租信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/crezhuang/crezhuang": { "navigationBarTitleText": "发布服务信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/crebai/crebai": { "navigationBarTitleText": "发布百货信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/quanbu/quanbu": { "navigationBarTitleText": "全部信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/myRelease/myRelease": { "navigationBarTitleText": "我的发布", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/yonghu/yonghu": { "navigationBarTitleText": "用户中心", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/lunbo/lunbo": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/xieyi/xieyi": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/PurchaseCreateOrder/PurchaseCreateOrder": {}, "pages/MvCountDown/MvCountDown": { "usingAutoImportComponents": {}, "usingComponents": {} }, "pages/MvCountDown12/MvCountDown12": { "usingAutoImportComponents": {}, "usingComponents": {} }, "pages/MvCountDown15/MvCountDown15": { "usingAutoImportComponents": {}, "usingComponents": {} } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarBackgroundColor": "#FC5640", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/login/login": {}, "pages/reg/reg": { "navigationBarTitleText": "注册" }, "pages/logmain/logmain": { "navigationBarTitleText": "" }, "pages/pwd/pwd": { "navigationBarTitleText": "找回密码" }, "pages/index/index": { "navigationBarTitleText": "首页" }, "pages/creord/creord": { "navigationBarTitleText": "发布实时采购" }, "pages/qitafabu/qitafabu": { "navigationBarTitleText": "其他需求信息" }, "pages/creqp/creqp": { "navigationBarTitleText": "发布商品服务信息" }, "pages/jinxingorder/jinxingorder": { "navigationBarTitleText": "全部订单" }, "pages/crejiu/crejiu": { "navigationBarTitleText": "发布酒水/消毒餐具信息" }, "pages/crezu/crezu": { "navigationBarTitleText": "发布出租信息" }, "pages/crezhuang/crezhuang": { "navigationBarTitleText": "发布服务信息" }, "pages/crebai/crebai": { "navigationBarTitleText": "发布百货信息" }, "pages/quanbu/quanbu": { "navigationBarTitleText": "全部信息" }, "pages/myRelease/myRelease": { "navigationBarTitleText": "我的发布" }, "pages/yonghu/yonghu": { "navigationBarTitleText": "用户中心" }, "pages/jiedan/jiedan": { "navigationBarTitleText": "接单中心" }, "pages/lunbo/lunbo": {}, "pages/xieyi/xieyi": {} }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarBackgroundColor": "#FC5640", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
 /* 8 */
@@ -8685,15 +8685,21 @@ var _user = _interopRequireDefault(__webpack_require__(/*! ./user.js */ 17));fun
       }
 
       if (res.data.status != 0) {
-        uni.showToast({
-          title: res.data.msg,
-          icon: "none" });
+        var msg = res.data.msg;
 
         if (msg === '用户登陆已过期' || msg === '用户未登录,无法获取当前用户的信息') {
+          uni.showToast({
+            title: msg,
+            icon: "none" });
+
           uni.navigateTo({
             url: '/pages/login/login' });
 
         } else if (msg === '没有权限') {
+          uni.showToast({
+            title: msg,
+            icon: "none" });
+
           uni.switchTab({
             url: '/pages/index/index' });
 
@@ -8857,10 +8863,11 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   getordls: 'order/get_conduct_purchase_order',
   getpayos: 'order/get_pay_order_all',
   getoscaozuo: 'order/operation_purchase_order',
-
+  getnpayos: 'order/native_pay_order_app',
+  getdaibaojia: 'order/getdaibaojia',
 
   // websocket地址11
-  websocketUrl: "wss://ceshi2.dishait.cn:23481",
+  websocketUrl: "ws://localhost:8080/api/v1/vp/so/",
   // 消息提示tabbar索引
   TabbarIndex: 2 };exports.default = _default;
 
@@ -8947,10 +8954,18 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
       } //TODO handle the exception
       //跳转至tab 只能用switchTab,不能用 navigateTo
-      uni.switchTab({
-        url: '/pages/index/index' });
 
-      return true;
+      if (dataRes.data.user.role === 4) {
+        uni.switchTab({
+          url: '/pages/jiedan/jiedan' });
+
+        return true;
+      } else {
+        uni.switchTab({
+          url: '/pages/index/index' });
+
+        return true;
+      }
     }
     //业务处理失败信息提示
     uni.showToast({
@@ -9037,6 +9052,301 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 /* 18 */
+/*!****************************************!*\
+  !*** E:/ceshi/app_dian/common/chat.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _urlconfig = _interopRequireDefault(__webpack_require__(/*! ./urlconfig.js */ 16));
+var _user = _interopRequireDefault(__webpack_require__(/*! ./user.js */ 17));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
+
+{
+  // socket地址
+  url: _urlconfig.default.websocketUrl,
+  // 连接状态
+  IsOpen: false,
+  // SocketTask
+  SocketTask: false,
+
+
+
+
+  // 是否上线（会员id绑定客户端id，验证用户身份，通过则绑定）
+  IsOnline: false,
+
+
+
+
+
+  // 当前聊天对象（进入聊天页面获取）
+  CurrentToUser: {
+    userid: 0, // 通过判断userid是否为0，当前用户处在什么场景下
+    username: "",
+    userpic: "" },
+
+
+
+
+
+  // 连接
+  Open: function Open() {var _this = this;
+    if (this.IsOpen) return; // 防止重复连接
+    // 连接
+    var token = uni.getStorageSync("dian_token");
+    this.SocketTask = uni.connectSocket({
+      url: this.url + token,
+      complete: function complete(e) {} });
+
+    if (!this.SocketTask) return;
+    // 监听开启
+    this.SocketTask.onOpen(function () {
+      // 将连接状态设为已连接
+      _this.IsOpen = true;
+
+    });
+    // 监听信息
+    this.Message();
+    // 监听关闭
+    this.SocketTask.onClose(function () {
+      _this.IsOpen = false;
+      _this.SocketTask = false;
+    });
+    // 监听错误
+    this.SocketTask.onError(function (e) {
+      _this.IsOpen = false;
+      _this.SocketTask = false;
+    });
+  },
+  // 关闭连接,退出时需要关闭连接
+  Close: function Close() {
+    if (this.IsOpen) {
+      this.SocketTask.close();
+    }
+  },
+
+
+  // 	// 绑定失败,断开连接
+  // 	uni.showToast({ title: res.msg, icon:"none" });
+  // 	this.SocketTask.close();
+
+  // 监听信息
+  Message: function Message() {var _this2 = this;
+    this.SocketTask.onMessage(function (e) {
+      console.log(e);
+      // 字符串转json
+      var res = JSON.parse(e.data);
+      console.log(res);
+      // 绑定返回结果
+      if (res.type == 1) {
+        if (res.msg == 1) {
+          console.log('链接成功');
+          return true;
+        } else {
+          console.log('链接失败');
+          _this2.IsOpen = false;
+          return false;
+        }
+
+      }
+
+
+      if (res.type === 2) {
+        // 全局通知接口
+        var commoditySnapshot = JSON.parse(res.getjinxin.commoditySnapshot);
+        res.getjinxin.commoditySnapshot = commoditySnapshot;
+        uni.$emit('getjinxin', res.getjinxin);
+      }
+
+      // // 存储到chatdetail
+      // this.__UpdateChatdetail(res);
+      // // 更新chatlist（将当前会话置顶，修改chatlist中当前会话的data和time显示）
+      // this.__UpdateChatlist(res);
+      // // 总未读数+1，修改tabbar信息数
+      // if (this.CurrentToUser.userid !== res.from_id) {
+      // 	this.__UpdateNoReadNum({ type:"add" });
+      // }
+    });
+    console.log('监听信息');
+  },
+  // 总未读数+1，修改tabbar信息数
+  __UpdateNoReadNum: function __UpdateNoReadNum() {var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    // 获取总未读数
+    var noreadnum = uni.getStorageSync('noreadnum' + _user.default.userinfo.id);
+    noreadnum = noreadnum || 0;
+    // 接收信息增加
+    if (options.type == 'add') {
+      // 总未读+1
+      noreadnum++;
+      // 响铃震动提示
+      this.__Notify();
+    } else {
+      noreadnum -= options.num; // 读取信息减少
+    }
+    noreadnum = noreadnum > 0 ? noreadnum : 0;
+    // 修改tabbar信息数
+    this.__UpdateTabbarBadge(noreadnum);
+    // 存储
+    uni.setStorage({
+      key: 'noreadnum' + _user.default.userinfo.id,
+      data: noreadnum });
+
+  },
+  // 消息提示音震动
+  __Notify: function __Notify() {
+    uni.vibrateLong();
+  },
+
+  // 初始化tabbarBadge
+  initTabbarBadge: function initTabbarBadge() {
+    console.log('初始化tabbar未读数');
+    // 获取总未读数
+    var noreadnum = uni.getStorageSync('noreadnum' + _user.default.userinfo.id);
+    this.__UpdateTabbarBadge(noreadnum);
+  },
+  // 存储到chatdetail（我与某位用户的历史记录）
+  __UpdateChatdetail: function __UpdateChatdetail(res) {var issend = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    /*
+                                                                                                                                                // 组织格式，本地存储
+                                                                                                                                                {
+                                                                                                                                                	isme:false,
+                                                                                                                                                	userid:17,
+                                                                                                                                                	userpic:"../../static/demo/userpic/11.jpg",
+                                                                                                                                                	type:"text",
+                                                                                                                                                	data:"哈哈哈",
+                                                                                                                                                	time:"1555146412"
+                                                                                                                                                },
+                                                                                                                                                
+                                                                                                                                                */
+    var userid = issend ? this.CurrentToUser.userid : res.from_id;
+    // 获取旧数据（ chatdetail_[当前用户id]_[聊天对象id] ）
+    var list = uni.getStorageSync('chatdetail_' + _user.default.userinfo.id + '_' + userid);
+    list = list ? JSON.parse(list) : [];
+    // 追加
+    list.push(this.__format(res, {
+      type: "chatdetail",
+      isme: issend,
+      olddata: list }));
+
+    // 存储
+    uni.setStorage({
+      key: 'chatdetail_' + _user.default.userinfo.id + '_' + userid,
+      data: JSON.stringify(list) });
+
+  },
+  // 更新chatlist（将当前会话置顶，修改chatlist中当前会话的data和time显示）
+  __UpdateChatlist: function __UpdateChatlist(res) {
+    /*
+                                                    // 组织格式，本地存储
+                                                    {
+                                                    	userid:12,
+                                                    	userpic:"../../static/demo/userpic/12.jpg",
+                                                    	username:"昵称",
+                                                    	time:"10:21",
+                                                    	data:"我是信息",
+                                                    	noreadnum:2
+                                                    }
+                                                    */
+    // 获取旧数据
+    var chatlist = uni.getStorageSync('chatlist' + _user.default.userinfo.id);
+    chatlist = chatlist ? JSON.parse(chatlist) : [];
+    // 判断是否已存在该会话，存在：将当前会话置顶；不存在：追加至头部
+    var index = chatlist.findIndex(function (item) {
+      return item.userid == res.to_id || item.userid == res.from_id;
+    });
+    // 不存在
+    if (index == -1) {
+      var obj = this.__format(res, {
+        type: "chatlist" });
+
+      // 忽略本人发送
+      if (res.from_id !== _user.default.userinfo.id) {
+        obj.noreadnum = 1;
+      }
+      chatlist.unshift(obj);
+    } else {
+      // 存在：将当前会话置顶,修改chatlist中当前会话的data和time显示
+      chatlist[index].data = res.data;
+      chatlist[index].type = res.type;
+      chatlist[index].time = res.time;
+      // 当前聊天对象不是该id，未读数+1（排除本人发送消息）
+      if (res.from_id !== _user.default.userinfo.id && this.CurrentToUser.userid !== chatlist[index].userid) {
+        chatlist[index].noreadnum++;
+      }
+      // 置顶当前会话
+      chatlist = this.__toFirst(chatlist, index);
+    }
+    // 存储到本地存储
+    uni.setStorage({
+      key: 'chatlist' + _user.default.userinfo.id,
+      data: JSON.stringify(chatlist) });
+
+  },
+  // 数据格式转换
+  __format: function __format(data) {var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    /**
+                                                                                                                            options = {
+                                                                                                                           	 type:"chatdetail", // 转化类型
+                                                                                                                           	 olddata:olddata,   // 旧数据（chatdetail中必填）
+                                                                                                                           	 isme:true			// （true本人，false聊天对象，chatdetail中必填）
+                                                                                                                            }
+                                                                                                                            * */
+    switch (options.type) {
+      case "chatlist": // 新增会话用到
+        var obj = {
+          userid: data.from_id,
+          userpic: data.from_userpic,
+          username: data.from_username,
+          time: data.time, // 最新消息时间戳
+          data: data.data,
+          noreadnum: 0 // 未读数
+        };
+        // 本人发送的信息
+        if (data.from_id == _user.default.userinfo.id) {
+          obj.userid = this.CurrentToUser.userid;
+          obj.userpic = this.CurrentToUser.userpic;
+          obj.username = this.CurrentToUser.username;
+        }
+        return obj;
+        break;
+      case "chatdetail":
+        var list = options.olddata; // 旧数据
+        var chattime = new Date().getTime(); // 获取当前时间
+        var length = list.length;
+        return {
+          isme: options.isme,
+          userpic: options.isme ? _user.default.userinfo.userpic : data.from_userpic,
+          type: data.type,
+          data: data.data,
+          time: chattime };
+
+
+        break;
+      case "send":
+        return {
+          to_id: this.CurrentToUser.userid,
+          from_id: _user.default.userinfo.id,
+          from_username: _user.default.userinfo.username,
+          from_userpic: _user.default.userinfo.userpic,
+          type: data.type,
+          data: data.data,
+          time: new Date().getTime() };
+
+        break;}
+
+  },
+  // 数组置顶
+  __toFirst: function __toFirst(arr, index) {
+    if (index != 0) {
+      arr.unshift(arr.splice(index, 1)[0]);
+    }
+    return arr;
+  } };exports.default = _default;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+/* 19 */
 /*!***************************************!*\
   !*** E:/ceshi/app_dian/common/lib.js ***!
   \***************************************/
@@ -9115,24 +9425,24 @@ var _default = {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
 /***/ }),
-/* 19 */,
 /* 20 */,
 /* 21 */,
 /* 22 */,
 /* 23 */,
 /* 24 */,
-/* 25 */
+/* 25 */,
+/* 26 */
 /*!**********************************************************!*\
   !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
   \**********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ 26);
+module.exports = __webpack_require__(/*! regenerator-runtime */ 27);
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /*!************************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
   \************************************************************/
@@ -9163,7 +9473,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ 27);
+module.exports = __webpack_require__(/*! ./runtime */ 28);
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -9179,7 +9489,7 @@ if (hadRuntime) {
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!
   \*****************************************************/
@@ -9910,7 +10220,6 @@ if (hadRuntime) {
 
 
 /***/ }),
-/* 28 */,
 /* 29 */,
 /* 30 */,
 /* 31 */,
@@ -9938,7 +10247,8 @@ if (hadRuntime) {
 /* 53 */,
 /* 54 */,
 /* 55 */,
-/* 56 */
+/* 56 */,
+/* 57 */
 /*!***************************************************!*\
   !*** E:/ceshi/app_dian/common/indexjs/indexjs.js ***!
   \***************************************************/

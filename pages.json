@@ -101,6 +101,12 @@
 				"navigationBarTitleText": "用户中心"
 			}
 		},
+		{
+			"path": "pages/jiedan/jiedan",
+			"style": {
+				"navigationBarTitleText": "接单中心"
+			}
+		},
 		//轮播组件
 		{
 			"path": "pages/lunbo/lunbo",
@@ -129,6 +135,12 @@
 				"text": "全部",
 				"iconPath": "/static/tabbar/allw.png",
 				"selectedIconPath": "/static/tabbar/all.png"
+			},
+			{
+				"pagePath": "pages/jiedan/jiedan",
+				"text": "订单",
+				"iconPath": "/static/tabbar/jiedanw.png",
+				"selectedIconPath": "/static/tabbar/jiedan.png"
 			},
 			{
 				"pagePath": "pages/myRelease/myRelease",

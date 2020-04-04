@@ -16,6 +16,7 @@
     "pages/quanbu/quanbu",
     "pages/myRelease/myRelease",
     "pages/yonghu/yonghu",
+    "pages/jiedan/jiedan",
     "pages/lunbo/lunbo",
     "pages/xieyi/xieyi"
   ],
@@ -44,6 +45,12 @@
         "selectedIconPath": "/static/tabbar/all.png"
       },
       {
+        "pagePath": "pages/jiedan/jiedan",
+        "text": "订单",
+        "iconPath": "/static/tabbar/jiedanw.png",
+        "selectedIconPath": "/static/tabbar/jiedan.png"
+      },
+      {
         "pagePath": "pages/myRelease/myRelease",
         "text": "我的",
         "iconPath": "/static/tabbar/wodew.png",
@@ -63,6 +70,5 @@
     "uploadFile": 20000,
     "downloadFile": 20000
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap92.json"
+  "usingComponents": {}
 }

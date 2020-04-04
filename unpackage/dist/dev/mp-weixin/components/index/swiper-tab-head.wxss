@@ -1,0 +1,28 @@
+
+.uni-swiper-tab{
+	
+	
+	/*上边是按钮 布局设置  */
+	border-bottom: 1rpx solid #EEEEEE;
+}
+.swiper-tab-list{
+
+	color: #969696;
+	font-weight: bold;
+	/* width: 150upx; */
+	/* text-align: center; */
+	padding-left: 34rpx;
+	padding-right: 34rpx;
+}
+.uni-tab-bar .active{
+	color: #343434;
+}
+.active .swiper-tab-line{
+	border-bottom: 6rpx solid #FC5640;
+	width: 130rpx;
+	margin: auto;
+	border-top: 6rpx solid  #FC5640;
+	border-radius:20rpx;
+}
+
+

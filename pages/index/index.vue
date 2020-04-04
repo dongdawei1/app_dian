@@ -29,11 +29,21 @@
 			<view v-if="shibai">实名实名</view>
 
 			<!--有无订单显示的文案-->
-			<view v-if="(role===2 || role===1) && chenggong">
-				<PurchaseConductOrder :item="ordls" :voSocketPay="voSocketPay" v-if="isPuCoOrder" v-on:getordlist="getordlist" >
+			<view v-if="(role===2 ) && chenggong">
+				<PurchaseConductOrder :item="ordls" :voSocketPay="voSocketPay" v-if="isPuCoOrder" v-on:getordlist="getordlist">
 				</PurchaseConductOrder>
 				<view v-if="!isPuCoOrder"> 没有订单给点啥文案</view>
 			</view>
+
+			<!--接单者-->
+			<view v-if="(role===4 || role===1) && chenggong">
+				<view v-if="!isPuCoOrder"> 没有w订单给点啥文案</view>
+				<jiedan :item="ordls" :voSocketPay="voSocketPay" v-if="isPuCoOrder" v-on:getordlist="getordlist">
+				</jiedan>
+				<view v-if="!isPuCoOrder"> 没有订单给点啥文案</view>
+			</view>
+
+
 		</view>
 
 
@@ -43,12 +53,13 @@
 <script>
 	import indexjs from "../../common/indexjs/indexjs.js";
 	import PurchaseConductOrder from "../../components/comindord/PurchaseConductOrder.vue";
-
+	import jiedan from "../../components/comindord/jiedan.vue";
 
 	var _self;
 	export default {
 		components: {
-			PurchaseConductOrder
+			PurchaseConductOrder,
+			jiedan
 
 		},
 		data() {
@@ -82,9 +93,13 @@
 			if (!this.chenggong) {
 				this.getguerinif();
 			}
-			if ((this.role === 1 || this.role === 2) && _self.chenggong === true) {
+			if (this.role === 2 && _self.chenggong === true) {
 				this.getordlist();
 			}
+			if (this.role === 4 && _self.chenggong === true) {
+				this.getjiedanlist();
+			}
+
 
 		},
 		methods: {
@@ -214,27 +229,8 @@
 							this.ordls = data.data;
 							this.isPuCoOrder = true;
 							if (this.ordls.voSocket === 0) {
-								this.initList(1);
-							} else {
-								//查询有没有待支付订单
-								this.$http.get(this.$urlconfig.getpayos, uuidform, {}).then(data => {
-									if (data.status === 0) {
-										if (data.data === 'YES') {
-											this.voSocketPay = true;
-											this.initList(0.3);
-										} else {
-											this.voSocketPay = false;
-											this.beforeDestroyPay();
-										}
-									} else {
-										uni.showToast({
-											title: data.msg,
-											icon: "none"
-										});
-									}
-								});
-
-							}
+								this.$chat.Open();
+							} 
 
 
 						} else {
@@ -251,23 +247,18 @@
 					}
 				});
 			},
-			//订单状态轮询开始
-			initList(num) {
-				if (num === null || num === '' || num === undefined) {
-					num = 2;
-				}
-				this.beforeDestroy();
-				this.myInterval = setInterval(() => {
-					setTimeout(() => {
-						this.getordlist() //调用接口的方法
-					}, 1)
-				}, num * 1000 * 60);
+			
+			getjiedanlist() {
+				let uuidform = {
+					uuid: this.$http.getUuid()
+				};
+				
 			},
 
-			//订单状态轮询关闭
-			beforeDestroy() {
-				clearInterval(this.myInterval);
-			},
+
+			
+
+			
 		}
 
 	}

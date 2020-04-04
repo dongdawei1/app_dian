@@ -4838,5 +4838,27 @@ to {
 	line-height: 45rpx;
 	color: #f10000;
 }
+/*接单列表开始*/
+.fromDataTitleClass {
+		border-top-width: thin;
+		border-top-style: double;
+		border-top-color: #E7E3E6;
+
+		font-size: 33rpx;
+		line-height: 35rpx;
+		color: #6F6B6E;
+		padding: 5rpx 0 5rpx 0;
+}
+.oxiangqing {
+		display: inline;
+		padding: 0 30rpx 0 0;
+}
+.oxiangqing view {
+		padding: 3rpx 10rpx 3rpx 20rpx;
+		font-size: 32rpx;
+		line-height: 34rpx;
+		background: #F4FBFD;
+		display: inline;
+}
 
 
