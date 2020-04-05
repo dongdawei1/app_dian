@@ -38,9 +38,6 @@
 			<!--接单者-->
 			<view v-if="(role===4 || role===1) && chenggong">
 				<view v-if="!isPuCoOrder"> 没有w订单给点啥文案</view>
-				<jiedan :item="ordls" :voSocketPay="voSocketPay" v-if="isPuCoOrder" v-on:getordlist="getordlist">
-				</jiedan>
-				<view v-if="!isPuCoOrder"> 没有订单给点啥文案</view>
 			</view>
 
 
@@ -53,14 +50,11 @@
 <script>
 	import indexjs from "../../common/indexjs/indexjs.js";
 	import PurchaseConductOrder from "../../components/comindord/PurchaseConductOrder.vue";
-	import jiedan from "../../components/comindord/jiedan.vue";
 
 	var _self;
 	export default {
 		components: {
-			PurchaseConductOrder,
-			jiedan
-
+			PurchaseConductOrder
 		},
 		data() {
 			return {
@@ -86,6 +80,12 @@
 		onLoad() { //页面加载
 			_self = this;
 			this.__init();
+			//监听push更新 订单
+			uni.$on('getordlist', (data) => {
+				if(data===1){
+					this.getordlist();
+				}
+			})
 
 		},
 		onShow() { //监听页面显示。页面每次出现在屏幕上都触发,页面显示
@@ -96,9 +96,7 @@
 			if (this.role === 2 && _self.chenggong === true) {
 				this.getordlist();
 			}
-			if (this.role === 4 && _self.chenggong === true) {
-				this.getjiedanlist();
-			}
+			
 
 
 		},
@@ -248,17 +246,10 @@
 				});
 			},
 			
-			getjiedanlist() {
-				let uuidform = {
-					uuid: this.$http.getUuid()
-				};
-				
-			},
-
-
 			
 
-			
+
+		
 		}
 
 	}

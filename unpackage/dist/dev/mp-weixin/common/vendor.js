@@ -737,7 +737,7 @@ function initData(vueOptions, context) {
     try {
       data = data.call(context); // 支持 Vue.prototype 上挂的数据
     } catch (e) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.warn('根据 Vue 的 data 函数初始化小程序 data 失败，请尽量确保 data 函数中不访问 vm 对象，否则可能影响首次数据渲染速度。', data);
       }
     }
@@ -7065,7 +7065,7 @@ function type(obj) {
 
 function flushCallbacks$1(vm) {
     if (vm.__next_tick_callbacks && vm.__next_tick_callbacks.length) {
-        if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+        if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:flushCallbacks[' + vm.__next_tick_callbacks.length + ']');
@@ -7086,14 +7086,14 @@ function nextTick$1(vm, cb) {
     //1.nextTick 之前 已 setData 且 setData 还未回调完成
     //2.nextTick 之前存在 render watcher
     if (!vm.__next_tick_pending && !hasRenderWatcher(vm)) {
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + vm._uid +
                 ']:nextVueTick');
         }
         return nextTick(cb, vm)
     }else{
-        if(Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG){
+        if(Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG){
             var mpInstance$1 = vm.$scope;
             console.log('[' + (+new Date) + '][' + (mpInstance$1.is || mpInstance$1.route) + '][' + vm._uid +
                 ']:nextMPTick');
@@ -7169,7 +7169,7 @@ var patch = function(oldVnode, vnode) {
     });
     var diffData = diff(data, mpData);
     if (Object.keys(diffData).length) {
-      if (Object({"VUE_APP_PLATFORM":"mp-weixin","NODE_ENV":"development","BASE_URL":"/"}).VUE_APP_DEBUG) {
+      if (Object({"NODE_ENV":"development","VUE_APP_PLATFORM":"mp-weixin","BASE_URL":"/"}).VUE_APP_DEBUG) {
         console.log('[' + (+new Date) + '][' + (mpInstance.is || mpInstance.route) + '][' + this._uid +
           ']差量更新',
           JSON.stringify(diffData));
@@ -8508,7 +8508,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@alpha","_id":"@dcloudio/uni-stat@2
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/login/login": {}, "pages/reg/reg": { "navigationBarTitleText": "注册" }, "pages/logmain/logmain": { "navigationBarTitleText": "" }, "pages/pwd/pwd": { "navigationBarTitleText": "找回密码" }, "pages/index/index": { "navigationBarTitleText": "首页" }, "pages/creord/creord": { "navigationBarTitleText": "发布实时采购" }, "pages/qitafabu/qitafabu": { "navigationBarTitleText": "其他需求信息" }, "pages/creqp/creqp": { "navigationBarTitleText": "发布商品服务信息" }, "pages/jinxingorder/jinxingorder": { "navigationBarTitleText": "全部订单" }, "pages/crejiu/crejiu": { "navigationBarTitleText": "发布酒水/消毒餐具信息" }, "pages/crezu/crezu": { "navigationBarTitleText": "发布出租信息" }, "pages/crezhuang/crezhuang": { "navigationBarTitleText": "发布服务信息" }, "pages/crebai/crebai": { "navigationBarTitleText": "发布百货信息" }, "pages/quanbu/quanbu": { "navigationBarTitleText": "全部信息" }, "pages/myRelease/myRelease": { "navigationBarTitleText": "我的发布" }, "pages/yonghu/yonghu": { "navigationBarTitleText": "用户中心" }, "pages/jiedan/jiedan": { "navigationBarTitleText": "接单中心" }, "pages/lunbo/lunbo": {}, "pages/xieyi/xieyi": {} }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarBackgroundColor": "#FC5640", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/login/login": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/reg/reg": { "navigationBarTitleText": "注册", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/logmain/logmain": { "navigationBarTitleText": "", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/pwd/pwd": { "navigationBarTitleText": "找回密码", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/index/index": { "navigationBarTitleText": "首页", "usingComponents": { "purchase-conduct-order": "/components/comindord/PurchaseConductOrder" }, "usingAutoImportComponents": {} }, "pages/creord/creord": { "navigationBarTitleText": "发布实时采购", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/qitafabu/qitafabu": { "navigationBarTitleText": "其他需求信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/creqp/creqp": { "navigationBarTitleText": "发布商品服务信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/jinxingorder/jinxingorder": { "navigationBarTitleText": "全部订单", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/crejiu/crejiu": { "navigationBarTitleText": "发布酒水/消毒餐具信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/crezu/crezu": { "navigationBarTitleText": "发布出租信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/crezhuang/crezhuang": { "navigationBarTitleText": "发布服务信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/crebai/crebai": { "navigationBarTitleText": "发布百货信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/quanbu/quanbu": { "navigationBarTitleText": "全部信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/myRelease/myRelease": { "navigationBarTitleText": "我的发布", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/yonghu/yonghu": { "navigationBarTitleText": "用户中心", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/jiedan/jiedan": { "navigationBarTitleText": "接单中心", "usingComponents": { "swiper-tab-head": "/components/index/swiper-tab-head", "daijiedan": "/components/index/daijiedan" }, "usingAutoImportComponents": {} }, "pages/lunbo/lunbo": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/xieyi/xieyi": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/jiedanbaojia/jiedanbaojia": { "navigationBarTitleText": "订单报价" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarBackgroundColor": "#FC5640", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
 /* 8 */
@@ -8865,6 +8865,7 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   getoscaozuo: 'order/operation_purchase_order',
   getnpayos: 'order/native_pay_order_app',
   getdaibaojia: 'order/getdaibaojia',
+  createjiedan: 'order/createjiedan',
 
   // websocket地址11
   websocketUrl: "ws://localhost:8080/api/v1/vp/so/",
@@ -9141,24 +9142,31 @@ var _user = _interopRequireDefault(__webpack_require__(/*! ./user.js */ 17));fun
       // 绑定返回结果
       if (res.type == 1) {
         if (res.msg == 1) {
-          console.log('链接成功');
           return true;
         } else {
-          console.log('链接失败');
           _this2.IsOpen = false;
           return false;
         }
 
       }
 
-
       if (res.type === 2) {
-        // 全局通知接口
-        var commoditySnapshot = JSON.parse(res.getjinxin.commoditySnapshot);
-        res.getjinxin.commoditySnapshot = commoditySnapshot;
+        // 通知接单人员有新订单
+        _this2.__Notify();
         uni.$emit('getjinxin', res.getjinxin);
-      }
+      } else if (res.type === 3) {
+        // 通知接单人员关单
+        _this2.__Notify();
+        uni.$emit('liushui', res.liushui);
+      } else
 
+
+      if (res.type === 12) {
+        // 通知发单人员 有人接单,自动刷新
+        _this2.__Notify();
+
+        uni.$emit('getordlist', res.msg);
+      }
       // // 存储到chatdetail
       // this.__UpdateChatdetail(res);
       // // 更新chatlist（将当前会话置顶，修改chatlist中当前会话的data和time显示）
@@ -9168,7 +9176,7 @@ var _user = _interopRequireDefault(__webpack_require__(/*! ./user.js */ 17));fun
       // 	this.__UpdateNoReadNum({ type:"add" });
       // }
     });
-    console.log('监听信息');
+
   },
   // 总未读数+1，修改tabbar信息数
   __UpdateNoReadNum: function __UpdateNoReadNum() {var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};

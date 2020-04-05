@@ -183,19 +183,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-
-
-var _indexjs = _interopRequireDefault(__webpack_require__(/*! ../../common/indexjs/indexjs.js */ 57));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var PurchaseConductOrder = function PurchaseConductOrder() {return __webpack_require__.e(/*! import() | components/comindord/PurchaseConductOrder */ "components/comindord/PurchaseConductOrder").then(__webpack_require__.bind(null, /*! ../../components/comindord/PurchaseConductOrder.vue */ 146));};var jiedan = function jiedan() {return __webpack_require__.e(/*! import() | components/comindord/jiedan */ "components/comindord/jiedan").then(__webpack_require__.bind(null, /*! ../../components/comindord/jiedan.vue */ 153));};
-
+var _indexjs = _interopRequireDefault(__webpack_require__(/*! ../../common/indexjs/indexjs.js */ 57));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var PurchaseConductOrder = function PurchaseConductOrder() {return __webpack_require__.e(/*! import() | components/comindord/PurchaseConductOrder */ "components/comindord/PurchaseConductOrder").then(__webpack_require__.bind(null, /*! ../../components/comindord/PurchaseConductOrder.vue */ 148));};
 
 
 var _self;var _default =
 {
   components: {
-    PurchaseConductOrder: PurchaseConductOrder,
-    jiedan: jiedan },
-
+    PurchaseConductOrder: PurchaseConductOrder },
 
   data: function data() {
     return {
@@ -218,9 +212,15 @@ var _self;var _default =
 
 
   },
-  onLoad: function onLoad() {//页面加载
+  onLoad: function onLoad() {var _this = this; //页面加载
     _self = this;
     this.__init();
+    //监听push更新 订单
+    uni.$on('getordlist', function (data) {
+      if (data === 1) {
+        _this.getordlist();
+      }
+    });
 
   },
   onShow: function onShow() {//监听页面显示。页面每次出现在屏幕上都触发,页面显示
@@ -231,9 +231,7 @@ var _self;var _default =
     if (this.role === 2 && _self.chenggong === true) {
       this.getordlist();
     }
-    if (this.role === 4 && _self.chenggong === true) {
-      this.getjiedanlist();
-    }
+
 
 
   },
@@ -264,7 +262,7 @@ var _self;var _default =
 
 
     // 获取广告
-    getSwiper: function getSwiper() {var _this = this;
+    getSwiper: function getSwiper() {var _this2 = this;
       var uuidform = {
         permissionid: 0,
         bunnerType: 1 };
@@ -280,7 +278,7 @@ var _self;var _default =
                 paths: data.data[i].url });
 
             }
-            _this.topic.swiper = arr;
+            _this2.topic.swiper = arr;
           }
         } else {
           uni.showToast({
@@ -348,7 +346,7 @@ var _self;var _default =
                   }
                 }case 10:case "end":return _context.stop();}}}, _callee, this);}));function getguerinif() {return _getguerinif.apply(this, arguments);}return getguerinif;}(),
 
-    getordlist: function getordlist() {var _this2 = this;
+    getordlist: function getordlist() {var _this3 = this;
       var uuidform = {
         uuid: this.$http.getUuid() };
 
@@ -361,10 +359,10 @@ var _self;var _default =
               var commoditySnapshot = JSON.parse(data.data.listPurchaseSeeOrderVo[i].voOrder.commoditySnapshot);
               data.data.listPurchaseSeeOrderVo[i].voOrder.commoditySnapshot = commoditySnapshot;
             }
-            _this2.ordls = data.data;
-            _this2.isPuCoOrder = true;
-            if (_this2.ordls.voSocket === 0) {
-              _this2.$chat.Open();
+            _this3.ordls = data.data;
+            _this3.isPuCoOrder = true;
+            if (_this3.ordls.voSocket === 0) {
+              _this3.$chat.Open();
             }
 
 
@@ -381,13 +379,6 @@ var _self;var _default =
 
         }
       });
-    },
-
-    getjiedanlist: function getjiedanlist() {
-      var uuidform = {
-        uuid: this.$http.getUuid() };
-
-
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

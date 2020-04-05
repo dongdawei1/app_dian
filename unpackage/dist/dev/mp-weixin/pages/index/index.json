@@ -1,7 +1,6 @@
 {
   "navigationBarTitleText": "首页",
   "usingComponents": {
-    "purchase-conduct-order": "/components/comindord/PurchaseConductOrder",
-    "jiedan": "/components/comindord/jiedan"
+    "purchase-conduct-order": "/components/comindord/PurchaseConductOrder"
   }
 }

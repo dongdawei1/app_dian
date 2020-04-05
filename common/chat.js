@@ -80,24 +80,31 @@ export default {
 			// 绑定返回结果
 			if (res.type == 1) {
 				if (res.msg == 1) {
-					console.log('链接成功');
 					return true;
 				} else {
-					console.log('链接失败');
 					this.IsOpen = false;
 					return false;
 				}
 
 			}
 
-
 			if (res.type === 2) {
-				// 全局通知接口
-				let commoditySnapshot = JSON.parse(res.getjinxin.commoditySnapshot)
-				res.getjinxin.commoditySnapshot = commoditySnapshot;
+				// 通知接单人员有新订单
+				this.__Notify();
 				uni.$emit('getjinxin', res.getjinxin);
+			}else if (res.type === 3) {
+				// 通知接单人员关单
+				this.__Notify();
+				uni.$emit('liushui', res.liushui);
 			}
-
+			
+			
+			else if (res.type === 12) {
+				// 通知发单人员 有人接单,自动刷新
+				this.__Notify();
+				
+				uni.$emit('getordlist', res.msg);
+			}
 			// // 存储到chatdetail
 			// this.__UpdateChatdetail(res);
 			// // 更新chatlist（将当前会话置顶，修改chatlist中当前会话的data和time显示）
@@ -107,7 +114,7 @@ export default {
 			// 	this.__UpdateNoReadNum({ type:"add" });
 			// }
 		})
-		console.log('监听信息')
+	
 	},
 	// 总未读数+1，修改tabbar信息数
 	__UpdateNoReadNum(options = {}) {

@@ -14,7 +14,8 @@ export default {
 	getoscaozuo: 'order/operation_purchase_order',
 	getnpayos: 'order/native_pay_order_app',
 	getdaibaojia: 'order/getdaibaojia',
-
+	createjiedan: 'order/createjiedan',
+             
 	// websocket地址11
 	websocketUrl: "ws://localhost:8080/api/v1/vp/so/",
 	// 消息提示tabbar索引

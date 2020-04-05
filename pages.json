@@ -107,6 +107,13 @@
 				"navigationBarTitleText": "接单中心"
 			}
 		},
+		{
+			"path": "pages/jiedanbaojia/jiedanbaojia",
+			"style": {
+				"navigationBarTitleText": "订单报价"
+			}
+		},
+		
 		//轮播组件
 		{
 			"path": "pages/lunbo/lunbo",

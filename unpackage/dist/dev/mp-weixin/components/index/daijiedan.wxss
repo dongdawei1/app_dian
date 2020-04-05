@@ -1,5 +1,37 @@
 
 .liebiao {
+	padding: 0 0 5rpx 0;
+}
+.shangjia {
+
+
+	font-size: 33rpx;
+	line-height: 35rpx;
+	color: #000000;
+	padding: 5rpx 0 5rpx 0;
+}
+.qitaxinxi view {
+	color: #6F6B6E;
+	padding: 2rpx 0 2rpx 20rpx;
+	font-size: 30rpx;
+	line-height: 33rpx;
+}
+.gengduo {
+	color: #FCC1C3;
 }
 
+/* 去报价按钮 */
+.xuaznebutton {
+	color: #FFFFFF;
+	border-radius: 10rpx;
+	background: #FCC1C3;
+}
+.juzhong {
+	padding: 1rpx 10rpx 1rpx 10rpx;
+	text-align: center;
+	font-size: 28rpx;
+}
+.xiabian {
+	padding: 0 0 120rpx 0;
+}
 
