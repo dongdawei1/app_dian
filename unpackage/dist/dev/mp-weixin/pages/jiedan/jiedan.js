@@ -133,7 +133,8 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var swiperTabHead = function swiperTabHead() {return __webpack_require__.e(/*! import() | components/index/swiper-tab-head */ "components/index/swiper-tab-head").then(__webpack_require__.bind(null, /*! ../../components/index/swiper-tab-head.vue */ 155));};var daijiedan = function daijiedan() {return __webpack_require__.e(/*! import() | components/index/daijiedan */ "components/index/daijiedan").then(__webpack_require__.bind(null, /*! ../../components/index/daijiedan.vue */ 162));};var baojiazhong = function baojiazhong() {return __webpack_require__.e(/*! import() | components/index/baojiazhong */ "components/index/baojiazhong").then(__webpack_require__.bind(null, /*! ../../components/index/baojiazhong.vue */ 187));};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var swiperTabHead = function swiperTabHead() {return __webpack_require__.e(/*! import() | components/index/swiper-tab-head */ "components/index/swiper-tab-head").then(__webpack_require__.bind(null, /*! ../../components/index/swiper-tab-head.vue */ 163));};var daijiedan = function daijiedan() {return __webpack_require__.e(/*! import() | components/index/daijiedan */ "components/index/daijiedan").then(__webpack_require__.bind(null, /*! ../../components/index/daijiedan.vue */ 170));};var baojiazhong = function baojiazhong() {return __webpack_require__.e(/*! import() | components/index/baojiazhong */ "components/index/baojiazhong").then(__webpack_require__.bind(null, /*! ../../components/index/baojiazhong.vue */ 177));};var jinqidingdan = function jinqidingdan() {return __webpack_require__.e(/*! import() | components/index/jinqidingdan */ "components/index/jinqidingdan").then(__webpack_require__.bind(null, /*! ../../components/index/jinqidingdan.vue */ 184));};var _default =
+
 
 
 
@@ -175,7 +176,8 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     swiperTabHead: swiperTabHead,
     daijiedan: daijiedan,
-    baojiazhong: baojiazhong },
+    baojiazhong: baojiazhong,
+    jinqidingdan: jinqidingdan },
 
   data: function data() {
     return {
@@ -226,49 +228,54 @@ __webpack_require__.r(__webpack_exports__);
     });
     //监听关单
     uni.$on('liushui', function (data) {
-      // let list = [];
-      // list[0] = data;
-      // for (let a = 0; a < this.newslist[0].list.length; a++) {
-      // 	list[a + 1] = this.newslist[0].list[a];
-      // }
-      // this.newslist[0].list = list;
+      for (var a = 0; a < _this.newslist[1].list.length; a++) {
+        if (_this.newslist[1].list[a].id === data.dingdanId) {
+          _this.newslist[1].list[a].commodityZongJiage = data.amount;
+          _this.newslist[1].list[a].orderStatus = 3;
+        }
+      }
+    });
+    //监听关单
+    uni.$on('xuanzhong', function (data) {
+      for (var a = 0; a < _this.newslist[1].list.length; a++) {
+        if (_this.newslist[1].list[a].id === data) {
+          _this.newslist[1].list[a].orderStatus = 12;
+        }
+      }
+    });
+
+    //支付成功刷新列表
+    uni.$on('shauxinjiedan', function (data) {
+      if (data === 1) {
+        _this.getbaojiaL();
+      }
     });
 
 
   },
   //页面每次出现都检查是否开启接到哪如果开启刷新订单
   onShow: function onShow() {
-    if (this.iskaiqi) {
-      this.getjinxinL();
-    }
+    this.getjinxinL();
+    //报价中和送货中
+    this.getbaojiaL();
   },
-
   // 监听搜索框点击事件
-  onNavigationBarSearchInputClicked: function onNavigationBarSearchInputClicked() {
-
-  },
+  onNavigationBarSearchInputClicked: function onNavigationBarSearchInputClicked() {},
   // 监听原生标题导航按钮点击事件
-  onNavigationBarButtonTap: function onNavigationBarButtonTap(e) {
-
-  },
+  onNavigationBarButtonTap: function onNavigationBarButtonTap(e) {},
   methods: {
     __init: function __init() {
       this.isAuthentication = uni.getStorageSync("dian_isAuthentication");
       this.role = uni.getStorageSync("dian_role");
-      if (this.isAuthentication === 2 && this.role === 4) {
-        this.getbaojiaL();
-      }
     },
-
+    //开启接单
     jiedan: function jiedan() {
-
       if (this.isAuthentication != 2) {
         uni.showToast({
           title: "只有实名用户才能接单",
           icon: "none" });
 
       }
-
       if (this.role != 4) {
         uni.showToast({
           title: "只有蔬菜/百货零售商才能接单",
@@ -276,25 +283,20 @@ __webpack_require__.r(__webpack_exports__);
 
       }
       if (!this.iskaiqi) {
+        this.iskaiqi = !this.iskaiqi;
         this.$chat.Open();
         //再去调用接口
         this.getjinxinL();
       } else {
+        this.iskaiqi = !this.iskaiqi;
         this.$chat.Close();
       }
-      this.iskaiqi = !this.iskaiqi;
-    },
-
-    // tabbar点击事件
-    tabtap: function tabtap(index) {
-      this.tabIndex = index;
-    },
-    // 滑动事件
-    tabChange: function tabChange(e) {
-      this.tabIndex = e.detail.current;
     },
     //获取待报价订单
     getjinxinL: function getjinxinL() {var _this2 = this;
+      if (!this.iskaiqi) {
+        return false;
+      }
       var uuidform = {
         uuid: this.$http.getUuid(),
         releaseType: 4,
@@ -311,6 +313,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     //获取报价已经报价的订单
     getbaojiaL: function getbaojiaL() {var _this3 = this;
+      if (this.isAuthentication !== 2 || this.role !== 4) {
+        return false;
+      }
       var uuidform = {
         uuid: this.$http.getUuid(),
         releaseType: 4,
@@ -320,10 +325,19 @@ __webpack_require__.r(__webpack_exports__);
       this.$http.get(this.$urlconfig.getdaibaojia, uuidform, {}).then(function (data) {
         if (data.status === 0) {
           if (data.data !== null) {
-            _this3.newslist[1].list = data.data;
+            _this3.newslist[1].list = data.data.baojia;
+            _this3.newslist[2].list = data.data.songhuo;
           }
         }
       });
+    },
+    // tabbar点击事件
+    tabtap: function tabtap(index) {
+      this.tabIndex = index;
+    },
+    // 滑动事件
+    tabChange: function tabChange(e) {
+      this.tabIndex = e.detail.current;
     } } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

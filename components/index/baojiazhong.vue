@@ -8,7 +8,7 @@
 					订单id:{{tab.id}} 采购详情
 				</view>
 
-				<view v-if="tab.orderStatus===11 || tab.orderStatus===18">
+				<view v-if="tab.orderStatus===11 || tab.orderStatus===18 || tab.orderStatus===12">
 					<!--商品详情-->
 					<view v-for="(itshang , index1) in  tab.commoditySnapshot" :key="index1">
 						<view class="oxiangqing">
@@ -39,20 +39,29 @@
 							选择截止时间：{{tab.guanShanTime}}
 						</view>
 						<view>
-							冻结金额：{{tab.commodityZongJiage}}
+							冻结金额(四舍五入)：{{tab.commodityZongJiage}}(元)
 						</view>
-						<view>
-							订单状态：待发布商户选择供货商
+						<view v-if="tab.orderStatus===11 || tab.orderStatus===18">
+							<text class="xuanze" >
+								订单状态：待发布商户选择供货商
+							</text>
+						</view>
+						<view v-if="tab.orderStatus===12">
+							<text  class="yufuzhong">
+								订单状态：待发布商户支付预付金
+							</text>
 						</view>
 					</view>
 				</view>
 				<view v-if="tab.orderStatus===3">
 					<view class="qitaxinxi">
 						<view>
-							解冻金额：{{tab.commodityZongJiage}}
+							解冻金额(四舍五入)：{{tab.commodityZongJiage}}
 						</view>
 						<view>
-							订单状态：接单失败
+							<text class="shibai">
+								订单状态：接单失败
+							</text>
 						</view>
 					</view>
 				</view>
@@ -103,5 +112,17 @@
 		padding: 20upx 10upx 20upx 10upx;
 		text-align: center;
 		font-size: 34upx;
+	}
+
+	.yufuzhong {
+		color: #3fbf00;
+	}
+
+	.shibai {
+		color: #c600c6;
+	}
+
+	.xuanze {
+		color: #c70000;
 	}
 </style>

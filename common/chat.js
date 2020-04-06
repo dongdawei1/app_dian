@@ -96,6 +96,10 @@ export default {
 				// 通知接单人员关单
 				this.__Notify();
 				uni.$emit('liushui', res.liushui);
+			}else if (res.type === 4) {
+				// 通知接单人员关单
+				this.__Notify();
+				uni.$emit('xuanzhong', res.xuanzhong);
 			}
 			
 			

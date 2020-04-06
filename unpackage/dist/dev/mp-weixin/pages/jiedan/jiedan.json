@@ -3,6 +3,7 @@
   "usingComponents": {
     "swiper-tab-head": "/components/index/swiper-tab-head",
     "daijiedan": "/components/index/daijiedan",
-    "baojiazhong": "/components/index/baojiazhong"
+    "baojiazhong": "/components/index/baojiazhong",
+    "jinqidingdan": "/components/index/jinqidingdan"
   }
 }

@@ -84,7 +84,6 @@
 				//baojia
 				this.$http.post(this.$urlconfig.createjiedan, this.ruleForm, {}).then(data => {
 					this.loading = false;
-					console.log(data)
 					//{status: 1, msg: "不能重复报价", data: null, success: false}
 					if (data.status === 0) {
 						uni.showModal({

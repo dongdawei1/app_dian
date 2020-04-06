@@ -104,11 +104,11 @@
 /******/
 /******/
 /******/ 		// mini-css-extract-plugin CSS loading
-/******/ 		var cssChunks = {"components/comindord/PurchaseConductOrder":1,"components/index/baojiazhong":1,"components/index/daijiedan":1,"components/index/swiper-tab-head":1};
+/******/ 		var cssChunks = {"components/comindord/PurchaseConductOrder":1,"components/index/baojiazhong":1,"components/index/daijiedan":1,"components/index/jinqidingdan":1,"components/index/swiper-tab-head":1};
 /******/ 		if(installedCssChunks[chunkId]) promises.push(installedCssChunks[chunkId]);
 /******/ 		else if(installedCssChunks[chunkId] !== 0 && cssChunks[chunkId]) {
 /******/ 			promises.push(installedCssChunks[chunkId] = new Promise(function(resolve, reject) {
-/******/ 				var href = "" + ({"components/comindord/PurchaseConductOrder":"components/comindord/PurchaseConductOrder","components/index/baojiazhong":"components/index/baojiazhong","components/index/daijiedan":"components/index/daijiedan","components/index/swiper-tab-head":"components/index/swiper-tab-head"}[chunkId]||chunkId) + ".wxss";
+/******/ 				var href = "" + ({"components/comindord/PurchaseConductOrder":"components/comindord/PurchaseConductOrder","components/index/baojiazhong":"components/index/baojiazhong","components/index/daijiedan":"components/index/daijiedan","components/index/jinqidingdan":"components/index/jinqidingdan","components/index/swiper-tab-head":"components/index/swiper-tab-head"}[chunkId]||chunkId) + ".wxss";
 /******/ 				var fullhref = __webpack_require__.p + href;
 /******/ 				var existingLinkTags = document.getElementsByTagName("link");
 /******/ 				for(var i = 0; i < existingLinkTags.length; i++) {
