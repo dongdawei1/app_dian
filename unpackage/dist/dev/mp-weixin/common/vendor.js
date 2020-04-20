@@ -8508,7 +8508,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@alpha","_id":"@dcloudio/uni-stat@2
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/login/login": {}, "pages/reg/reg": { "navigationBarTitleText": "注册" }, "pages/logmain/logmain": { "navigationBarTitleText": "" }, "pages/pwd/pwd": { "navigationBarTitleText": "找回密码" }, "pages/index/index": { "navigationBarTitleText": "首页" }, "pages/creord/creord": { "navigationBarTitleText": "发布实时采购" }, "pages/qitafabu/qitafabu": { "navigationBarTitleText": "其他需求信息" }, "pages/creqp/creqp": { "navigationBarTitleText": "发布商品服务信息" }, "pages/jinxingorder/jinxingorder": { "navigationBarTitleText": "全部订单" }, "pages/crejiu/crejiu": { "navigationBarTitleText": "发布酒水/消毒餐具信息" }, "pages/crezu/crezu": { "navigationBarTitleText": "发布出租信息" }, "pages/crezhuang/crezhuang": { "navigationBarTitleText": "发布服务信息" }, "pages/crebai/crebai": { "navigationBarTitleText": "发布百货信息" }, "pages/quanbu/quanbu": { "navigationBarTitleText": "全部信息" }, "pages/myRelease/myRelease": { "navigationBarTitleText": "我的发布" }, "pages/yonghu/yonghu": { "navigationBarTitleText": "用户中心" }, "pages/jiedan/jiedan": { "navigationBarTitleText": "接单中心" }, "pages/jiedanbaojia/jiedanbaojia": { "navigationBarTitleText": "订单报价" }, "pages/lunbo/lunbo": {}, "pages/xieyi/xieyi": {} }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarBackgroundColor": "#FC5640", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/login/login": {}, "pages/reg/reg": { "navigationBarTitleText": "注册" }, "pages/logmain/logmain": { "navigationBarTitleText": "" }, "pages/pwd/pwd": { "navigationBarTitleText": "找回密码" }, "pages/index/index": { "navigationBarTitleText": "首页" }, "pages/creord/creord": { "navigationBarTitleText": "发布实时采购" }, "pages/qitafabu/qitafabu": { "navigationBarTitleText": "其他需求信息" }, "pages/creqp/creqp": { "navigationBarTitleText": "发布商品服务信息" }, "pages/jinxingorder/jinxingorder": { "navigationBarTitleText": "全部订单" }, "pages/crejiu/crejiu": { "navigationBarTitleText": "发布酒水/消毒餐具信息" }, "pages/crezu/crezu": { "navigationBarTitleText": "发布出租信息" }, "pages/crezhuang/crezhuang": { "navigationBarTitleText": "发布服务信息" }, "pages/crebai/crebai": { "navigationBarTitleText": "发布百货信息" }, "pages/quanbu/quanbu": { "navigationBarTitleText": "全部信息" }, "pages/shichang/shichang": { "navigationBarTitleText": "信息查询" }, "pages/myRelease/myRelease": { "navigationBarTitleText": "我的发布" }, "pages/yonghu/yonghu": { "navigationBarTitleText": "用户中心" }, "pages/jiedan/jiedan": { "navigationBarTitleText": "接单中心" }, "pages/jiedanbaojia/jiedanbaojia": { "navigationBarTitleText": "订单报价" }, "pages/lunbo/lunbo": {}, "pages/xieyi/xieyi": {} }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarBackgroundColor": "#FC5640", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
 /* 8 */
@@ -9163,6 +9163,10 @@ var _user = _interopRequireDefault(__webpack_require__(/*! ./user.js */ 17));fun
         // 通知接单人员关单
         _this2.__Notify();
         uni.$emit('xuanzhong', res.xuanzhong);
+      } else if (res.type === 5) {
+        // 通知接单人员关单
+        _this2.__Notify();
+        uni.$emit('shauxinjiedan', res.msg);
       } else
 
 
@@ -10270,14 +10274,15 @@ if (hadRuntime) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = {
+  role: uni.getStorageSync("dian_role"),
   /*处理登陆操作*/
-  // 网络错误处理
+  //首页显示操作按钮
   getdaohao: function getdaohao() {
     var daohao = [];
 
     try {
-      var role = uni.getStorageSync("dian_role");
-      if (role === 2 || role === 1) {
+      //let role = uni.getStorageSync("dian_role");
+      if (this.role === 2 || this.role === 1) {
         daohao = [{
           name: '近三天采购',
           paths: '',
@@ -10294,7 +10299,7 @@ if (hadRuntime) {
           ioc: '/static/shou/g4.png' }];
 
 
-      } else if (role === 3) {
+      } else if (this.role === 3) {
         daohao = [{
           name: '需求信息',
           paths: '',
@@ -10311,7 +10316,7 @@ if (hadRuntime) {
           ioc: '/static/shou/g4.png' }];
 
 
-      } else if (role === 4) {
+      } else if (this.role === 4) {
         daohao = [{
           name: '未完成订单',
           paths: '',
@@ -10328,7 +10333,7 @@ if (hadRuntime) {
           ioc: '/static/shou/g4.png' }];
 
 
-      } else if (role === 5) {
+      } else if (this.role === 5) {
         daohao = [{
           name: '未完成订单',
           paths: '',
@@ -10345,7 +10350,7 @@ if (hadRuntime) {
           ioc: '/static/shou/g4.png' }];
 
 
-      } else if (role === 6) {
+      } else if (this.role === 6) {
         daohao = [{
           name: '需求信息',
           paths: '',
@@ -10362,7 +10367,7 @@ if (hadRuntime) {
           ioc: '/static/shou/g4.png' }];
 
 
-      } else if (role === 7) {
+      } else if (this.role === 7) {
         daohao = [{
           name: '需求信息',
           paths: '',
@@ -10379,7 +10384,7 @@ if (hadRuntime) {
           ioc: '/static/shou/g4.png' }];
 
 
-      } else if (role === 11) {
+      } else if (this.role === 11) {
         daohao = [{
           name: '招聘信息',
           paths: '',
@@ -10396,7 +10401,7 @@ if (hadRuntime) {
           ioc: '/static/shou/g4.png' }];
 
 
-      } else if (role === 12) {
+      } else if (this.role === 12) {
         daohao = [{
           name: '招聘信息',
           paths: '',
@@ -10415,7 +10420,7 @@ if (hadRuntime) {
 
       }
       var daohaorole = {
-        role: role,
+        role: this.role,
         daohao: daohao };
 
       return daohaorole;
@@ -10437,6 +10442,118 @@ if (hadRuntime) {
       return _daohaorole;
     }
 
+  },
+  //首页显示操作按钮
+  quanbudingdao: function quanbudingdao() {
+    var tabBars = [{
+      name: "蔬菜零售",
+      releaseType: 4 },
+
+    {
+      name: "粮油零售",
+      releaseType: 5 },
+
+    {
+      name: "调料/副食",
+      releaseType: 6 },
+
+    {
+      name: "水产/蛋禽",
+      releaseType: 29 },
+
+    {
+      name: "清洁用品",
+      releaseType: 9 },
+
+    {
+      name: "桌椅餐具",
+      releaseType: 11 },
+    {
+      name: "工服制作",
+      releaseType: 101 },
+
+    {
+      name: "百货信息",
+      releaseType: 102 },
+
+    {
+      name: "绿植销售",
+      releaseType: 103 },
+
+    {
+      name: "装饰用品",
+      releaseType: 104 },
+    {
+      name: "酒水/饮料",
+      releaseType: 7 },
+
+    {
+      name: "消毒餐具",
+      releaseType: 8 },
+    {
+      name: "电器销售",
+      releaseType: 33 },
+
+    {
+      name: "二手电器销售",
+      releaseType: 34 },
+
+    {
+      name: "维修电器服务",
+      releaseType: 18 },
+    {
+      name: "店面/窗口出租",
+      releaseType: 14 },
+
+    {
+      name: "摊位出租",
+      releaseType: 15 },
+
+    {
+      name: "菜谱/广告制作",
+      releaseType: 13 },
+
+    {
+      name: "装修服务",
+      releaseType: 15 },
+
+    {
+      name: "灭虫服务",
+      releaseType: 19 },
+
+    {
+      name: "招聘信息",
+      releaseType: 30 },
+
+    {
+      name: "求职信息",
+      releaseType: 31 }];
+
+
+
+    if (this.role !== 2) {
+      //arr.push("A","B")
+      var no = {
+        name: "批发信息",
+        releaseType: 35 };
+
+      tabBars.push(no);
+    }
+
+    var newslist = [];
+    for (var a = 0; a < tabBars.length; a++) {
+      var li = {
+        releaseType: tabBars[a].releaseType,
+        list: [] };
+
+      newslist.push(li);
+    }
+    var result = {
+      newslist: newslist,
+      tabBars: tabBars };
+
+    console.log(result);
+    return result;
   } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 

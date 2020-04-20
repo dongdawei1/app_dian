@@ -100,6 +100,10 @@ export default {
 				// 通知接单人员关单
 				this.__Notify();
 				uni.$emit('xuanzhong', res.xuanzhong);
+			}else if (res.type === 5) {
+				// 通知接单人员关单
+				this.__Notify();
+				uni.$emit('shauxinjiedan',  res.msg);
 			}
 			
 			

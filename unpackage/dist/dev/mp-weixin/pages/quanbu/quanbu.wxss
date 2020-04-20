@@ -1,0 +1,53 @@
+
+.box {
+	padding: 40rpx 0 50rpx 30rpx;
+}
+.biaoti {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	/*水平*/
+	border-bottom: 1rpx solid #EEEEEE;
+}
+.biaoti image {
+	padding: 15rpx 0 0 0;
+	width: 20rpx;
+	height: 35rpx;
+}
+.biaoti text {
+	font-size: 35rpx;
+	padding: 0 0 15rpx 15rpx;
+}
+.liebiao {
+	padding: 30rpx 0 40rpx 22rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	        flex-wrap: wrap;
+}
+.liell {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	/*元素上下排列*/
+	width: 155rpx;
+	height: 155rpx;
+}
+.liell image {
+	margin: 0 auto;
+	/*圖片居中*/
+	width: 60rpx;
+	height: 60rpx;
+}
+.liell text {
+	text-align: center;
+	/*文字居中*/
+	font-size: 30rpx;
+	color: #4b4f51;
+}
+

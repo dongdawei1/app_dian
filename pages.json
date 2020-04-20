@@ -90,6 +90,20 @@
 			}
 		},
 		{
+			"path": "pages/shichang/shichang",//除批发招聘简历外的全部信息
+			"style": {
+				"navigationBarTitleText": "信息查询"
+			}
+		},
+		
+		
+		
+		
+		
+		
+		
+		
+		{
 			"path": "pages/myRelease/myRelease",
 			"style": {
 				"navigationBarTitleText": "我的发布"

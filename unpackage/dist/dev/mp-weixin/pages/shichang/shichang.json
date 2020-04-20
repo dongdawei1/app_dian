@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "信息查询",
+  "usingComponents": {
+    "swiper-tab-head": "/components/index/swiper-tab-head",
+    "lotus-loading": "/components/Winglau14-lotusLoading/Winglau14-LotusLoading"
+  }
+}
