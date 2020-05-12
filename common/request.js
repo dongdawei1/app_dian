@@ -47,6 +47,12 @@ export default {
 						url: '/pages/index/index'
 					});
 				}
+				else{
+					uni.showToast({
+						title: msg,
+						icon: "none"
+					});
+				}
 			}
 			return res.data;
 		});

@@ -16,7 +16,8 @@ export default {
 	getdaibaojia: 'order/getdaibaojia',
 	createjiedan: 'order/createjiedan',
     shouhuo: 'order/shouhuo',         
-			 
+	getUserRealName:'realName/getUserRealName',
+	getfabulista:'fabu/getfabulista',
 	// websocket地址11
 	websocketUrl: "ws://localhost:8080/api/v1/vp/so/",
 	// 消息提示tabbar索引

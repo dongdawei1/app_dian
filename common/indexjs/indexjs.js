@@ -277,7 +277,7 @@ export default {
 			newslist: newslist,
 			tabBars: tabBars
 		}
-		console.log(result)
+	
 		return result;
 	},
 
