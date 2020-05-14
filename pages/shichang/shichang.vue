@@ -8,21 +8,35 @@
 		<w-picker mode="region" :value="defaultRegion" default-type="value" :hide-area="false" @confirm="onConfirm($event, 'region')" @cancel="onCancel" ref="region"></w-picker>
 		<!-- loading-->
 		<LotusLoading :lotusLoadingData="lotusLoadingData"></LotusLoading>
-  
+
 		<swiper-tab-head :tabBars="tabBars" :tabIndex="tabIndex" @tabtap="tabtap"></swiper-tab-head>
-        <!-- 搜索框-->
-	
+		<!-- 搜索框-->
+
 		<view class="so">
-		  <view class="sou">
-			  <input class="uni-input"  v-model="releaseWelfare.serviceType"  focus  placeholder="请输入商品名或服务关键字"  type="text" maxlength="18" />
-		       <button class="mini-class"  size="mini"  :loading="loading" @click="getnew()">查询</button>
-		   </view>
+			<view class="sou">
+				<input class="uni-input" v-model="releaseWelfare.serviceType" focus placeholder="请输入商品名或服务关键字" type="text" maxlength="18" />
+				<button class="mini-class" size="mini" @click="getnew()">查询</button>
+			</view>
 		</view>
-		
+
 		<view class="uni-tab-bar">
 			<swiper class="swiper-box kong" :style="{ height: swiperheight + 'px' }" :current="tabIndex" @change="tabChange">
 				<swiper-item v-for="(items, index) in newslist" :key="index">
-					<scroll-view scroll-y class="list"><template v-if="items.list.length > 0"></template></scroll-view>
+					<scroll-view>
+						<template v-if="items.list.length > 0">
+							<!-- 图文列表 -->
+							{{items}}
+							<view v-if =" 1===1 || 2===2 ">
+							<block v-for="(item, index1) in items.list" :key="index1"><index-list :item="item" :index="index1"></index-list></block>
+							</view>
+							<!-- 上拉加载 -->
+							<uni-load-more :status="status" :content-text="contentText" />
+						</template>
+
+						<template v-if="items.list.length === 0">
+							<view class="meishuju">~未查询到发布信息</view>
+						</template>
+					</scroll-view>
 				</swiper-item>
 			</swiper>
 		</view>
@@ -31,6 +45,7 @@
 
 <script>
 import swiperTabHead from '../../components/index/swiper-tab-head.vue';
+import indexList from '../../components/index/index-list.vue';
 import LotusLoading from '../../components/Winglau14-lotusLoading/Winglau14-LotusLoading.vue';
 
 import wPicker from '../../components/w-picker/w-picker.vue';
@@ -38,16 +53,26 @@ import indexjs from '../../common/indexjs/indexjs.js';
 
 import uniNavBar from '../../components/uni-nav-bar/uni-nav-bar.vue';
 
+import uniLoadMore from '../../components/uni-load-more/uni-load-more.vue';
 export default {
 	components: {
+		indexList,
 		swiperTabHead,
 		LotusLoading,
+		uniLoadMore, //上拉加载更多
+
 		wPicker, //城市选择
 		uniNavBar //自定义导航
 	},
 	data() {
 		return {
-			loading:false,
+			status: 'more', //more（loading前）、loading（loading中）、noMore（没有更多了）
+			contentText: {
+				contentdown: '上拉加载更多',
+				contentrefresh: '加载中',
+				contentnomore: '没有更多信息了'
+			},
+
 			swiperheight: 500,
 			tabIndex: 0,
 
@@ -58,7 +83,7 @@ export default {
 			newslist: [],
 			//加载中组件数据
 			lotusLoadingData: {
-			isShow: false //设置显示加载中组件true显示false隐藏
+				isShow: false //设置显示加载中组件true显示false隐藏
 			},
 
 			//城市
@@ -100,11 +125,18 @@ export default {
 	onShow() {},
 
 	// 监听搜索框点击事件
-	onNavigationBarSearchInputClicked() {
-		
-	},
+	onNavigationBarSearchInputClicked() {},
 	// 监听原生标题导航按钮点击事件
-	onNavigationBarButtonTap(e) {
+	onNavigationBarButtonTap(e) {},
+
+	onReachBottom() {
+		//下拉刷新
+		if (this.status === 'loading') {
+			return;
+		}
+		this.status = 'loading'; // 修改状态
+		this.releaseWelfare.currentPage++;
+		this.getnews(this.tabIndex, 2);
 	},
 	methods: {
 		__init() {
@@ -116,66 +148,85 @@ export default {
 			}
 			for (let a = 0; a < this.tabBars.length; a++) {
 				if (this.tabBars[a].releaseType === this.releaseType) {
-					let ti= this.tabBars[a];
-					let tin= this.tabBars[0];
+					let ti = this.tabBars[a];
+					let tin = this.tabBars[0];
 					//把点击的放在第一位
-					this.tabBars.splice(0,1,ti);
-					this.tabBars.splice(a,1,tin);
-					
-					let li =this.newslist[a];
-					let lin=this.newslist[0];
-					this.newslist.splice(0,1,li);
-					this.newslist.splice(a,1,lin);
-					
+					this.tabBars.splice(0, 1, ti);
+					this.tabBars.splice(a, 1, tin);
+
+					let li = this.newslist[a];
+					let lin = this.newslist[0];
+					this.newslist.splice(0, 1, li);
+					this.newslist.splice(a, 1, lin);
+
 					this.tabIndex = 0;
-				//	this.tabtap(a);
-					this.getnews(this.tabIndex,1);
+					this.getnews(this.tabIndex, 1);
 					break;
 				}
 			}
 		},
-     getnew(){
-		 //1为查询
-		 this.getnews(this.tabIndex,1);
-	 },
+		getnew() {
+			//点击查询
+			this.getnews(this.tabIndex, 1);
+		},
 		//刷新列表
-		getnews(index,type) {
-			
-			//this.loading=true;
-			console.log(index)
+		getnews(index, type) {
+			console.log(index);
+			console.log('刷新开始');
 			this.lotusLoadingData.isShow = true;
 			let releaseType = this.newslist[index].releaseType;
-			let list = this.newslist[index].list.length;
 			this.releaseWelfare.releaseType = releaseType;
+			let newslistLength = this.newslist[index].list.length;
 			if (releaseType !== 30 && releaseType !== 31 && releaseType !== 35) {
 			}
-			
-			//请求后端拿数据
-			console.log( this.releaseWelfare)
-			this.$http.post(this.$urlconfig.getfabulista, this.releaseWelfare, {}).then(data => {
-				console.log( this.data)
-				this.lotusLoadingData.isShow = false;
-				if (data.status === 0) {
-					//没有查询到结果
-					if(data.data.datas===null){
-						if(type===1){
-							uni.showToast({
-								title: "未查询到发布信息",
-								icon: "none"
-							});
-							return true;
-						}else if(type===2){
-						//刷新或者上拉加载更多	
+
+			if (type === 1) {
+				if (newslistLength === 0) {
+					//请求后端拿数据
+					this.$http.post(this.$urlconfig.getfabulista, this.releaseWelfare, {}).then(data => {
+						console.log(data);
+						this.lotusLoadingData.isShow = false;
+						if (data.status === 0) {
+							//没有查询到结果
+							if (data.data.datas === null) {
+								return true;
+							}
+							//this.swiperheight   534   :450    581 :  490 *
+							this.newslist[index].list = data.data.datas;
+
+							this.swiperheight = this.newslist[index].list.length * 340;
+							console.log(this.swiperheight);
+							console.log(this.newslist);
 						}
-						
-					}
-					//有查询到结果
-			
+					});
+				} else {
+					this.lotusLoadingData.isShow = false;
 				}
-				
-				//this.loading=false;
-			});
-											
+			} else if (type === 2) {
+				if (newslistLength > 0) {
+					//
+					//上拉请求后端拿数据
+					this.$http.post(this.$urlconfig.getfabulista, this.releaseWelfare, {}).then(data => {
+						console.log(data);
+						this.lotusLoadingData.isShow = false;
+						if (data.status === 0) {
+							//没有查询到结果
+							if (data.data.datas.length === 0) {
+								this.status = 'noMore';
+								return true;
+							}
+							//this.swiperheight   534   :450    581 :  490 *
+							this.newslist[index].list=this.newslist[index].list.concat(data.data.datas);
+							this.swiperheight = this.newslist[index].list.length * 340;
+							this.status = 'more';
+							console.log(this.swiperheight);
+							console.log(this.newslist);
+						}
+					});
+				} else {
+					this.lotusLoadingData.isShow = false;
+				}
+			}
 		},
 
 		// tabbar点击事件
@@ -185,9 +236,10 @@ export default {
 		// 滑动事件
 		tabChange(e) {
 			this.tabIndex = e.detail.current;
-			this.releaseWelfare.serviceType='';
-			this.releaseWelfare.currentPage=1;
-			this.getnews(this.tabIndex,1);
+			this.releaseWelfare.serviceType = '';
+			this.releaseWelfare.currentPage = 1;
+			this.status = 'more';
+			this.getnews(this.tabIndex, 1);
 		},
 		//城市弹窗
 		showPicker(type) {
@@ -224,29 +276,25 @@ export default {
 .kong {
 	padding: 0 30upx 0 30upx;
 }
-.w-picker-demo {
-	padding: 30rpx 0;
-	text-align: center;
-	font-size: 30rpx;
-	line-height: 60rpx;
+
+.mini-class {
+	font-size: 30upx;
 }
-.result {
-	margin-top: 60px;
+.so {
+	padding: 12upx 30upx 10upx 30upx;
+}
+.sou {
+	display: flex;
+	flex-direction: row; /*同行多列布局*/
+	border-style: solid;
+	border-color: #e0e1e0;
+	border-width: 1upx; /*边框*/
+	border-radius: 10upx; /*圆角*/
 }
 
-.mini-class{
-	font-size: 40rpx;
-}
-.so{
-	padding: 10upx 30upx 10upx 30upx;
-}
-.sou{
-	
-	display: flex;
-    flex-direction: row; /*同行多列布局*/
-		border-style:solid;
-		border-color:#e0e1e0;
-		border-width:1px;/*边框*/
-		border-radius:10upx; /*圆角*/
+.meishuju {
+	font-size: 30upx;
+	text-align: center;
+	padding: 100upx 50upx 10upx 50upx;
 }
 </style>

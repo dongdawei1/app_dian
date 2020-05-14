@@ -169,20 +169,45 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _indexjs = _interopRequireDefault(__webpack_require__(/*! ../../common/indexjs/indexjs.js */ 57));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var swiperTabHead = function swiperTabHead() {return __webpack_require__.e(/*! import() | components/index/swiper-tab-head */ "components/index/swiper-tab-head").then(__webpack_require__.bind(null, /*! ../../components/index/swiper-tab-head.vue */ 173));};var LotusLoading = function LotusLoading() {return __webpack_require__.e(/*! import() | components/Winglau14-lotusLoading/Winglau14-LotusLoading */ "components/Winglau14-lotusLoading/Winglau14-LotusLoading").then(__webpack_require__.bind(null, /*! ../../components/Winglau14-lotusLoading/Winglau14-LotusLoading.vue */ 180));};var wPicker = function wPicker() {return __webpack_require__.e(/*! import() | components/w-picker/w-picker */ "components/w-picker/w-picker").then(__webpack_require__.bind(null, /*! ../../components/w-picker/w-picker.vue */ 187));};var uniNavBar = function uniNavBar() {return __webpack_require__.e(/*! import() | components/uni-nav-bar/uni-nav-bar */ "components/uni-nav-bar/uni-nav-bar").then(__webpack_require__.bind(null, /*! ../../components/uni-nav-bar/uni-nav-bar.vue */ 194));};var _default =
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _indexjs = _interopRequireDefault(__webpack_require__(/*! ../../common/indexjs/indexjs.js */ 57));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var swiperTabHead = function swiperTabHead() {return __webpack_require__.e(/*! import() | components/index/swiper-tab-head */ "components/index/swiper-tab-head").then(__webpack_require__.bind(null, /*! ../../components/index/swiper-tab-head.vue */ 173));};var indexList = function indexList() {return __webpack_require__.e(/*! import() | components/index/index-list */ "components/index/index-list").then(__webpack_require__.bind(null, /*! ../../components/index/index-list.vue */ 180));};var LotusLoading = function LotusLoading() {return __webpack_require__.e(/*! import() | components/Winglau14-lotusLoading/Winglau14-LotusLoading */ "components/Winglau14-lotusLoading/Winglau14-LotusLoading").then(__webpack_require__.bind(null, /*! ../../components/Winglau14-lotusLoading/Winglau14-LotusLoading.vue */ 187));};var wPicker = function wPicker() {return __webpack_require__.e(/*! import() | components/w-picker/w-picker */ "components/w-picker/w-picker").then(__webpack_require__.bind(null, /*! ../../components/w-picker/w-picker.vue */ 194));};var uniNavBar = function uniNavBar() {return __webpack_require__.e(/*! import() | components/uni-nav-bar/uni-nav-bar */ "components/uni-nav-bar/uni-nav-bar").then(__webpack_require__.bind(null, /*! ../../components/uni-nav-bar/uni-nav-bar.vue */ 201));};var uniLoadMore = function uniLoadMore() {return __webpack_require__.e(/*! import() | components/uni-load-more/uni-load-more */ "components/uni-load-more/uni-load-more").then(__webpack_require__.bind(null, /*! ../../components/uni-load-more/uni-load-more.vue */ 208));};var _default =
+
 
 
 
 {
   components: {
+    indexList: indexList,
     swiperTabHead: swiperTabHead,
     LotusLoading: LotusLoading,
+    uniLoadMore: uniLoadMore, //上拉加载更多
+
     wPicker: wPicker, //城市选择
     uniNavBar: uniNavBar //自定义导航
   },
   data: function data() {
     return {
-      loading: false,
+      status: 'more', //more（loading前）、loading（loading中）、noMore（没有更多了）
+      contentText: {
+        contentdown: '上拉加载更多',
+        contentrefresh: '加载中',
+        contentnomore: '没有更多信息了' },
+
+
       swiperheight: 500,
       tabIndex: 0,
 
@@ -235,11 +260,18 @@ var _indexjs = _interopRequireDefault(__webpack_require__(/*! ../../common/index
   onShow: function onShow() {},
 
   // 监听搜索框点击事件
-  onNavigationBarSearchInputClicked: function onNavigationBarSearchInputClicked() {
-
-  },
+  onNavigationBarSearchInputClicked: function onNavigationBarSearchInputClicked() {},
   // 监听原生标题导航按钮点击事件
-  onNavigationBarButtonTap: function onNavigationBarButtonTap(e) {
+  onNavigationBarButtonTap: function onNavigationBarButtonTap(e) {},
+
+  onReachBottom: function onReachBottom() {
+    //下拉刷新
+    if (this.status === 'loading') {
+      return;
+    }
+    this.status = 'loading'; // 修改状态
+    this.releaseWelfare.currentPage++;
+    this.getnews(this.tabIndex, 2);
   },
   methods: {
     __init: function __init() {
@@ -263,54 +295,73 @@ var _indexjs = _interopRequireDefault(__webpack_require__(/*! ../../common/index
           this.newslist.splice(a, 1, lin);
 
           this.tabIndex = 0;
-          //	this.tabtap(a);
           this.getnews(this.tabIndex, 1);
           break;
         }
       }
     },
     getnew: function getnew() {
-      //1为查询
+      //点击查询
       this.getnews(this.tabIndex, 1);
     },
     //刷新列表
     getnews: function getnews(index, type) {var _this2 = this;
-
-      //this.loading=true;
       console.log(index);
+      console.log('刷新开始');
       this.lotusLoadingData.isShow = true;
       var releaseType = this.newslist[index].releaseType;
-      var list = this.newslist[index].list.length;
       this.releaseWelfare.releaseType = releaseType;
+      var newslistLength = this.newslist[index].list.length;
       if (releaseType !== 30 && releaseType !== 31 && releaseType !== 35) {
       }
 
-      //请求后端拿数据
-      console.log(this.releaseWelfare);
-      this.$http.post(this.$urlconfig.getfabulista, this.releaseWelfare, {}).then(function (data) {
-        console.log(_this2.data);
-        _this2.lotusLoadingData.isShow = false;
-        if (data.status === 0) {
-          //没有查询到结果
-          if (data.data.datas === null) {
-            if (type === 1) {
-              uni.showToast({
-                title: "未查询到发布信息",
-                icon: "none" });
+      if (type === 1) {
+        if (newslistLength === 0) {
+          //请求后端拿数据
+          this.$http.post(this.$urlconfig.getfabulista, this.releaseWelfare, {}).then(function (data) {
+            console.log(data);
+            _this2.lotusLoadingData.isShow = false;
+            if (data.status === 0) {
+              //没有查询到结果
+              if (data.data.datas === null) {
+                return true;
+              }
+              //this.swiperheight   534   :450    581 :  490 *
+              _this2.newslist[index].list = data.data.datas;
 
-              return true;
-            } else if (type === 2) {
-              //刷新或者上拉加载更多	
+              _this2.swiperheight = _this2.newslist[index].list.length * 340;
+              console.log(_this2.swiperheight);
+              console.log(_this2.newslist);
             }
-
-          }
-          //有查询到结果
-
+          });
+        } else {
+          this.lotusLoadingData.isShow = false;
         }
-
-        //this.loading=false;
-      });
-
+      } else if (type === 2) {
+        if (newslistLength > 0) {
+          //
+          //上拉请求后端拿数据
+          this.$http.post(this.$urlconfig.getfabulista, this.releaseWelfare, {}).then(function (data) {
+            console.log(data);
+            _this2.lotusLoadingData.isShow = false;
+            if (data.status === 0) {
+              //没有查询到结果
+              if (data.data.datas.length === 0) {
+                _this2.status = 'noMore';
+                return true;
+              }
+              //this.swiperheight   534   :450    581 :  490 *
+              _this2.newslist[index].list = _this2.newslist[index].list.concat(data.data.datas);
+              _this2.swiperheight = _this2.newslist[index].list.length * 340;
+              _this2.status = 'more';
+              console.log(_this2.swiperheight);
+              console.log(_this2.newslist);
+            }
+          });
+        } else {
+          this.lotusLoadingData.isShow = false;
+        }
+      }
     },
 
     // tabbar点击事件
@@ -322,6 +373,7 @@ var _indexjs = _interopRequireDefault(__webpack_require__(/*! ../../common/index
       this.tabIndex = e.detail.current;
       this.releaseWelfare.serviceType = '';
       this.releaseWelfare.currentPage = 1;
+      this.status = 'more';
       this.getnews(this.tabIndex, 1);
     },
     //城市弹窗

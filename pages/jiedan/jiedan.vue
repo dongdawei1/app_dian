@@ -18,7 +18,7 @@
 				</view>
 
 				<swiper-item v-for="(items,index) in newslist" :key="index">
-					<scroll-view scroll-y class="list">
+					<scroll-view  >
 						<template v-if="items.list.length>0">
 							<daijiedan v-if="index===0" :tabBars="items.list"></daijiedan>
 							<baojiazhong v-if="index===1" :tabBars="items.list"></baojiazhong>

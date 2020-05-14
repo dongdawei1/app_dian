@@ -1,7 +1,9 @@
 {
   "usingComponents": {
+    "index-list": "/components/index/index-list",
     "swiper-tab-head": "/components/index/swiper-tab-head",
     "lotus-loading": "/components/Winglau14-lotusLoading/Winglau14-LotusLoading",
+    "uni-load-more": "/components/uni-load-more/uni-load-more",
     "w-picker": "/components/w-picker/w-picker",
     "uni-nav-bar": "/components/uni-nav-bar/uni-nav-bar"
   }

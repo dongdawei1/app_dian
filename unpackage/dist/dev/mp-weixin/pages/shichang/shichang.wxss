@@ -2,35 +2,28 @@
 .kong {
 	padding: 0 30rpx 0 30rpx;
 }
-.w-picker-demo {
-	padding: 30rpx 0;
-	text-align: center;
+.mini-class {
 	font-size: 30rpx;
-	line-height: 60rpx;
 }
-.result {
-	margin-top: 60px;
+.so {
+	padding: 12rpx 30rpx 10rpx 30rpx;
 }
-.mini-class{
-	font-size: 40rpx;
-}
-.so{
-	padding: 10rpx 30rpx 10rpx 30rpx;
-}
-.sou{
-	
+.sou {
 	display: -webkit-box;
-	
 	display: -webkit-flex;
-	
 	display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: row;
-            flex-direction: row; /*同行多列布局*/
-		border-style:solid;
-		border-color:#e0e1e0;
-		border-width:1px;/*边框*/
-		border-radius:10rpx; /*圆角*/
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row; /*同行多列布局*/
+	border-style: solid;
+	border-color: #e0e1e0;
+	border-width: 1rpx; /*边框*/
+	border-radius: 10rpx; /*圆角*/
+}
+.meishuju {
+	font-size: 30rpx;
+	text-align: center;
+	padding: 100rpx 50rpx 10rpx 50rpx;
 }
 
