@@ -240,7 +240,7 @@ export default {
 			},
 			{
 				name: "装修服务",
-				releaseType: 15
+				releaseType: 17
 			},
 			{
 				name: "灭虫服务",

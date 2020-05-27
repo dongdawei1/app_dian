@@ -11,9 +11,27 @@
 			</template>
 		
 		</view>
-		<view class="index-list4">
+		<view class="index-list4" v-if="item.releaseType !== 13 && item.releaseType !== 17 && item.releaseType !== 19 && item.releaseType !== 15 && item.releaseType !== 14 ">
 			<view>
 				商品/服务名称 : {{item.serviceType}}
+			</view>
+			<view>
+				服务城区 : {{item.serviceDetailed}}
+			</view>
+		</view>
+		
+		<view class="index-list4" v-if="item.releaseType === 15 || item.releaseType === 14 ">
+			<view>
+				出租面积(平米) : {{item.mianjia}}
+			</view>
+			<view>
+				所在城区 : {{item.serviceDetailed}}
+			</view>
+		</view>
+		
+		<view class="index-list4" v-if="item.releaseType === 13 || item.releaseType === 17 || item.releaseType === 19">
+			<view>
+				起步价格(元) : {{item.mianjia}}
 			</view>
 			<view>
 				服务城区 : {{item.serviceDetailed}}
@@ -47,7 +65,7 @@
 				uni.navigateTo({
 					url: '../../pages/detail/detail?detailData='+JSON.stringify(this.item),
 				});
-				this.User.addHistoryList(this.item);
+				
 			}
 		}
 	}

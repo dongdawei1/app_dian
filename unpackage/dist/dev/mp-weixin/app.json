@@ -72,6 +72,5 @@
     "uploadFile": 20000,
     "downloadFile": 20000
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap69.json"
+  "usingComponents": {}
 }

@@ -18,6 +18,12 @@ export default {
     shouhuo: 'order/shouhuo',         
 	getUserRealName:'realName/getUserRealName',
 	getfabulista:'fabu/getfabulista',
+	get_position_all:'releaseWelfare/get_position_all',
+	getContact:'getPublishings/getContact',
+	get_position_bytype:'releaseWelfare/get_position_bytype',
+	get_resume_all:'resume/get_resume_all',
+	getWholesaleCommodityPublicList:'wholesaleCommodity/getWholesaleCommodityPublicList',
+	
 	// websocket地址11
 	websocketUrl: "ws://localhost:8080/api/v1/vp/so/",
 	// 消息提示tabbar索引

@@ -1,0 +1,38 @@
+
+.index-list.data-v-4de02bbc {
+	padding: 10rpx 55rpx 0 0;
+	border-bottom: 1rpx solid #eeeeee;
+}
+.index-list2.data-v-4de02bbc {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	        flex-wrap: wrap;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+}
+.index-list2 view.data-v-4de02bbc {
+	padding-top: 10rpx;
+	font-size: 34rpx;
+	color: #5d5d5d;
+}
+.index-list3.data-v-4de02bbc {
+	position: relative;
+}
+.index-list4.data-v-4de02bbc {
+	padding: 0 20rpx 0 20rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	        flex-wrap: wrap;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+}
+.juzhong.data-v-4de02bbc {
+	text-align: center;
+}
+

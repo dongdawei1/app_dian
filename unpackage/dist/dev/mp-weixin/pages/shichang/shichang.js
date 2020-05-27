@@ -184,20 +184,48 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _indexjs = _interopRequireDefault(__webpack_require__(/*! ../../common/indexjs/indexjs.js */ 57));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var swiperTabHead = function swiperTabHead() {return __webpack_require__.e(/*! import() | components/index/swiper-tab-head */ "components/index/swiper-tab-head").then(__webpack_require__.bind(null, /*! ../../components/index/swiper-tab-head.vue */ 173));};var indexList = function indexList() {return __webpack_require__.e(/*! import() | components/index/index-list */ "components/index/index-list").then(__webpack_require__.bind(null, /*! ../../components/index/index-list.vue */ 180));};var LotusLoading = function LotusLoading() {return __webpack_require__.e(/*! import() | components/Winglau14-lotusLoading/Winglau14-LotusLoading */ "components/Winglau14-lotusLoading/Winglau14-LotusLoading").then(__webpack_require__.bind(null, /*! ../../components/Winglau14-lotusLoading/Winglau14-LotusLoading.vue */ 187));};var wPicker = function wPicker() {return __webpack_require__.e(/*! import() | components/w-picker/w-picker */ "components/w-picker/w-picker").then(__webpack_require__.bind(null, /*! ../../components/w-picker/w-picker.vue */ 194));};var uniNavBar = function uniNavBar() {return __webpack_require__.e(/*! import() | components/uni-nav-bar/uni-nav-bar */ "components/uni-nav-bar/uni-nav-bar").then(__webpack_require__.bind(null, /*! ../../components/uni-nav-bar/uni-nav-bar.vue */ 201));};var uniLoadMore = function uniLoadMore() {return __webpack_require__.e(/*! import() | components/uni-load-more/uni-load-more */ "components/uni-load-more/uni-load-more").then(__webpack_require__.bind(null, /*! ../../components/uni-load-more/uni-load-more.vue */ 208));};var _default =
 
 
 
 
-{
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _indexjs = _interopRequireDefault(__webpack_require__(/*! ../../common/indexjs/indexjs.js */ 57));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var swiperTabHead = function swiperTabHead() {return __webpack_require__.e(/*! import() | components/index/swiper-tab-head */ "components/index/swiper-tab-head").then(__webpack_require__.bind(null, /*! ../../components/index/swiper-tab-head.vue */ 173));};var indexList = function indexList() {return __webpack_require__.e(/*! import() | components/index/index-list */ "components/index/index-list").then(__webpack_require__.bind(null, /*! ../../components/index/index-list.vue */ 180));};var zhaopinList = function zhaopinList() {return __webpack_require__.e(/*! import() | components/index/zhaopin-list */ "components/index/zhaopin-list").then(__webpack_require__.bind(null, /*! ../../components/index/zhaopin-list.vue */ 187));};var jianliList = function jianliList() {return __webpack_require__.e(/*! import() | components/index/jianli-list */ "components/index/jianli-list").then(__webpack_require__.bind(null, /*! ../../components/index/jianli-list.vue */ 352));};var LotusLoading = function LotusLoading() {return __webpack_require__.e(/*! import() | components/Winglau14-lotusLoading/Winglau14-LotusLoading */ "components/Winglau14-lotusLoading/Winglau14-LotusLoading").then(__webpack_require__.bind(null, /*! ../../components/Winglau14-lotusLoading/Winglau14-LotusLoading.vue */ 194));};var wPicker = function wPicker() {return __webpack_require__.e(/*! import() | components/w-picker/w-picker */ "components/w-picker/w-picker").then(__webpack_require__.bind(null, /*! ../../components/w-picker/w-picker.vue */ 201));};var uniNavBar = function uniNavBar() {return __webpack_require__.e(/*! import() | components/uni-nav-bar/uni-nav-bar */ "components/uni-nav-bar/uni-nav-bar").then(__webpack_require__.bind(null, /*! ../../components/uni-nav-bar/uni-nav-bar.vue */ 208));};var uniLoadMore = function uniLoadMore() {return __webpack_require__.e(/*! import() | components/uni-load-more/uni-load-more */ "components/uni-load-more/uni-load-more").then(__webpack_require__.bind(null, /*! ../../components/uni-load-more/uni-load-more.vue */ 215));};var xflSelect = function xflSelect() {return __webpack_require__.e(/*! import() | components/xfl-select/xfl-select */ "components/xfl-select/xfl-select").then(__webpack_require__.bind(null, /*! ../../components/xfl-select/xfl-select.vue */ 222));};
+
+
+
+
+
+//下拉导入
+var _default = {
   components: {
     indexList: indexList,
+    zhaopinList: zhaopinList,
+    jianliList: jianliList,
     swiperTabHead: swiperTabHead,
     LotusLoading: LotusLoading,
     uniLoadMore: uniLoadMore, //上拉加载更多
 
     wPicker: wPicker, //城市选择
-    uniNavBar: uniNavBar //自定义导航
+    uniNavBar: uniNavBar, //自定义导航
+    xflSelect: xflSelect //下拉框
   },
   data: function data() {
     return {
@@ -207,7 +235,7 @@ var _indexjs = _interopRequireDefault(__webpack_require__(/*! ../../common/index
         contentrefresh: '加载中',
         contentnomore: '没有更多信息了' },
 
-
+      placeholder: '请输入商品名或服务关键字',
       swiperheight: 500,
       tabIndex: 0,
 
@@ -220,13 +248,13 @@ var _indexjs = _interopRequireDefault(__webpack_require__(/*! ../../common/index
       lotusLoadingData: {
         isShow: false //设置显示加载中组件true显示false隐藏
       },
-
       //城市
       defaultRegion: ['150000', '150100', '150103'],
       result: {
         result: '' },
 
-
+      list: ['服务员'],
+      list_role: '',
       releaseWelfare: {
         //查询条件
         selectedOptions: [], //三级联动城市
@@ -236,8 +264,9 @@ var _indexjs = _interopRequireDefault(__webpack_require__(/*! ../../common/index
         currentPage: 1,
         pageSize: 12, //每页显示的数量
         //分页结束
-        releaseType: ''
-
+        releaseType: '',
+        position: '服务员',
+        companyName: ''
         //fouseSizeGreater: '',
         //fouseSizeLess: '' //面积小于
       } };
@@ -254,6 +283,7 @@ var _indexjs = _interopRequireDefault(__webpack_require__(/*! ../../common/index
 
     this.role = e.role;
     this.releaseType = Number(e.releaseType);
+    this.setplaceholder();
     this.__init();
   },
   //页面每次出现都检查是否开启接到哪如果开启刷新订单
@@ -265,7 +295,7 @@ var _indexjs = _interopRequireDefault(__webpack_require__(/*! ../../common/index
   onNavigationBarButtonTap: function onNavigationBarButtonTap(e) {},
 
   onReachBottom: function onReachBottom() {
-    //下拉刷新
+    //上拉加载更多
     if (this.status === 'loading') {
       return;
     }
@@ -274,6 +304,21 @@ var _indexjs = _interopRequireDefault(__webpack_require__(/*! ../../common/index
     this.getnews(this.tabIndex, 2);
   },
   methods: {
+    //设置搜索框文案
+    setplaceholder: function setplaceholder() {
+      if (this.releaseType === 14 || this.releaseType === 15) {
+        this.placeholder = '请输入面积(整数数字)或者地址';
+      } else {
+        this.placeholder = '请输入商品名或服务关键字';
+      }
+    },
+    //切换筛选条件
+    change: function change(e) {
+      this.releaseWelfare.position = e.newVal;
+      this.releaseWelfare.currentPage = 1;
+      this.status = 'more';
+      this.getnews(this.tabIndex, 1);
+    },
     __init: function __init() {
       this.getUserRealName();
       if (this.tabBars.length === 0 || this.newslist.length === 0) {
@@ -281,6 +326,7 @@ var _indexjs = _interopRequireDefault(__webpack_require__(/*! ../../common/index
         this.tabBars = resule.tabBars;
         this.newslist = resule.newslist;
       }
+
       for (var a = 0; a < this.tabBars.length; a++) {
         if (this.tabBars[a].releaseType === this.releaseType) {
           var ti = this.tabBars[a];
@@ -288,12 +334,10 @@ var _indexjs = _interopRequireDefault(__webpack_require__(/*! ../../common/index
           //把点击的放在第一位
           this.tabBars.splice(0, 1, ti);
           this.tabBars.splice(a, 1, tin);
-
           var li = this.newslist[a];
           var lin = this.newslist[0];
           this.newslist.splice(0, 1, li);
           this.newslist.splice(a, 1, lin);
-
           this.tabIndex = 0;
           this.getnews(this.tabIndex, 1);
           break;
@@ -301,67 +345,79 @@ var _indexjs = _interopRequireDefault(__webpack_require__(/*! ../../common/index
       }
     },
     getnew: function getnew() {
+      this.releaseWelfare.currentPage = 1;
       //点击查询
-      this.getnews(this.tabIndex, 1);
+      this.getnews(this.tabIndex, 3);
     },
+
     //刷新列表
-    getnews: function getnews(index, type) {var _this2 = this;
-      console.log(index);
-      console.log('刷新开始');
-      this.lotusLoadingData.isShow = true;
+    getnews: function getnews(index, type) {
       var releaseType = this.newslist[index].releaseType;
+      this.releaseType = releaseType;
       this.releaseWelfare.releaseType = releaseType;
-      var newslistLength = this.newslist[index].list.length;
-      if (releaseType !== 30 && releaseType !== 31 && releaseType !== 35) {
-      }
-
-      if (type === 1) {
-        if (newslistLength === 0) {
-          //请求后端拿数据
-          this.$http.post(this.$urlconfig.getfabulista, this.releaseWelfare, {}).then(function (data) {
-            console.log(data);
-            _this2.lotusLoadingData.isShow = false;
-            if (data.status === 0) {
-              //没有查询到结果
-              if (data.data.datas === null) {
-                return true;
-              }
-              //this.swiperheight   534   :450    581 :  490 *
-              _this2.newslist[index].list = data.data.datas;
-
-              _this2.swiperheight = _this2.newslist[index].list.length * 340;
-              console.log(_this2.swiperheight);
-              console.log(_this2.newslist);
-            }
-          });
+      //let newslistLength = this.newslist[index].list.length;
+      if (type === 1 || type === 3) {
+        this.setplaceholder();
+        //每次滑动都请求后端
+        if (releaseType === 30) {
+          this.get_position_bytype(2);
+          this.getDatas(this.$urlconfig.get_position_all, index, 1);
+        } else if (releaseType === 31) {
+          this.get_position_bytype(1);
+          this.getDatas(this.$urlconfig.get_resume_all, index, 1);
+        } else if (releaseType === 35) {
+          this.getDatas(this.$urlconfig.getWholesaleCommodityPublicList, index, 1);
         } else {
-          this.lotusLoadingData.isShow = false;
+          this.getDatas(this.$urlconfig.getfabulista, index, 1);
         }
       } else if (type === 2) {
-        if (newslistLength > 0) {
-          //
-          //上拉请求后端拿数据
-          this.$http.post(this.$urlconfig.getfabulista, this.releaseWelfare, {}).then(function (data) {
-            console.log(data);
-            _this2.lotusLoadingData.isShow = false;
-            if (data.status === 0) {
-              //没有查询到结果
-              if (data.data.datas.length === 0) {
-                _this2.status = 'noMore';
-                return true;
-              }
-              //this.swiperheight   534   :450    581 :  490 *
-              _this2.newslist[index].list = _this2.newslist[index].list.concat(data.data.datas);
-              _this2.swiperheight = _this2.newslist[index].list.length * 340;
-              _this2.status = 'more';
-              console.log(_this2.swiperheight);
-              console.log(_this2.newslist);
-            }
-          });
+        if (releaseType === 30) {
+          this.getDatas(this.$urlconfig.get_position_all, index, 2);
+        } else if (releaseType === 31) {
+          this.getDatas(this.$urlconfig.get_resume_all, index, 2);
+        } else if (releaseType === 35) {
+          return true;
         } else {
-          this.lotusLoadingData.isShow = false;
+          this.getDatas(this.$urlconfig.getfabulista, index, 2);
         }
       }
+    },
+
+    //请求数据
+    getDatas: function getDatas(url, index, type) {var _this2 = this;
+      this.lotusLoadingData.isShow = true;
+      this.$http.post(url, this.releaseWelfare, {}).then(function (data) {
+        _this2.lotusLoadingData.isShow = false;
+        console.log(data);
+        if (data.status === 0) {
+          if (type === 1) {
+            //没有查询到结果
+            if (data.data.datas === null || data.data.datas.length === 0) {
+              _this2.newslist[index].list = [];
+              return true;
+            }
+            //this.swiperheight   534   :450    581 :  490 *
+            _this2.newslist[index].list = data.data.datas;
+            _this2.swiperheight = _this2.newslist[index].list.length * 340;
+            if (data.data.totalno > _this2.releaseWelfare.pageSize) {
+              _this2.status = 'more';
+            } else {
+              _this2.status = 'noMore';
+            }
+          } else {
+            //没有查询到结果
+            if (data.data.datas === null || data.data.datas.length === 0) {
+              _this2.status = 'noMore';
+              return true;
+            }
+            //this.swiperheight   534   :450    581 :  490 *
+            _this2.newslist[index].list = _this2.newslist[index].list.concat(data.data.datas);
+            _this2.swiperheight = _this2.newslist[index].list.length * 340;
+            _this2.status = 'more';
+          }
+        }
+      });
+      return true;
     },
 
     // tabbar点击事件
@@ -389,17 +445,31 @@ var _indexjs = _interopRequireDefault(__webpack_require__(/*! ../../common/index
     back: function back() {
       uni.navigateBack({ delta: 1 });
     },
+    //获取职位信息
+    get_position_bytype: function get_position_bytype(role) {var _this3 = this;
+      if (this.list.length === 1 || this.list_role !== role) {
+        var params = {
+          role: role };
+
+        this.$http.get(this.$urlconfig.get_position_bytype, params, {}).then(function (data) {
+          if (data.status === 0 && data.data.length > 0) {
+            _this3.list = data.data;
+          }
+        });
+        this.list_role = role;
+      }
+    },
     //获取实名信息
-    getUserRealName: function getUserRealName() {var _this3 = this;
+    getUserRealName: function getUserRealName() {var _this4 = this;
       this.$http.get(this.$urlconfig.getUserRealName, {}, {}).then(function (data) {
         if (data.status === 0) {
-          _this3.result.result = data.data.detailed;
+          _this4.result.result = data.data.detailed;
           var ar = [];
           ar[0] = data.data.provincesId.toString();
           ar[1] = data.data.cityId.toString();
           ar[2] = data.data.districtCountyId.toString();
 
-          _this3.releaseWelfare.selectedOptions = ar;
+          _this4.releaseWelfare.selectedOptions = ar;
         }
       });
     } } };exports.default = _default;
