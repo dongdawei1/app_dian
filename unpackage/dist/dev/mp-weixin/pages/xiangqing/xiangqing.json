@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "发布详情",
+  "usingComponents": {
+    "lotus-loading": "/components/Winglau14-lotusLoading/Winglau14-LotusLoading",
+    "pingjia": "/components/pingjia/pingjia",
+    "lunbo": "/components/lunbo/lunbo"
+  }
+}

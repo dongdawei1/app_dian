@@ -34,9 +34,9 @@
 
 <script>
 	import swiperTabHead from "../../components/index/swiper-tab-head.vue";
-	import daijiedan from "../../components/index/daijiedan.vue";
-	import baojiazhong from "../../components/index/baojiazhong.vue";
-	import jinqidingdan from "../../components/index/jinqidingdan.vue";
+	import daijiedan from "../../components/jiedan/daijiedan.vue";
+	import baojiazhong from "../../components/jiedan/baojiazhong.vue";
+	import jinqidingdan from "../../components/jiedan/jinqidingdan.vue";
 	export default {
 		components: {
 			swiperTabHead,

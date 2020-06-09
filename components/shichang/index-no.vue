@@ -1,8 +1,8 @@
 <template>
 	<view class="index-list">
 		
-		<view class="index-list2" @tap="opendetail">{{item.releaseTitle}} </view>
-		<view class="index-list3 " @tap="opendetail">
+		<view class="index-list2" @tap="opendetail(item)">{{item.releaseTitle}} </view>
+		<view class="index-list3 " @tap="opendetail(item)">
 			<template v-if="item.pictureUrl">
 				<!-- 图片 -->
 				<image :src="item.pictureUrl" 
@@ -46,24 +46,13 @@
 			item:Object,
 			index:Number
 		},
-		// pictureUrl: "http://localhost:8080/img/20200319234017700.jpeg"
-		// releaseTitle: "122222222222"
-		// releaseType: 5
-		// serviceDetailed: "来电确认"
-		// serviceType: "12212"  商品名称： 新加菜
-//服务城区： 来电确认
+	
 		
 		methods:{
-			openSpace(){
-				uni.navigateTo({
-					url:"../../pages/user-space/user-space?userid="+this.item.userid
-				})
-			},
-			
 			// 进入详情页
-			opendetail(){
+			opendetail(item){
 				uni.navigateTo({
-					url: '../../pages/detail/detail?detailData='+JSON.stringify(this.item),
+					url: '../../pages/xiangqing/xiangqing?id='+item.id+'&releaseType='+item.releaseType
 				});
 				
 			}

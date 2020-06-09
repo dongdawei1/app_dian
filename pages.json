@@ -100,7 +100,12 @@
 				}
 			}
 		},
-		
+		{
+			"path": "pages/xiangqing/xiangqing",
+			"style": {
+				"navigationBarTitleText": "发布详情"
+			}
+		},
 		
 		
 		

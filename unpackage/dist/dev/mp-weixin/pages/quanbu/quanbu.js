@@ -133,206 +133,45 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 26));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};} //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _regenerator = _interopRequireDefault(__webpack_require__(/*! ./node_modules/@babel/runtime/regenerator */ 26));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _indexjs = _interopRequireDefault(__webpack_require__(/*! ../../common/indexjs/indexjs.js */ 57));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _slicedToArray(arr, i) {return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();}function _nonIterableRest() {throw new TypeError("Invalid attempt to destructure non-iterable instance");}function _iterableToArrayLimit(arr, i) {var _arr = [];var _n = true;var _d = false;var _e = undefined;try {for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {_arr.push(_s.value);if (i && _arr.length === i) break;}} catch (err) {_d = true;_e = err;} finally {try {if (!_n && _i["return"] != null) _i["return"]();} finally {if (_d) throw _e;}}return _arr;}function _arrayWithHoles(arr) {if (Array.isArray(arr)) return arr;}function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {Promise.resolve(value).then(_next, _throw);}}function _asyncToGenerator(fn) {return function () {var self = this,args = arguments;return new Promise(function (resolve, reject) {var gen = fn.apply(self, args);function _next(value) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);}function _throw(err) {asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);}_next(undefined);});};}var _default =
 {
 
   data: function data() {
     return {
       isAuthentication: '',
       role: '',
-      tabBars: [{
-        name: "零售信息",
-        liioc: "/static/quanbu/gengduo.png",
-        list: [{
-          name: "蔬菜零售",
-          lsioc: "/static/quanbu/shucai.png",
-          releaseType: 4 },
-
-        {
-          name: "粮油零售",
-          lsioc: "/static/quanbu/liangyou.png",
-          releaseType: 5 },
-
-        {
-          name: "调料/副食",
-          lsioc: "/static/quanbu/tiaoliao.png",
-          releaseType: 6 },
-
-        {
-          name: "水产/蛋禽",
-          lsioc: "/static/quanbu/shuichan.png",
-          releaseType: 29 },
-
-        {
-          name: "清洁用品",
-          lsioc: "/static/quanbu/qingjie.png",
-          releaseType: 9 },
-
-        {
-          name: "桌椅餐具",
-          lsioc: "/static/quanbu/canju.png",
-          releaseType: 11 }] },
-
-
-
-
-
-      {
-        name: "工服/百货零售信息",
-        liioc: "/static/quanbu/gengduo.png",
-        list: [{
-          name: "工服",
-          lsioc: "/static/quanbu/gongfu.png",
-          releaseType: 101 },
-
-        {
-          name: "百货",
-          lsioc: "/static/quanbu/baihuo.png",
-          releaseType: 102 },
-
-        {
-          name: "绿植",
-          lsioc: "/static/quanbu/lvzhi.png",
-          releaseType: 103 },
-
-        {
-          name: "装饰用品",
-          lsioc: "/static/quanbu/zhuangshi.png",
-          releaseType: 104 }] },
-
-
-
-
-      {
-        name: "酒水/饮料/消毒餐具",
-        liioc: "/static/quanbu/gengduo.png",
-        list: [{
-          name: "酒水/饮料",
-          lsioc: "/static/quanbu/jiu.png",
-          releaseType: 7 },
-
-        {
-          name: "消毒餐具",
-          lsioc: "/static/quanbu/xiaodu.png",
-          releaseType: 8 }] },
-
-
-
-
-      {
-        name: "电器出售/设备维修信息",
-        liioc: "/static/quanbu/gengduo.png",
-        list: [{
-          name: "电器出售",
-          lsioc: "/static/quanbu/chufangdiaoqi.png",
-          releaseType: 33 },
-
-        {
-          name: "二手电器",
-          lsioc: "/static/quanbu/jiuwu.png",
-          releaseType: 34 },
-
-        {
-          name: "维修电器",
-          lsioc: "/static/quanbu/weixiu.png",
-          releaseType: 18 }] },
-
-
-
-
-      {
-        name: "出租信息",
-        liioc: "/static/quanbu/gengduo.png",
-        list: [{
-          name: "店面/窗口",
-          lsioc: "/static/quanbu/dianmain.png",
-          releaseType: 14 },
-
-        {
-          name: "摊位",
-          lsioc: "/static/quanbu/tanwei.png",
-          releaseType: 15 }] },
-
-
-
-      {
-        name: "装修/灭虫/广告",
-        liioc: "/static/quanbu/gengduo.png",
-        list: [{
-          name: "菜谱/广告",
-          lsioc: "/static/quanbu/caipu.png",
-          releaseType: 13 },
-
-        {
-          name: "装修服务",
-          lsioc: "/static/quanbu/zhangxiu.png",
-          releaseType: 15 },
-
-        {
-          name: "灭虫服务",
-          lsioc: "/static/quanbu/shachong.png",
-          releaseType: 19 }] },
-
-
-
-      //上边跳一个地址,下边的条三个页面
-
-      {
-
-        name: "招聘/求职信息",
-        liioc: "/static/quanbu/gengduo.png",
-        list: [{
-          name: "招聘信息",
-          lsioc: "/static/quanbu/zhiwei.png",
-          releaseType: 30 },
-
-        {
-          name: "求职信息",
-          lsioc: "/static/quanbu/jianli.png",
-          releaseType: 31 }] },
-
-
-
-
-
-      {
-        name: "批发信息",
-        liioc: "/static/quanbu/gengduo.png",
-        list: [{
-          name: "全部批发",
-          lsioc: "/static/quanbu/pifa.png",
-          releaseType: 35 }] }] };
-
-
-
+      tabBars: [] };
 
 
   },
+
   onLoad: function onLoad() {//页面加载
     this.__init();
   },
@@ -343,6 +182,10 @@ var _default =
     __init: function __init() {
       this.role = uni.getStorageSync("dian_role");
       this.isAuthentication = this.$user.isAuthentication;
+      if (this.tabBars.length === 0) {
+        var resule = _indexjs.default.getquanbuliebiao();
+        this.tabBars = resule;
+      }
     },
     tiaozhuan: function () {var _tiaozhuan = _asyncToGenerator( /*#__PURE__*/_regenerator.default.mark(function _callee(releaseType) {var uuidform, _ref, _ref2, err, res;return _regenerator.default.wrap(function _callee$(_context) {while (1) {switch (_context.prev = _context.next) {case 0:if (!(
                 this.isAuthentication !== 2)) {_context.next = 14;break;}

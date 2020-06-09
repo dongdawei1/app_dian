@@ -207,8 +207,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _indexjs = _interopRequireDefault(__webpack_require__(/*! ../../common/indexjs/indexjs.js */ 57));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var swiperTabHead = function swiperTabHead() {return __webpack_require__.e(/*! import() | components/index/swiper-tab-head */ "components/index/swiper-tab-head").then(__webpack_require__.bind(null, /*! ../../components/index/swiper-tab-head.vue */ 173));};var indexList = function indexList() {return __webpack_require__.e(/*! import() | components/index/index-list */ "components/index/index-list").then(__webpack_require__.bind(null, /*! ../../components/index/index-list.vue */ 180));};var zhaopinList = function zhaopinList() {return __webpack_require__.e(/*! import() | components/index/zhaopin-list */ "components/index/zhaopin-list").then(__webpack_require__.bind(null, /*! ../../components/index/zhaopin-list.vue */ 187));};var jianliList = function jianliList() {return __webpack_require__.e(/*! import() | components/index/jianli-list */ "components/index/jianli-list").then(__webpack_require__.bind(null, /*! ../../components/index/jianli-list.vue */ 352));};var LotusLoading = function LotusLoading() {return __webpack_require__.e(/*! import() | components/Winglau14-lotusLoading/Winglau14-LotusLoading */ "components/Winglau14-lotusLoading/Winglau14-LotusLoading").then(__webpack_require__.bind(null, /*! ../../components/Winglau14-lotusLoading/Winglau14-LotusLoading.vue */ 194));};var wPicker = function wPicker() {return __webpack_require__.e(/*! import() | components/w-picker/w-picker */ "components/w-picker/w-picker").then(__webpack_require__.bind(null, /*! ../../components/w-picker/w-picker.vue */ 201));};var uniNavBar = function uniNavBar() {return __webpack_require__.e(/*! import() | components/uni-nav-bar/uni-nav-bar */ "components/uni-nav-bar/uni-nav-bar").then(__webpack_require__.bind(null, /*! ../../components/uni-nav-bar/uni-nav-bar.vue */ 208));};var uniLoadMore = function uniLoadMore() {return __webpack_require__.e(/*! import() | components/uni-load-more/uni-load-more */ "components/uni-load-more/uni-load-more").then(__webpack_require__.bind(null, /*! ../../components/uni-load-more/uni-load-more.vue */ 215));};var xflSelect = function xflSelect() {return __webpack_require__.e(/*! import() | components/xfl-select/xfl-select */ "components/xfl-select/xfl-select").then(__webpack_require__.bind(null, /*! ../../components/xfl-select/xfl-select.vue */ 222));};
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var _indexjs = _interopRequireDefault(__webpack_require__(/*! ../../common/indexjs/indexjs.js */ 57));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var swiperTabHead = function swiperTabHead() {return __webpack_require__.e(/*! import() | components/index/swiper-tab-head */ "components/index/swiper-tab-head").then(__webpack_require__.bind(null, /*! ../../components/index/swiper-tab-head.vue */ 181));};var indexNo = function indexNo() {return __webpack_require__.e(/*! import() | components/shichang/index-no */ "components/shichang/index-no").then(__webpack_require__.bind(null, /*! ../../components/shichang/index-no.vue */ 188));};var zhaopinNo = function zhaopinNo() {return __webpack_require__.e(/*! import() | components/shichang/zhaopin-no */ "components/shichang/zhaopin-no").then(__webpack_require__.bind(null, /*! ../../components/shichang/zhaopin-no.vue */ 195));};var jianliNo = function jianliNo() {return __webpack_require__.e(/*! import() | components/shichang/jianli-no */ "components/shichang/jianli-no").then(__webpack_require__.bind(null, /*! ../../components/shichang/jianli-no.vue */ 202));};var pifaNo = function pifaNo() {return __webpack_require__.e(/*! import() | components/shichang/pifa-no */ "components/shichang/pifa-no").then(__webpack_require__.bind(null, /*! ../../components/shichang/pifa-no.vue */ 209));};var LotusLoading = function LotusLoading() {return __webpack_require__.e(/*! import() | components/Winglau14-lotusLoading/Winglau14-LotusLoading */ "components/Winglau14-lotusLoading/Winglau14-LotusLoading").then(__webpack_require__.bind(null, /*! ../../components/Winglau14-lotusLoading/Winglau14-LotusLoading.vue */ 216));};var wPicker = function wPicker() {return __webpack_require__.e(/*! import() | components/w-picker/w-picker */ "components/w-picker/w-picker").then(__webpack_require__.bind(null, /*! ../../components/w-picker/w-picker.vue */ 223));};var uniNavBar = function uniNavBar() {return __webpack_require__.e(/*! import() | components/uni-nav-bar/uni-nav-bar */ "components/uni-nav-bar/uni-nav-bar").then(__webpack_require__.bind(null, /*! ../../components/uni-nav-bar/uni-nav-bar.vue */ 230));};var uniLoadMore = function uniLoadMore() {return __webpack_require__.e(/*! import() | components/uni-load-more/uni-load-more */ "components/uni-load-more/uni-load-more").then(__webpack_require__.bind(null, /*! ../../components/uni-load-more/uni-load-more.vue */ 237));};var xflSelect = function xflSelect() {return __webpack_require__.e(/*! import() | components/xfl-select/xfl-select */ "components/xfl-select/xfl-select").then(__webpack_require__.bind(null, /*! ../../components/xfl-select/xfl-select.vue */ 244));};
 
 
 
@@ -216,9 +233,10 @@ var _indexjs = _interopRequireDefault(__webpack_require__(/*! ../../common/index
 //下拉导入
 var _default = {
   components: {
-    indexList: indexList,
-    zhaopinList: zhaopinList,
-    jianliList: jianliList,
+    indexNo: indexNo,
+    zhaopinNo: zhaopinNo,
+    jianliNo: jianliNo,
+    pifaNo: pifaNo,
     swiperTabHead: swiperTabHead,
     LotusLoading: LotusLoading,
     uniLoadMore: uniLoadMore, //上拉加载更多
@@ -238,7 +256,6 @@ var _default = {
       placeholder: '请输入商品名或服务关键字',
       swiperheight: 500,
       tabIndex: 0,
-
       role: '',
       releaseType: '',
       isbut: false,
@@ -254,22 +271,19 @@ var _default = {
         result: '' },
 
       list: ['服务员'],
+      list_releaseType: [{ value: '蔬菜批发', releaseType: 401 }, { value: '粮油批发', releaseType: 405 }, { value: '调料/副食', releaseType: 406 }, { value: '水产/禽蛋', releaseType: 429 }, { value: '清洁用品', releaseType: 409 }],
       list_role: '',
       releaseWelfare: {
         //查询条件
         selectedOptions: [], //三级联动城市
-        serviceType: '', //维修项目，设备名称
-        //releaseTitle: '', //标题
+        serviceType: '', //维修项目，设备名称，批发是商品名,租房数字是面积
         //分页开始
         currentPage: 1,
         pageSize: 12, //每页显示的数量
         //分页结束
         releaseType: '',
-        position: '服务员',
-        companyName: ''
-        //fouseSizeGreater: '',
-        //fouseSizeLess: '' //面积小于
-      } };
+        position: '服务员' } };
+
 
   },
   onLoad: function onLoad(e) {var _this = this;
@@ -283,12 +297,12 @@ var _default = {
 
     this.role = e.role;
     this.releaseType = Number(e.releaseType);
+    //this.releaseType  批发===35
     this.setplaceholder();
     this.__init();
   },
   //页面每次出现都检查是否开启接到哪如果开启刷新订单
   onShow: function onShow() {},
-
   // 监听搜索框点击事件
   onNavigationBarSearchInputClicked: function onNavigationBarSearchInputClicked() {},
   // 监听原生标题导航按钮点击事件
@@ -308,6 +322,10 @@ var _default = {
     setplaceholder: function setplaceholder() {
       if (this.releaseType === 14 || this.releaseType === 15) {
         this.placeholder = '请输入面积(整数数字)或者地址';
+      } else if (this.releaseType === 35 && this.releaseWelfare.releaseType < 400) {
+        this.placeholder = '请输入商品名或市场名';
+
+        this.releaseWelfare.releaseType = 401;
       } else {
         this.placeholder = '请输入商品名或服务关键字';
       }
@@ -318,6 +336,9 @@ var _default = {
       this.releaseWelfare.currentPage = 1;
       this.status = 'more';
       this.getnews(this.tabIndex, 1);
+    },
+    change_pifa: function change_pifa(e) {
+      this.releaseWelfare.releaseType = e.orignItem.releaseType;
     },
     __init: function __init() {
       this.getUserRealName();
@@ -354,7 +375,9 @@ var _default = {
     getnews: function getnews(index, type) {
       var releaseType = this.newslist[index].releaseType;
       this.releaseType = releaseType;
-      this.releaseWelfare.releaseType = releaseType;
+      if (this.releaseType !== 35) {
+        this.releaseWelfare.releaseType = releaseType;
+      }
       //let newslistLength = this.newslist[index].list.length;
       if (type === 1 || type === 3) {
         this.setplaceholder();
@@ -376,7 +399,7 @@ var _default = {
         } else if (releaseType === 31) {
           this.getDatas(this.$urlconfig.get_resume_all, index, 2);
         } else if (releaseType === 35) {
-          return true;
+          this.getDatas(this.$urlconfig.getWholesaleCommodityPublicList, index, 2);
         } else {
           this.getDatas(this.$urlconfig.getfabulista, index, 2);
         }
@@ -388,7 +411,6 @@ var _default = {
       this.lotusLoadingData.isShow = true;
       this.$http.post(url, this.releaseWelfare, {}).then(function (data) {
         _this2.lotusLoadingData.isShow = false;
-        console.log(data);
         if (data.status === 0) {
           if (type === 1) {
             //没有查询到结果
@@ -398,7 +420,7 @@ var _default = {
             }
             //this.swiperheight   534   :450    581 :  490 *
             _this2.newslist[index].list = data.data.datas;
-            _this2.swiperheight = _this2.newslist[index].list.length * 340;
+            _this2.swiperheight = _this2.newslist[index].list.length * 340 + 30;
             if (data.data.totalno > _this2.releaseWelfare.pageSize) {
               _this2.status = 'more';
             } else {
@@ -468,7 +490,6 @@ var _default = {
           ar[0] = data.data.provincesId.toString();
           ar[1] = data.data.cityId.toString();
           ar[2] = data.data.districtCountyId.toString();
-
           _this4.releaseWelfare.selectedOptions = ar;
         }
       });

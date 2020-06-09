@@ -9,21 +9,38 @@
 	padding: 12rpx 30rpx 10rpx 30rpx;
 }
 .sou {
+	padding: 1rpx 1rpx 1rpx 0;/*不设边框出不来*/
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
+	border:1rpx solid #e0e1e0;/*边框*/
 	-webkit-box-orient: horizontal;
 	-webkit-box-direction: normal;
 	-webkit-flex-direction: row;
 	        flex-direction: row; /*同行多列布局*/
-	border-style: solid;
-	border-color: #e0e1e0;
-	border-width: 1rpx; /*边框*/
-	border-radius: 10rpx; /*圆角*/
+	/*border-style: solid; 边框样式*/
+	/*border-color: #e0e1e0; 边框颜色*/
+/*	border-width: 1upx; 边框宽*/
+	border-radius: 10rpx; /*边框圆角*/
+}
+.so_pifa{
+	padding: 12rpx 40rpx 10rpx 40rpx;
+}
+.gao{
+	height: 72rpx;
+	margin: auto;
+}
+.gao1{
+	margin: auto;
+	height: 59rpx; /*不设置圆角出不来*/
+	padding: 2rpx 0 2rpx 39rpx;
 }
 .meishuju {
 	font-size: 30rpx;
 	text-align: center;
 	padding: 100rpx 50rpx 10rpx 50rpx;
 }
+button::after{ border: none;}
+
+/*去除按钮边框*/
 

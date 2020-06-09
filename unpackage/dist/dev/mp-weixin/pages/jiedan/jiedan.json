@@ -2,8 +2,8 @@
   "navigationBarTitleText": "接单中心",
   "usingComponents": {
     "swiper-tab-head": "/components/index/swiper-tab-head",
-    "daijiedan": "/components/index/daijiedan",
-    "baojiazhong": "/components/index/baojiazhong",
-    "jinqidingdan": "/components/index/jinqidingdan"
+    "daijiedan": "/components/jiedan/daijiedan",
+    "baojiazhong": "/components/jiedan/baojiazhong",
+    "jinqidingdan": "/components/jiedan/jinqidingdan"
   }
 }

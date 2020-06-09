@@ -1,6 +1,6 @@
 <template>
 	<view class="index-list">
-		<view class="index-list2" @tap="opendetail">
+		<view class="index-list2">
 			<view>招聘职位：{{ item.position }}</view>
 			<view>薪资待遇 : {{ item.salary }}</view>
 		</view>

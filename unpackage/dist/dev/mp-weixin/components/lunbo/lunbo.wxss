@@ -1,0 +1,34 @@
+
+.wai.data-v-3f2869dc{
+	border-top: 1rpx solid #eeeeee;
+	padding: 45rpx 20rpx 30rpx 20rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex; 
+	-webkit-flex-wrap: wrap; 
+	        flex-wrap: wrap; /*父级容器 属性,默认情况下,子元素都排在一条线(又称"轴线")上,flex-wrap属性定义,如果一条轴线排不下,如何换行*/
+}
+.liebiao.data-v-3f2869dc{
+	width:50%; 
+	display: -webkit-box; 
+	display: -webkit-flex; 
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+	/*元素上下排列
+	flex-grow:1;*/
+	height: 450rpx;
+}
+.liebiao image.data-v-3f2869dc{
+	margin: 0 auto;
+	/*圖片居中*/
+	width:95%;
+	height: 300rpx;
+}
+.liebiao view.data-v-3f2869dc{
+	padding: 0 0 0 10rpx;
+	font-size: 30rpx;
+}
+

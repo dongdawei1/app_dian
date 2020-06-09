@@ -758,7 +758,7 @@
 
 <style scoped lang="less">
 	@normal-color: #606266;      //正常情况下的字体颜色
-	@hover-color: #c0c4cc;       //边框的颜色
+	@hover-color: #e0e1e0;       //边框的颜色
 	@active-color: #409eff;       //活动的颜色
 	@mouse-move-color: #f5f7fa;  //在列表项上按下时的列表项的背景色
 	@padding-left: 5%;           //两侧的边距

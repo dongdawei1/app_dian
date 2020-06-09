@@ -11,11 +11,10 @@
 
 		<swiper-tab-head :tabBars="tabBars" :tabIndex="tabIndex" @tabtap="tabtap"></swiper-tab-head>
 		<!-- 搜索框-->
-
-		<view class="so">
-			<view class="sou" v-if="releaseType !== 30 && releaseType !== 31">
-				<input class="uni-input" v-model="releaseWelfare.serviceType" focus :placeholder="placeholder" type="text" maxlength="18" />
-				<button class="mini-class" size="mini" @click="getnew()">查询</button>
+		<view class="so ">
+			<view class="sou gao" v-if="releaseType !== 30 && releaseType !== 31 && releaseType !== 35">
+				<input class="uni-input gao1" v-model="releaseWelfare.serviceType" focus :placeholder="placeholder" type="text" maxlength="18" />
+				<button class="mini-class gao" size="mini" @click="getnew()">查询</button>
 			</view>
 			<view v-if="releaseType === 30 || releaseType === 31" style="width: 80%; margin: auto; margin-bottom: 20px;">
 				<xfl-select
@@ -24,36 +23,54 @@
 					:showItemNum="5"
 					:listShow="false"
 					:isCanInput="false"
-					:style_Container="'height: 40px; font-size: 16px;'"
+					:style_Container="'height: 39px; font-size: 16px; '"
 					:initValue="'服务员'"
 					:selectHideType="'hideAll'"
 					@change="change"
 				></xfl-select>
 			</view>
 		</view>
-
+		<view v-if="releaseType === 35"  class="so_pifa">
+			<view style="width: 100%; margin: auto; margin-bottom: 10px;">
+				<xfl-select
+					:list="list_releaseType"
+					:clearable="false"
+					:showItemNum="5"
+					:listShow="false"
+					:isCanInput="false"
+					:style_Container="'height: 36px; font-size: 16px;'"
+					:initValue="'蔬菜批发'"
+					:selectHideType="'hideAll'"
+					@change="change_pifa"
+				></xfl-select>
+			</view>
+			<view class="sou gao">
+				<input class="uni-input gao1" v-model="releaseWelfare.serviceType" focus :placeholder="placeholder" type="text" maxlength="18" />
+				<button class="mini-class gao" size="mini" @click="getnew()">查询</button>
+			</view>
+		</view>
 		<view class="uni-tab-bar">
 			<swiper class="swiper-box kong" :style="{ height: swiperheight + 'px' }" :current="tabIndex" @change="tabChange">
 				<swiper-item v-for="(items, index) in newslist" :key="index">
 					<scroll-view>
 						<template v-if="items.list.length > 0">
 							<!-- 图文列表 -->
-
 							<block v-for="(item, index1) in items.list" :key="index1">
 								<!-- 除招聘和简历 -->
 								<view v-if="items.releaseType != 30 && items.releaseType != 31 && items.releaseType != 35">
-									<index-list :item="item" :index="index1"></index-list>
+									<index-no :item="item" :index="index1"></index-no>
 								</view>
 								<!-- 招聘 -->
-								<view v-if="items.releaseType === 30"><zhaopin-list :item="item" :index="index1"></zhaopin-list></view>
+								<view v-if="items.releaseType === 30"><zhaopin-no :item="item" :index="index1"></zhaopin-no></view>
 								<!-- 招聘 -->
-								<view v-if="items.releaseType === 31"><jianli-list :item="item" :index="index1"></jianli-list></view>
+								<view v-if="items.releaseType === 31"><jianli-no :item="item" :index="index1"></jianli-no></view>
+							     <!-- 批发 -->
+							    <view v-if="items.releaseType === 35"><pifa-no :item="item" :index="index1"></pifa-no></view>
 							</block>
 
 							<!-- 上拉加载 -->
 							<uni-load-more :status="status" :content-text="contentText" />
 						</template>
-
 						<template v-if="items.list.length === 0">
 							<view class="meishuju">~未查询到发布信息</view>
 						</template>
@@ -66,14 +83,14 @@
 
 <script>
 import swiperTabHead from '../../components/index/swiper-tab-head.vue';
-import indexList from '../../components/index/index-list.vue';
-import zhaopinList from '../../components/index/zhaopin-list.vue';
-import jianliList from '../../components/index/jianli-list.vue';
+import indexNo from '../../components/shichang/index-no.vue';
+import zhaopinNo from '../../components/shichang/zhaopin-no.vue';
+import jianliNo from '../../components/shichang/jianli-no.vue';
+import pifaNo from '../../components/shichang/pifa-no.vue';
 import LotusLoading from '../../components/Winglau14-lotusLoading/Winglau14-LotusLoading.vue';
 
 import wPicker from '../../components/w-picker/w-picker.vue';
 import indexjs from '../../common/indexjs/indexjs.js';
-
 import uniNavBar from '../../components/uni-nav-bar/uni-nav-bar.vue';
 
 import uniLoadMore from '../../components/uni-load-more/uni-load-more.vue';
@@ -81,9 +98,10 @@ import uniLoadMore from '../../components/uni-load-more/uni-load-more.vue';
 import xflSelect from '../../components/xfl-select/xfl-select.vue'; //下拉导入
 export default {
 	components: {
-		indexList,
-		zhaopinList,
-		jianliList,
+		indexNo,
+		zhaopinNo,
+		jianliNo,
+		pifaNo,
 		swiperTabHead,
 		LotusLoading,
 		uniLoadMore, //上拉加载更多
@@ -103,7 +121,6 @@ export default {
 			placeholder: '请输入商品名或服务关键字',
 			swiperheight: 500,
 			tabIndex: 0,
-
 			role: '',
 			releaseType: '',
 			isbut: false,
@@ -119,21 +136,18 @@ export default {
 				result: ''
 			},
 			list: ['服务员'],
+			list_releaseType: [{value:'蔬菜批发',releaseType:401},{value:'粮油批发',releaseType:405},  {value:'调料/副食',releaseType:406}, {value:'水产/禽蛋',releaseType:429},{value:'清洁用品',releaseType:409}],
 			list_role: '',
 			releaseWelfare: {
 				//查询条件
 				selectedOptions: [], //三级联动城市
-				serviceType: '', //维修项目，设备名称
-				//releaseTitle: '', //标题
+				serviceType: '', //维修项目，设备名称，批发是商品名,租房数字是面积
 				//分页开始
 				currentPage: 1,
 				pageSize: 12, //每页显示的数量
 				//分页结束
 				releaseType: '',
 				position: '服务员',
-				companyName:''
-				//fouseSizeGreater: '',
-				//fouseSizeLess: '' //面积小于
 			}
 		};
 	},
@@ -148,12 +162,12 @@ export default {
 		});
 		this.role = e.role;
 		this.releaseType = Number(e.releaseType);
+		//this.releaseType  批发===35
 		this.setplaceholder();
 		this.__init();
 	},
 	//页面每次出现都检查是否开启接到哪如果开启刷新订单
 	onShow() {},
-
 	// 监听搜索框点击事件
 	onNavigationBarSearchInputClicked() {},
 	// 监听原生标题导航按钮点击事件
@@ -173,7 +187,11 @@ export default {
 		setplaceholder() {
 			if (this.releaseType === 14 || this.releaseType === 15) {
 				this.placeholder = '请输入面积(整数数字)或者地址';
-			}else{
+			} else if (this.releaseType === 35 && this.releaseWelfare.releaseType<400) {
+				this.placeholder = '请输入商品名或市场名';
+				
+				this.releaseWelfare.releaseType = 401;
+			} else {
 				this.placeholder = '请输入商品名或服务关键字';
 			}
 		},
@@ -184,6 +202,9 @@ export default {
 			this.status = 'more';
 			this.getnews(this.tabIndex, 1);
 		},
+		change_pifa(e){
+			this.releaseWelfare.releaseType=e.orignItem.releaseType;
+		},
 		__init() {
 			this.getUserRealName();
 			if (this.tabBars.length === 0 || this.newslist.length === 0) {
@@ -191,7 +212,7 @@ export default {
 				this.tabBars = resule.tabBars;
 				this.newslist = resule.newslist;
 			}
-			
+
 			for (let a = 0; a < this.tabBars.length; a++) {
 				if (this.tabBars[a].releaseType === this.releaseType) {
 					let ti = this.tabBars[a];
@@ -219,31 +240,33 @@ export default {
 		getnews(index, type) {
 			let releaseType = this.newslist[index].releaseType;
 			this.releaseType = releaseType;
-			this.releaseWelfare.releaseType = releaseType;
+			if (this.releaseType !== 35) {
+				this.releaseWelfare.releaseType = releaseType;
+			}
 			//let newslistLength = this.newslist[index].list.length;
 			if (type === 1 || type === 3) {
 				this.setplaceholder();
 				//每次滑动都请求后端
 				if (releaseType === 30) {
 					this.get_position_bytype(2);
-					this.getDatas(this.$urlconfig.get_position_all, index,1);
+					this.getDatas(this.$urlconfig.get_position_all, index, 1);
 				} else if (releaseType === 31) {
 					this.get_position_bytype(1);
-					this.getDatas(this.$urlconfig.get_resume_all, index,1);
+					this.getDatas(this.$urlconfig.get_resume_all, index, 1);
 				} else if (releaseType === 35) {
-					this.getDatas(this.$urlconfig.getWholesaleCommodityPublicList, index,1);
+					this.getDatas(this.$urlconfig.getWholesaleCommodityPublicList, index, 1);
 				} else {
-					this.getDatas(this.$urlconfig.getfabulista, index,1);
+					this.getDatas(this.$urlconfig.getfabulista, index, 1);
 				}
 			} else if (type === 2) {
 				if (releaseType === 30) {
-					this.getDatas(this.$urlconfig.get_position_all, index,2);
+					this.getDatas(this.$urlconfig.get_position_all, index, 2);
 				} else if (releaseType === 31) {
-					this.getDatas(this.$urlconfig.get_resume_all, index,2);
+					this.getDatas(this.$urlconfig.get_resume_all, index, 2);
 				} else if (releaseType === 35) {
-					return true;
+					this.getDatas(this.$urlconfig.getWholesaleCommodityPublicList, index, 2);
 				} else {
-					this.getDatas(this.$urlconfig.getfabulista, index,2);
+					this.getDatas(this.$urlconfig.getfabulista, index, 2);
 				}
 			}
 		},
@@ -253,7 +276,6 @@ export default {
 			this.lotusLoadingData.isShow = true;
 			this.$http.post(url, this.releaseWelfare, {}).then(data => {
 				this.lotusLoadingData.isShow = false;
-				console.log(data)
 				if (data.status === 0) {
 					if (type === 1) {
 						//没有查询到结果
@@ -263,13 +285,13 @@ export default {
 						}
 						//this.swiperheight   534   :450    581 :  490 *
 						this.newslist[index].list = data.data.datas;
-						this.swiperheight = this.newslist[index].list.length * 340;
+						this.swiperheight = this.newslist[index].list.length * 340+30;
 						if (data.data.totalno > this.releaseWelfare.pageSize) {
 							this.status = 'more';
 						} else {
 							this.status = 'noMore';
 						}
-					}else{
+					} else {
 						//没有查询到结果
 						if (data.data.datas === null || data.data.datas.length === 0) {
 							this.status = 'noMore';
@@ -333,7 +355,6 @@ export default {
 					ar[0] = data.data.provincesId.toString();
 					ar[1] = data.data.cityId.toString();
 					ar[2] = data.data.districtCountyId.toString();
-
 					this.releaseWelfare.selectedOptions = ar;
 				}
 			});
@@ -354,17 +375,31 @@ export default {
 	padding: 12upx 30upx 10upx 30upx;
 }
 .sou {
+	padding: 1upx 1upx 1upx 0;/*不设边框出不来*/
 	display: flex;
+	border:1upx solid #e0e1e0;/*边框*/
 	flex-direction: row; /*同行多列布局*/
-	border-style: solid;
-	border-color: #e0e1e0;
-	border-width: 1upx; /*边框*/
-	border-radius: 10upx; /*圆角*/
+	/*border-style: solid; 边框样式*/
+	/*border-color: #e0e1e0; 边框颜色*/
+/*	border-width: 1upx; 边框宽*/
+	border-radius: 10upx; /*边框圆角*/
 }
-
+.so_pifa{
+	padding: 12upx 40upx 10upx 40upx;
+}
+.gao{
+	height: 72upx;
+	margin: auto;
+}
+.gao1{
+	margin: auto;
+	height: 59upx; /*不设置圆角出不来*/
+	padding: 2upx 0 2upx 39upx;
+}
 .meishuju {
 	font-size: 30upx;
 	text-align: center;
 	padding: 100upx 50upx 10upx 50upx;
 }
+button::after{ border: none;} /*去除按钮边框*/
 </style>

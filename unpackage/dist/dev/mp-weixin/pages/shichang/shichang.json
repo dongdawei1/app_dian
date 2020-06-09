@@ -1,8 +1,9 @@
 {
   "usingComponents": {
-    "index-list": "/components/index/index-list",
-    "zhaopin-list": "/components/index/zhaopin-list",
-    "jianli-list": "/components/index/jianli-list",
+    "index-no": "/components/shichang/index-no",
+    "zhaopin-no": "/components/shichang/zhaopin-no",
+    "jianli-no": "/components/shichang/jianli-no",
+    "pifa-no": "/components/shichang/pifa-no",
     "swiper-tab-head": "/components/index/swiper-tab-head",
     "lotus-loading": "/components/Winglau14-lotusLoading/Winglau14-LotusLoading",
     "uni-load-more": "/components/uni-load-more/uni-load-more",

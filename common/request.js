@@ -186,5 +186,32 @@ export default {
 	//生成uuid
 	getUuid(checkAuth) {
 		return Date.parse(new Date());
+	},
+	
+	guanggaotiao(item){
+			uni.navigateTo({
+				url: '../../pages/xiangqing/xiangqing?id='+item.tableId+'&releaseType='+item.permissionid
+			});
+	},
+	toDecimal2(x) {
+	  var f = parseFloat(x);
+	  if (f===null || f==='') {
+	    return false;
+	  }
+	  //转换单位
+	  var f = Math.round(x * 100) / 10000;
+	  var s = f.toString();
+	  var rs = s.indexOf('.');
+	  if (rs < 0) {
+	    rs = s.length;
+	    s += '.';
+	  }
+	  while (s.length <= rs + 2) {
+	    s += '0';
+	  }
+	  return s;
 	}
+	
+	
+	
 }

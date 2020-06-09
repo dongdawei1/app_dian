@@ -1,0 +1,24 @@
+
+.index-list.data-v-2e3dc24e {
+	padding: 10rpx 55rpx 0 0;
+}
+.tonghang.data-v-2e3dc24e{
+	padding: 0 20rpx 10rpx 20rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	        flex-wrap: wrap;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+}
+.juzhong.data-v-2e3dc24e{
+	padding: 55rpx 15rpx 0 0;
+	font-size: 33rpx;
+	color: #f1a078;
+}
+.liebiao view.data-v-2e3dc24e{
+	font-size: 30rpx;
+}
+
