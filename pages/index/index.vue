@@ -190,8 +190,6 @@
 				}
 
 			},
-
-
 			//获取实名状态
 			async getguerinif() {
 				let uuidform = {

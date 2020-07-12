@@ -1,0 +1,1 @@
+<view><view class="meishuju">未完成实名认证不能查询或者发布信息哦！</view><view><button class="mini-class " type="primary" data-event-opts="{{[['tap',[['openUrl',['crejianli/crejianli']]]]]}}" bindtap="__e">去实名/查看实名进度</button></view></view>

@@ -1,0 +1,26 @@
+
+.index-list.data-v-689abcfc {
+	padding: 10rpx 55rpx 0 0;
+	border-bottom: 1rpx solid #eeeeee;
+}
+.biaoti.data-v-689abcfc {
+	font-size: 38rpx;
+}
+.index-list4.data-v-689abcfc {
+	padding: 0 20rpx 0 20rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	        flex-wrap: wrap;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	        justify-content: space-between;
+}
+.index-list4 view.data-v-689abcfc {
+	font-size: 33rpx;
+}
+.juzhong.data-v-689abcfc {
+	text-align: center;
+}
+

@@ -213,7 +213,11 @@
 			endYear:{
 				type:[String,Number],
 				default:new Date().getFullYear()
-			}
+			},
+			no:{
+				type:Number,
+				default:-1
+			},
 		},
 		created() {
 			this.createKey=Math.random()*1000;
@@ -257,6 +261,10 @@
 				if(!this.confirmFlag){
 					return;
 				};
+				//单个页面多个城市调用，根据此值判断是哪个字段
+				if(this.no!==-1){
+					this.result.no=this.no;
+				}
 				this.$emit("confirm",this.result);
 				this.visible=false;
 			}

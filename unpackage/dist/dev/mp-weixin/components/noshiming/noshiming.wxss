@@ -1,0 +1,7 @@
+
+.meishuju {
+	font-size: 30rpx;
+	text-align: center;
+	padding: 100rpx 50rpx 10rpx 50rpx;
+}
+

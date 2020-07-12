@@ -4853,12 +4853,41 @@ to {
 		display: inline;
 		padding: 0 30rpx 0 0;
 }
+.gerenzhongxinbut {
+		padding: 45rpx 75rpx 0 15rpx;
+}
 .oxiangqing view {
 		padding: 3rpx 10rpx 3rpx 20rpx;
 		font-size: 32rpx;
 		line-height: 34rpx;
 		background: #F4FBFD;
 		display: inline;
+}
+/*个人中心操作按钮*/
+.myReleasebuwai{
+		width: 100%;
+		/* border-top: 1upx solid #eeeeee; */
+		padding: 10rpx 20rpx 20rpx 20rpx;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-flex-wrap: nowrap;
+		        flex-wrap: nowrap;
+}
+.myReleasebuno{
+		width: 24%;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		-webkit-flex-direction: column;
+		        flex-direction: column;
+		
+		/*元素上下排列
+		justify-content:space-between;
+			flex-grow:1;
+			height: 450upx;*/
 }
 
 

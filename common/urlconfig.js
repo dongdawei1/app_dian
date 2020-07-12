@@ -27,6 +27,11 @@ export default {
 	get_resume_all:'resume/get_resume_all',
 	getWholesaleCommodityPublicList:'wholesaleCommodity/getWholesaleCommodityPublicListAp',
 	
+	get_position_list:'releaseWelfare/get_position_list',
+	
+	select_resume_by_id:'resume/select_resume_by_id',
+	operation_resume:'resume/operation_resume',
+	create_resume:'resume/create_resume',
 	// websocket地址11
 	websocketUrl: "ws://localhost:8080/api/v1/vp/so/",
 	// 消息提示tabbar索引

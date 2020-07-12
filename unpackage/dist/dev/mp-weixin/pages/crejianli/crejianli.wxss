@@ -1,0 +1,68 @@
+
+.body.data-v-f2ded044 {
+	padding: 25rpx 5rpx 25rpx 25rpx;
+}
+.so_no.data-v-f2ded044 {
+	padding: 0 20rpx 5rpx 10rpx;
+}
+.sou.data-v-f2ded044 {
+	/*padding: 1upx 1upx 1upx 0; 不设边框出不来*/
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	/*border: 1upx solid #e0e1e0;边框*/
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row; /*同行多列布局*/
+	/*border-style: solid; 边框样式*/
+	/*border-color: #e0e1e0; 边框颜色*/
+	/*	border-width: 1upx; 边框宽*/
+	/*border-radius: 10upx; 边框圆角*/
+}
+.gao1.data-v-f2ded044 {
+	/* width: 10%; */
+	/* margin: auto; */
+	/* height: 65upx; */
+	/* padding: 2upx 0 2upx 20upx; */
+	/* padding: 0 0 0 20upx; */
+	padding: 0 20rpx 5rpx 10rpx;
+	margin: 0 20rpx 0 9rpx;
+	border: 1rpx solid #e0e1e0; /*边框*/
+	border-style: solid; /*边框样式*/
+	border-color: #e0e1e0; /*边框颜色*/
+	border-width: 1rpx; /*	边框宽*/
+	border-radius: 10rpx; /*边框圆角*/
+}
+.sou2.data-v-f2ded044 {
+	padding: 0 76rpx 5rpx 10rpx;
+}
+.gao2.data-v-f2ded044 {
+	border: 1rpx solid #e0e1e0; /*边框*/
+	border-style: solid; /*边框样式*/
+	border-color: #e0e1e0; /*边框颜色*/
+	border-width: 1rpx; /*	边框宽*/
+	border-radius: 10rpx; /*边框圆角*/
+}
+.shang2.data-v-f2ded044 {
+	/* margin-left:0px */
+	padding: 13rpx 0 14rpx 15rpx;
+}
+.shang.data-v-f2ded044 {
+	/* margin-left:0px */
+	padding: 12rpx 0 0 10rpx;
+}
+.hui.data-v-f2ded044 {
+	background: #edece8;
+}
+.chengshi.data-v-f2ded044 {
+	height: 77rpx;
+	/* margin-left:0px */
+	/* padding: 12upx 0 0 10upx; */
+}
+.xianshicheng.data-v-f2ded044 {
+	line-height: 36rpx;
+	font-size: 30rpx;
+	color: #606266;
+}
+

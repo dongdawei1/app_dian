@@ -1,4 +1,11 @@
 {
   "navigationBarTitleText": "我的发布",
-  "usingComponents": {}
+  "usingComponents": {
+    "swiper-tab-head": "/components/index/swiper-tab-head",
+    "lotus-loading": "/components/Winglau14-lotusLoading/Winglau14-LotusLoading",
+    "uni-load-more": "/components/uni-load-more/uni-load-more",
+    "xfl-select": "/components/xfl-select/xfl-select",
+    "noshiming": "/components/noshiming/noshiming",
+    "myjianli": "/components/myRelease/myjianli"
+  }
 }

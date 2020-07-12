@@ -1917,6 +1917,11 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   get_resume_all: 'resume/get_resume_all',
   getWholesaleCommodityPublicList: 'wholesaleCommodity/getWholesaleCommodityPublicListAp',
 
+  get_position_list: 'releaseWelfare/get_position_list',
+
+  select_resume_by_id: 'resume/select_resume_by_id',
+  operation_resume: 'resume/operation_resume',
+  create_resume: 'resume/create_resume',
   // websocket地址11
   websocketUrl: "ws://localhost:8080/api/v1/vp/so/",
   // 消息提示tabbar索引
@@ -2035,7 +2040,54 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
       this.role = userrole;
     }
 
+  },
+  //判断是否是正整数 01,11
+  checkno: function checkno(str) {return /^[0-9]*$/.test(str);},
+
+
+  checkall: function checkall(str) {
+    console.log("a，是否是数字:" + !isNaN("a"));
+    console.log("12，是否是数字:" + !isNaN("12"));
+    console.log("9.335，是否是数字:" + !isNaN("9.335"));
+    console.log("009.335，是否是数字:" + !isNaN("009.335"));
+    console.log("a009.335，是否是数字:" + !isNaN("a009.335"));
+    console.log("009..335，是否是数字:" + !isNaN("009..335"));
+    console.log("----------分隔线1------");
+    //以数字开头，以数字结尾，任意位数的数字
+    console.log("12，结果:" + /^[0-9]*$/.test("12"));
+    console.log("9.335，结果:" + /^[0-9]*$/.test("9.335"));
+    console.log("0012，结果:" + /^[0-9]*$/.test("0012"));
+    console.log("0012，结果:" + /^\d*$/.test("0012")); //\d代表数字 
+    console.log("----------分隔线2------");
+    console.log("12，结果：" + /^[0-9]*\.?[0-9]*$/.test("12")); //没有.的数字组合
+    console.log("9.335，结果：" + /^[0-9]*\.?[0-9]*$/.test("9.335")); //有一个.的数字组合
+    console.log("009.335，结果:" + /^[0-9]*\.?[0-9]*$/.test("009.335")); //有一个.的数字组合
+    console.log("9..335，结果：" + /^[0-9]*\.?[0-9]*$/.test("9..335")); //有两个点的数字组合
+    console.log("----------分隔线3------");
+
+    console.log("90345.300350，结果:" + /^[1-9][0-9]*\.?[0-9]*$/.test("90345.300350")); //非零开头的小数
+    console.log("009.3035，结果:" + /^[1-9][0-9]*\.?[0-9]*$/.test("009.3035")); //零在第一位的小数，第二位不是点
+    console.log("90335，结果:" + /^[1-9][0-9]*\.?[0-9]*$/.test("90335")); //非零开头的整数
+    console.log("0.933050，结果:" + /^[0]\.[0-9]*$/.test("0.933050")); //零开头的，第二位必须是点
+
+    console.log("----测试----");
+    console.log("0.933050，结果:" + /^([1-9][0-9]*\.?[0-9]*)|(0\.[0-9]*)$/.test("0.933050")); //零开头的小数
+    console.log("909.933050，结果:" + /^([1-9][0-9]*\.?[0-9]*)|(0\.[0-9]*)$/.test("909.933050")); //非零开头的小数
+    console.log("zx0.933050rt，结果:" + /^([1-9][0-9]*\.?[0-9]*)|(0\.[0-9]*)$/.test("zx0.933050rt")); //不是以数字开头结尾
+    console.log("0..978，结果:" + /^([1-9][0-9]*\.?[0-9]*)|(0\.[0-9]*)$/.test("0..978")); //有多个小数点的
+
+    console.log("909.933050，结果:" + /^([1-9]\d*\.?\d*)|(0\.\d*)$/.test("909.933050")); //\d代替[0-9]
+    console.log("0.933050，结果:" + /^([1-9]\d*\.?\d*)|(0\.\d*)$/.test("0.933050"));
+
+    console.log("---测试开始结尾括号和或的位置---");
+    console.log("0.933050，结果:" + /^([1-9]\d*\.?\d*|0\.\d*)$/.test("0.933050"));
+    console.log("909.933050，结果:" + /^(0\.[0-9]*|[1-9][0-9]*\.?[0-9]*)$/.test("909.933050")); //非零开头的小数
+    console.log("结果是：" + /^[ab]|[cd]$/.test("b"));
+    console.log("结果是：" + /^[ab]|[cd]$/.test("c")); //整体不加括号，里面含有或
+    console.log("结果是：" + /^([ab]|[cd])$/.test("c")); //整体加括号
+
   }
+
   // 登录
   // async login(options ={}){
   // 	uni.showLoading({ title: '登录中...', mask: true });
@@ -9349,7 +9401,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 333:
+/***/ 371:
 /*!******************************************************************!*\
   !*** E:/ceshi/app_dian/components/w-picker/areadata/areadata.js ***!
   \******************************************************************/
@@ -10779,6 +10831,238 @@ main();
       releaseName = '清洁用品批发';
     }
     return releaseName;
+  },
+  wodedingdao: function wodedingdao() {
+    var tabBars = [];
+    var newslist = [];
+
+    if (this.role === 1) {
+      tabBars = [{
+        name: "招聘信息",
+        releaseType: 30 },
+
+      {
+        name: "店面/窗口出租",
+        releaseType: 14 },
+
+      {
+        name: "采购信息",
+        releaseType: 200 },
+
+      {
+        name: "电器/设备",
+        releaseType: 18 },
+      // 33电器/设备出售34二手电器/设备出售
+      {
+        name: "酒水/餐具",
+        releaseType: 7 },
+
+      {
+        name: "服务信息",
+        releaseType: 13 },
+
+      {
+        name: "我的简历",
+        releaseType: 31 },
+
+      {
+        name: "百货信息",
+        releaseType: 101 },
+
+      {
+        name: "零售商品",
+        releaseType: 4 },
+
+      {
+        name: "批发信息",
+        releaseType: 401 }];
+
+
+
+
+    } else if (this.role === 2) {
+      tabBars = [{
+        name: "招聘信息",
+        releaseType: 30 },
+
+      {
+        name: "采购信息",
+        releaseType: 200 },
+
+      {
+        name: "店面/窗口出租",
+        releaseType: 14 }];
+
+
+    } else if (this.role === 3) {
+      tabBars = [{
+        name: "招聘信息",
+        releaseType: 30 },
+
+      {
+        name: "店面/窗口出租",
+        releaseType: 14 },
+
+      {
+        name: "电器/设备",
+        releaseType: 18 }];
+
+
+    } else if (this.role === 4) {
+      tabBars = [{
+        name: "招聘信息",
+        releaseType: 30 },
+
+      {
+        name: "摊位出租转让",
+        releaseType: 15 },
+
+      {
+        name: "零售商品",
+        releaseType: 4 },
+      //4蔬菜出售 5粮油出售 6调料/副食出售 29水产/禽蛋出售 9清洁用品 11桌椅餐具
+      {
+        name: "我的简历",
+        releaseType: 31 }];
+
+
+    } else if (this.role === 5) {
+      tabBars = [{
+        name: "招聘信息",
+        releaseType: 30 },
+      {
+        name: "摊位出租转让",
+        releaseType: 15 },
+
+      {
+        name: "酒水/餐具",
+        releaseType: 7 }];
+
+
+    } else if (this.role === 6) {
+      tabBars = [{
+        name: "招聘信息",
+        releaseType: 30 },
+      {
+        name: "出租信息",
+        releaseType: 15 }];
+
+
+    } else if (this.role === 7) {//13菜谱/广告17装修19灭虫
+      tabBars = [{
+        name: "招聘信息",
+        releaseType: 30 },
+
+      {
+        name: "服务信息",
+        releaseType: 13 }];
+
+
+    } else if (this.role === 11) {
+      tabBars = [{
+        name: "我的简历",
+        releaseType: 31 }];
+
+    } else if (this.role === 12) {//工服/百货/绿植/装饰用品
+      tabBars = [{
+        name: "招聘信息",
+        releaseType: 30 },
+      {
+        name: "百货信息",
+        releaseType: 101 }];
+
+
+    } else if (this.role === 13) {//工服/百货/绿植/装饰用品
+      tabBars = [{
+        name: "招聘信息",
+        releaseType: 30 },
+
+      {
+        name: "批发信息",
+        releaseType: 401 },
+
+      {
+        name: "摊位出租转让",
+        releaseType: 15 }];
+
+
+    }
+
+    for (var a = 0; a < tabBars.length; a++) {
+      var li = {
+        releaseType: tabBars[a].releaseType,
+        list: [] };
+
+      newslist.push(li);
+    }
+    var result = {
+      newslist: newslist,
+      tabBars: tabBars,
+      role: this.role };
+
+    return result;
+
+
+  },
+
+  getMyReleaseType: function getMyReleaseType(role, releaseType) {
+    var myReleaseType_4 = [
+    { value: '蔬菜零售', releaseType: 4 },
+    { value: '粮油零售', releaseType: 5 },
+    { value: '调料/副食零售', releaseType: 6 },
+    { value: '水产/禽蛋零售', releaseType: 29 },
+    { value: '清洁用品零售', releaseType: 9 },
+    { value: '桌椅餐具', releaseType: 11 }];
+
+    var myReleaseType_7 = [
+    { value: '酒水/饮料', releaseType: 7 },
+    { value: '消毒餐具', releaseType: 8 }];
+
+    //4蔬菜出售 5粮油出售 6调料/副食出售 29水产/禽蛋出售 9清洁用品 11桌椅餐具
+    var myReleaseType_13 = [
+    { value: '菜谱/广告制作', releaseType: 13 },
+    { value: '装修服务', releaseType: 17 },
+    { value: '灭虫服务', releaseType: 19 }];
+
+
+    var myReleaseType_18 = [
+    { value: '维修电器服务', releaseType: 18 },
+    { value: '电器销售', releaseType: 33 },
+    { value: '二手电器销售', releaseType: 34 }];
+
+    var myReleaseType_101 = [
+    { value: '工服制作', releaseType: 101 },
+    { value: '百货', releaseType: 102 },
+    { value: '绿植销售', releaseType: 103 },
+    { value: '装饰用品', releaseType: 104 }];
+
+    var myReleaseType_401 = [
+    { value: '蔬菜批发', releaseType: 401 },
+    { value: '粮油批发', releaseType: 405 },
+    { value: '调料/副食批发', releaseType: 406 },
+    { value: '水产/禽蛋批发', releaseType: 429 },
+    { value: '清洁用品批发', releaseType: 409 }];
+
+    if (releaseType === 4) {
+      return myReleaseType_4;
+    } else if (releaseType === 7) {
+      return myReleaseType_7;
+    } else if (releaseType === 13) {
+      return myReleaseType_13;
+    } else if (releaseType === 18) {
+      return myReleaseType_18;
+    } else if (releaseType === 101) {
+      return myReleaseType_101;
+    } else if (releaseType === 401) {
+      return myReleaseType_401;
+    } else {
+      return myReleaseType_4;
+    }
+
+
+
+
+
   } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
@@ -10803,7 +11087,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@alpha","_id":"@dcloudio/uni-stat@2
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/login/login": {}, "pages/reg/reg": { "navigationBarTitleText": "注册" }, "pages/logmain/logmain": { "navigationBarTitleText": "" }, "pages/pwd/pwd": { "navigationBarTitleText": "找回密码" }, "pages/index/index": { "navigationBarTitleText": "首页" }, "pages/creord/creord": { "navigationBarTitleText": "发布实时采购" }, "pages/qitafabu/qitafabu": { "navigationBarTitleText": "其他需求信息" }, "pages/creqp/creqp": { "navigationBarTitleText": "发布商品服务信息" }, "pages/jinxingorder/jinxingorder": { "navigationBarTitleText": "全部订单" }, "pages/crejiu/crejiu": { "navigationBarTitleText": "发布酒水/消毒餐具信息" }, "pages/crezu/crezu": { "navigationBarTitleText": "发布出租信息" }, "pages/crezhuang/crezhuang": { "navigationBarTitleText": "发布服务信息" }, "pages/crebai/crebai": { "navigationBarTitleText": "发布百货信息" }, "pages/quanbu/quanbu": { "navigationBarTitleText": "全部信息" }, "pages/shichang/shichang": {}, "pages/xiangqing/xiangqing": { "navigationBarTitleText": "发布详情" }, "pages/myRelease/myRelease": { "navigationBarTitleText": "我的发布" }, "pages/yonghu/yonghu": { "navigationBarTitleText": "用户中心" }, "pages/jiedan/jiedan": { "navigationBarTitleText": "接单中心" }, "pages/jiedanbaojia/jiedanbaojia": { "navigationBarTitleText": "订单报价" }, "pages/lunbo/lunbo": {}, "pages/xieyi/xieyi": {} }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarBackgroundColor": "#FC5640", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/login/login": {}, "pages/reg/reg": { "navigationBarTitleText": "注册" }, "pages/logmain/logmain": { "navigationBarTitleText": "" }, "pages/pwd/pwd": { "navigationBarTitleText": "找回密码" }, "pages/index/index": { "navigationBarTitleText": "首页" }, "pages/creord/creord": { "navigationBarTitleText": "发布实时采购" }, "pages/qitafabu/qitafabu": { "navigationBarTitleText": "其他需求信息" }, "pages/creqp/creqp": { "navigationBarTitleText": "发布商品服务信息" }, "pages/jinxingorder/jinxingorder": { "navigationBarTitleText": "全部订单" }, "pages/crejiu/crejiu": { "navigationBarTitleText": "发布酒水/消毒餐具信息" }, "pages/crezu/crezu": { "navigationBarTitleText": "发布出租信息" }, "pages/crezhuang/crezhuang": { "navigationBarTitleText": "发布服务信息" }, "pages/crebai/crebai": { "navigationBarTitleText": "发布百货信息" }, "pages/crejianli/crejianli": { "navigationBarTitleText": "创建简历" }, "pages/quanbu/quanbu": { "navigationBarTitleText": "全部信息" }, "pages/shichang/shichang": {}, "pages/xiangqing/xiangqing": { "navigationBarTitleText": "发布详情" }, "pages/myRelease/myRelease": { "navigationBarTitleText": "我的发布" }, "pages/yonghu/yonghu": { "navigationBarTitleText": "用户中心" }, "pages/jiedan/jiedan": { "navigationBarTitleText": "接单中心" }, "pages/jiedanbaojia/jiedanbaojia": { "navigationBarTitleText": "订单报价" }, "pages/lunbo/lunbo": {}, "pages/xieyi/xieyi": {} }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarBackgroundColor": "#FC5640", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
 

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "创建简历",
+  "usingComponents": {
+    "xfl-select": "/components/xfl-select/xfl-select",
+    "w-picker": "/components/w-picker/w-picker"
+  }
+}

@@ -1,0 +1,161 @@
+
+@charset "UTF-8";
+.uni-navbar__content {
+	display: block;
+	position: relative;
+	width: 100%;
+	background-color: #fff;
+	overflow: hidden
+}
+.uni-navbar__content view {
+	line-height: 44px
+}
+.uni-navbar__header {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	width: 100%;
+	height: 44px;
+	line-height: 44px;
+	font-size: 16px
+}
+.uni-navbar__header-btns {
+	display: -webkit-inline-box;
+	display: -webkit-inline-flex;
+	display: inline-flex;
+	-webkit-flex-wrap: nowrap;
+	        flex-wrap: nowrap;
+	-webkit-flex-shrink: 0;
+	        flex-shrink: 0;
+	width: 120rpx;
+	padding: 0 12rpx
+}
+.uni-navbar__header-btns:first-child {
+	padding-left: 0
+}
+.uni-navbar__header-btns:last-child {
+	width: 60rpx
+}
+.uni-navbar__header-container {
+	width: 100%;
+	margin: 0 10rpx
+}
+.uni-navbar__header-container-inner {
+	font-size: 30rpx;
+	text-align: center;
+	padding-right: 60rpx
+}
+.uni-navbar__placeholder-view {
+	height: 44px
+}
+.uni-navbar--fixed {
+	position: fixed;
+	z-index: 998
+}
+.uni-navbar--shadow {
+	box-shadow: 0 1px 6px #ccc
+}
+.uni-navbar--border:after {
+	position: absolute;
+	z-index: 3;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 1px;
+	content: '';
+	-webkit-transform: scaleY(.5);
+	transform: scaleY(.5);
+	background-color: #c8c7cc
+}
+
+
+.kong {
+	padding: 0 30rpx 0 30rpx;
+}
+.mini-class {
+	font-size: 30rpx;
+}
+.so {
+	padding: 12rpx 30rpx 10rpx 30rpx;
+}
+.sou {
+	padding: 1rpx 1rpx 1rpx 0; /*不设边框出不来*/
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	border: 1rpx solid #e0e1e0; /*边框*/
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row; /*同行多列布局*/
+	/*border-style: solid; 边框样式*/
+	/*border-color: #e0e1e0; 边框颜色*/
+	/*	border-width: 1upx; 边框宽*/
+	border-radius: 10rpx; /*边框圆角*/
+}
+.wai {
+	width: 100%;
+	/* border-top: 1upx solid #eeeeee; */
+	padding: 10rpx 20rpx 20rpx 20rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-flex-wrap: nowrap;
+	        flex-wrap: nowrap; /*父级容器 属性,默认情况下,子元素都排在一条线(又称"轴线")上,flex-wrap属性定义,如果一条轴线排不下,如何换行*/
+}
+.liebiao {
+	padding: 0 5% 0 0;
+	width: 45%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+
+	/*元素上下排列
+		flex-grow:1;
+		height: 450upx;*/
+}
+.liebiaobu {
+	width: 20%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	        flex-direction: column;
+
+	/*元素上下排列
+		flex-grow:1;
+		height: 450upx;*/
+}
+.so_pifa {
+	padding: 12rpx 40rpx 10rpx 40rpx;
+}
+.gao {
+	height: 72rpx;
+	margin: auto;
+}
+.gao1 {
+	margin: auto;
+	height: 59rpx; /*不设置圆角出不来*/
+	padding: 2rpx 0 2rpx 39rpx;
+}
+.meishuju {
+	font-size: 30rpx;
+	text-align: center;
+	padding: 100rpx 50rpx 10rpx 50rpx;
+}
+button::after {
+	border: none;
+}
+
+/*去除按钮边框*/
+

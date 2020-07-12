@@ -53,7 +53,7 @@
 				<view>联系人：{{ fabu.consigneeName }}</view>
 				<view>备注：{{ fabu.remarks }}</view>
 				<view>地址详情：{{ fabu.serviceDetailed }}</view>
-				<view>出租面积：{{ fabu.mianjia }}</view>
+				<view>出租面积(平米)：{{ fabu.mianjia }}</view>
 			</view>
 			<view class="fubiaoti">实名详情</view>
 			<view class="neirong">
@@ -87,7 +87,7 @@
 				<view>联系人：{{ fabu.consigneeName }}</view>
 				<view>备注：{{ fabu.remarks }}</view>
 				<view>服务区域：{{ fabu.serviceDetailed }}</view>
-				<view>起步价格：{{ fabu.mianjia }}</view>
+				<view>起步价格(元)：{{ fabu.mianjia }}</view>
 			</view>
 			<view class="fubiaoti">实名详情</view>
 			<view class="neirong">
@@ -111,9 +111,9 @@
 					</template>
 				</block>
 			</view>
-			<view class="fubiaoti">评价</view>
+			<!--  <view class="fubiaoti">评价</view>
 			<pingjia :item="evaluate"></pingjia>
-			<!-- 后期可做预约服务 -->
+			后期可做预约服务 -->
 		</view>
 		<!--批发-->
 		<view class="body" v-if="releaseType >= 400">
@@ -205,7 +205,6 @@ export default {
 		init(url) {
 			this.lotusLoadingData.isShow = true;
 			this.$http.get(url, this.ruleForm, {}).then(data => {
-				console.log(data);
 				this.lotusLoadingData.isShow = false;
 				if (data.status === 0) {
 					this.evaluate = data.data.evaluate;
@@ -243,10 +242,10 @@ export default {
 				}
 			});
 		},
-		//TODO跳转未完成
-		tiaozhuan(row) {
-			this.$http.guanggaotiao(row);
-		},
+		// //TODO跳转未完成
+		// tiaozhuan(row) {
+		// 	this.$http.guanggaotiao(row);
+		// },
 		// 获取广告
 		getSwiper() {
 			let uuidform = {

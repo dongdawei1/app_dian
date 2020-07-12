@@ -1,5 +1,10 @@
 <template>
 	<view>
+	
+		<noshiming  v-if="!isxianshi"></noshiming>
+
+	
+	<view v-if="isxianshi">
 		<!-- 自定义导航栏 getRealName-->
 		<uni-nav-bar :statusBar="true" left-icon="back" @click-left="back" leftText="返回" rightText="切换" @click-right="showPicker('region')">
 			<view class="u-f-ajc" @tap="showPicker('region')">{{ result.result }}</view>
@@ -23,7 +28,7 @@
 					:showItemNum="5"
 					:listShow="false"
 					:isCanInput="false"
-					:style_Container="'height: 39px; font-size: 16px; '"
+					:style_Container="'height: 36px; font-size: 16px; '"
 					:initValue="'服务员'"
 					:selectHideType="'hideAll'"
 					@change="change"
@@ -38,7 +43,7 @@
 					:showItemNum="5"
 					:listShow="false"
 					:isCanInput="false"
-					:style_Container="'height: 36px; font-size: 16px;'"
+					:style_Container="'height: 33px; font-size: 16px;'"
 					:initValue="'蔬菜批发'"
 					:selectHideType="'hideAll'"
 					@change="change_pifa"
@@ -79,6 +84,9 @@
 			</swiper>
 		</view>
 	</view>
+
+</view>
+
 </template>
 
 <script>
@@ -93,6 +101,8 @@ import wPicker from '../../components/w-picker/w-picker.vue';
 import indexjs from '../../common/indexjs/indexjs.js';
 import uniNavBar from '../../components/uni-nav-bar/uni-nav-bar.vue';
 
+import noshiming from '../../components/noshiming/noshiming.vue';
+
 import uniLoadMore from '../../components/uni-load-more/uni-load-more.vue';
 
 import xflSelect from '../../components/xfl-select/xfl-select.vue'; //下拉导入
@@ -105,7 +115,7 @@ export default {
 		swiperTabHead,
 		LotusLoading,
 		uniLoadMore, //上拉加载更多
-
+noshiming,
 		wPicker, //城市选择
 		uniNavBar, //自定义导航
 		xflSelect //下拉框
@@ -131,7 +141,7 @@ export default {
 				isShow: false //设置显示加载中组件true显示false隐藏
 			},
 			//城市
-			defaultRegion: ['150000', '150100', '150103'],
+			defaultRegion: ['110000', '110100', '110101'],
 			result: {
 				result: ''
 			},
@@ -148,7 +158,9 @@ export default {
 				//分页结束
 				releaseType: '',
 				position: '服务员',
-			}
+			},
+			isxianshi:true
+			
 		};
 	},
 	onLoad(e) {
@@ -206,7 +218,17 @@ export default {
 			this.releaseWelfare.releaseType=e.orignItem.releaseType;
 		},
 		__init() {
+			
+		//	this.isshiming(this.$user.isAuthentication);
+			
+			//没有实名
+			if(this.$user.isAuthentication!==2){
+				this.isxianshi=false;
+				return false;
+			}
 			this.getUserRealName();
+			
+			
 			if (this.tabBars.length === 0 || this.newslist.length === 0) {
 				let resule = indexjs.quanbudingdao();
 				this.tabBars = resule.tabBars;
@@ -236,7 +258,7 @@ export default {
 			this.getnews(this.tabIndex, 3);
 		},
 
-		//刷新列表
+		//刷新和第一次请求列表
 		getnews(index, type) {
 			let releaseType = this.newslist[index].releaseType;
 			this.releaseType = releaseType;
@@ -273,6 +295,10 @@ export default {
 
 		//请求数据
 		getDatas(url, index, type) {
+			//没有实名
+			if(!this.isxianshi){
+				return false;
+			}
 			this.lotusLoadingData.isShow = true;
 			this.$http.post(url, this.releaseWelfare, {}).then(data => {
 				this.lotusLoadingData.isShow = false;
