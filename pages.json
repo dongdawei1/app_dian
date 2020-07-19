@@ -86,9 +86,24 @@
 				"navigationBarTitleText": "创建简历"
 			}
 		},
-
-
-
+		{
+			"path": "pages/crejianliup/crejianliup",
+			"style": {
+				"navigationBarTitleText": "编辑简历"
+			}
+		},
+		{
+			"path": "pages/crezhaopin/crezhaopin",
+			"style": {
+				"navigationBarTitleText": "发布招聘信息"
+			}
+		},
+{
+			"path": "pages/crezhaopinup/crezhaopinup",
+			"style": {
+				"navigationBarTitleText": "编辑招聘信息"
+			}
+		},
 		{
 			"path": "pages/quanbu/quanbu",
 			"style": {

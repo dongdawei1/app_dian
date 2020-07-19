@@ -19,7 +19,7 @@
 							:listShow="false"
 							:isCanInput="false"
 							:style_Container="'height: 30px; font-size: 16px; '"
-							:initValue="'服务员'"
+							:initValue="'招聘类型'"
 							:selectHideType="'hideAll'"
 							@change="change"
 						></xfl-select>
@@ -46,7 +46,7 @@
 							:listShow="false"
 							:isCanInput="false"
 							:style_Container="'height: 30px; font-size: 16px; '"
-							:initValue="'发布中'"
+							:initValue="'发布状态'"
 							:selectHideType="'hideAll'"
 							@change="change_welfareStatus"
 						></xfl-select>
@@ -66,16 +66,18 @@
 								<!-- 图文列表 -->
 								<block v-for="(item, index1) in items.list" :key="index1">
 									<!-- 简历 -->
-									<view v-if="items.releaseType === 31"><myjianli :item="item" :index="index1" v-on:getnew="getnew"></myjianli></view>
+									<myjianli v-if="items.releaseType === 31" :item="item" :index="index1" v-on:getnew="getnew"></myjianli>
+									<!-- 招聘 -->
+									<myzhaopin v-if="items.releaseType === 30" :item="item" :index="index1" v-on:getnew="getnew"></myzhaopin>
 								</block>
 								<!-- 上拉加载 -->
 								<uni-load-more v-if="items.releaseType !== 31" :status="status" :content-text="contentText" />
 							</template>
 							<template v-if="items.list.length === 0">
-								<view v-if="items.releaseType === 31" class="gerenzhongxinbut">
-									<button class="mini-class" @click="openUrl('crejianli/crejianli', 31)" type="primary">发布简历</button>
+								<view class="gerenzhongxinbut">
+									<button v-if="items.releaseType === 31" class="mini-class" @click="openUrl('crejianli/crejianli', 31)" type="primary">发布简历</button>
+									<button v-if="items.releaseType === 30" class="mini-class" @click="openUrl('crezhaopin/crezhaopin', 30)" type="primary">发布招聘信息</button>
 								</view>
-
 								<view class="meishuju">~未查询到发布信息</view>
 							</template>
 						</scroll-view>
@@ -95,6 +97,7 @@ import indexjs from '../../common/indexjs/indexjs.js';
 import uniNavBar from '../../components/uni-nav-bar/uni-nav-bar.vue';
 
 import myjianli from '../../components/myRelease/myjianli.vue';
+import myzhaopin from '../../components/myRelease/myzhaopin.vue';
 
 import uniLoadMore from '../../components/uni-load-more/uni-load-more.vue';
 import noshiming from '../../components/noshiming/noshiming.vue';
@@ -106,7 +109,8 @@ export default {
 		uniLoadMore, //上拉加载更多
 		xflSelect, //下拉框
 		noshiming,
-		myjianli
+		myjianli,
+		myzhaopin
 	},
 	data() {
 		return {
@@ -145,15 +149,15 @@ export default {
 				pageSize: 12, //每页显示的数量
 				//分页结束
 				releaseType: '',
-				position: '服务员',
-				welfareStatus: 1
+				position: '',
+				welfareStatus: ''
 			},
 			isxianshi: true,
-			isfanhui:false
+			isfanhui: false
 		};
 	},
 	onLoad() {
-		this.isfanhui=true;
+		this.isfanhui = true;
 		//页面加载
 		uni.getSystemInfo({
 			//高度适配
@@ -170,15 +174,15 @@ export default {
 	onShow() {
 		// console.log(this.releaseType);
 		// console.log(9090)
-		if(!this.isfanhui){
+		if (!this.isfanhui) {
 			//不等于true 说明是创建完返回的，需要刷新
 			this.getnews(this.tabIndex, 1);
 		}
 	},
-	  onHide() {
-		  //页面跳转触发
-	            this.isfanhui=false;
-	 },
+	onHide() {
+		//页面跳转触发
+		this.isfanhui = false;
+	},
 
 	// 监听搜索框点击事件
 	onNavigationBarSearchInputClicked() {},
@@ -231,8 +235,6 @@ export default {
 				return false;
 			}
 			this.getUserRealName();
-			//获取职位信息
-			this.get_position_bytype();
 
 			//获取顶部tab
 			if (this.tabBars.length === 0 || this.newslist.length === 0) {
@@ -242,12 +244,12 @@ export default {
 				this.role = resule.role;
 			}
 			if (this.role !== 11) {
-				//tabBars[0]
-				this.releaseType = this.tabBars[0].releaseType;
-				this.getnews(this.tabIndex, 1);
-			} else {
-				//求职者显示的  tab
+				//获取职位信息
+				this.get_position_bytype();
 			}
+			//tabBars[0]
+			this.releaseType = this.tabBars[0].releaseType;
+			this.getnews(this.tabIndex, 1);
 		},
 
 		getnew() {
@@ -297,7 +299,6 @@ export default {
 						this.getDatas(this.$urlconfig.getfabulista, index, 2);
 					}
 				}
-
 				return true;
 			}
 		},
@@ -308,9 +309,11 @@ export default {
 			if (!this.isxianshi) {
 				return false;
 			}
+			console.log(this.releaseWelfare);
 			this.lotusLoadingData.isShow = true;
 			this.$http.post(url, this.releaseWelfare, {}).then(data => {
 				this.lotusLoadingData.isShow = false;
+				console.log(data);
 				if (data.status === 0) {
 					if (type === 1) {
 						//没有查询到结果
@@ -320,7 +323,7 @@ export default {
 						}
 						//this.swiperheight   534   :450    581 :  490 *
 						this.newslist[index].list = data.data.datas;
-						this.swiperheight = this.newslist[index].list.length * 340 + 30;
+						this.swiperheight = this.newslist[index].list.length * 350 + 30;
 						if (data.data.totalno > this.releaseWelfare.pageSize) {
 							this.status = 'more';
 						} else {
@@ -334,7 +337,7 @@ export default {
 						}
 						//this.swiperheight   534   :450    581 :  490 *
 						this.newslist[index].list = this.newslist[index].list.concat(data.data.datas);
-						this.swiperheight = this.newslist[index].list.length * 340;
+						this.swiperheight = this.newslist[index].list.length * 350;
 						this.status = 'more';
 					}
 				}
@@ -385,22 +388,23 @@ export default {
 		},
 		// 跳转
 		openUrl(url, type) {
-			if (type === 31) {
-				let url_31 = '../../pages/' + url + '?item=' + encodeURIComponent(JSON.stringify(this.realName));
-				uni.navigateTo({
-					url: url_31
-				});
-				return true;
-			}
+			//	if (type === 31) {
+			let urlconcat = '../../pages/' + url + '?item=' + encodeURIComponent(JSON.stringify(this.realName));
 			uni.navigateTo({
-				url: '../../pages/' + url
+				url: urlconcat
 			});
+			return true;
+			// }
+			// uni.navigateTo({
+			// 	url: '../../pages/' + url
+			// });
 		},
 		//获取实名信息
 		getUserRealName() {
 			this.$http.get(this.$urlconfig.getUserRealName, {}, {}).then(data => {
 				if (data.status === 0) {
 					this.realName = data.data;
+					console.log(this.realName);
 					// let ar = [];
 					// ar[0] = data.data.provincesId.toString();
 					// ar[1] = data.data.cityId.toString();

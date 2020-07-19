@@ -6,6 +6,7 @@
     "uni-load-more": "/components/uni-load-more/uni-load-more",
     "xfl-select": "/components/xfl-select/xfl-select",
     "noshiming": "/components/noshiming/noshiming",
-    "myjianli": "/components/myRelease/myjianli"
+    "myjianli": "/components/myRelease/myjianli",
+    "myzhaopin": "/components/myRelease/myzhaopin"
   }
 }

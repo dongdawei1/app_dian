@@ -1,11 +1,11 @@
 <template>
 	<view class="index-list">
 		<view class="biaoti">
-				简历状态 :
-				<text v-if="item.welfareStatus === 1">发布中</text>
-				<text v-if="item.welfareStatus === 2">隐藏中</text>
-				<text v-if="item.welfareStatus === 4">审核中</text>
-				<text v-if="item.welfareStatus === 5">不在有效期不显示</text>
+			简历状态 :
+			<text v-if="item.welfareStatus === 1">发布中</text>
+			<text v-if="item.welfareStatus === 2">隐藏中</text>
+			<text v-if="item.welfareStatus === 4">审核中</text>
+			<text v-if="item.welfareStatus === 5">不在有效期不显示</text>
 		</view>
 		<view class="jinggao" v-if="item.authentiCationStatus === 3 && item.welfareStatus === 4">审核失败原因：{{ item.authentiCationFailure }}</view>
 
@@ -17,23 +17,21 @@
 			<view>求职类型 : {{ item.position }}</view>
 			<view>工作经验 : {{ item.experience }}</view>
 		</view>
-
+		<view class="index-list4">
+			<view>联系人 : {{ item.consigneeName }}</view>
+			<view>性别 : {{ item.gender }}</view>
+		</view>
 		<view class="index-list4">
 			<view>学历 : {{ item.education }}</view>
 			<view>年龄 : {{ item.age }}</view>
 		</view>
 
 		<view class="index-list4">
-			<view>性别 : {{ item.gender }}</view>
-			
-		</view>
-
-		<view class="index-list4">
-			<view>联系人 : {{ item.consigneeName }}</view>
 			<view>
-				是否公开电话 :
-				<text v-if="item.isPublishContact === 2">不</text>
-				公开
+				公开联系类型 :
+				<text v-if="item.isPublishContact === 1">公开手机号</text>
+				<text v-if="item.isPublishContact === 2">公开邮箱</text>
+				
 			</view>
 		</view>
 
@@ -61,7 +59,7 @@
 		</view>
 
 		<view class="myReleasebuwai">
-			<view class="myReleasebuno"><button class="mini-class " size="mini" type="primary">编辑</button></view>
+			<view class="myReleasebuno"><button class="mini-class "  @click="openUrl()" size="mini" type="primary">编辑</button></view>
 			<view class="myReleasebuno" v-if="item.welfareStatus === 1">
 				<button class="mini-class " :loading="loading" @click="operation(1)" size="mini" type="primary">刷新</button>
 			</view>
@@ -77,7 +75,6 @@
 			<view class="myReleasebuno"><button class="mini-class " :loading="loading" @click="operation(3)" size="mini" type="primary">删除</button></view>
 		</view>
 
-		<el-button type="primary" @click="endAndAgain()" v-if="da.isEnd">编辑</el-button>
 	</view>
 </template>
 
@@ -91,6 +88,14 @@ export default {
 		return { loading: false };
 	},
 	methods: {
+		// 跳转
+		openUrl() {
+				let url_31 = '../../pages/crejianliup/crejianliup?item=' + encodeURIComponent(JSON.stringify(this.item));
+				uni.navigateTo({
+					url: url_31
+				});
+				return true;
+		},
 		//操作
 		operation(type) {
 			let data = {};

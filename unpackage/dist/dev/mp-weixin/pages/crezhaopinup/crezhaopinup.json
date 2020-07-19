@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "编辑招聘信息",
+  "usingComponents": {
+    "xfl-select": "/components/xfl-select/xfl-select"
+  }
+}

@@ -1,5 +1,5 @@
 <template>
-	<view class="body">
+	<view class="mybody">
 		<view class="sou">
 			<view class="so_no" style="width: 42%; margin-bottom: 20px;">
 				<xfl-select
@@ -112,10 +112,10 @@
 
 		<view class="sou">
 			<view class="gao1 chengshi hui" style="width: 38%; margin-bottom: 21px;">
-				<view class="shang ">{{ ruleForm.contact }}</view>
+				<view class="shang ">{{ ruleForm.consigneeName }}</view>
 			</view>
 			<view class="gao1 chengshi hui" style="width: 38%; margin-bottom: 21px;">
-				<view class="shang ">{{ ruleForm.consigneeName }}</view>
+				<view class="shang ">{{ ruleForm.contact }}</view>
 			</view>
 		</view>
 
@@ -338,63 +338,5 @@ export default {
 .body {
 	padding: 25upx 5upx 25upx 25upx;
 }
-.so_no {
-	padding: 0 20upx 5upx 10upx;
-}
-.sou {
-	/*padding: 1upx 1upx 1upx 0; 不设边框出不来*/
-	display: flex;
-	/*border: 1upx solid #e0e1e0;边框*/
-	flex-direction: row; /*同行多列布局*/
-	/*border-style: solid; 边框样式*/
-	/*border-color: #e0e1e0; 边框颜色*/
-	/*	border-width: 1upx; 边框宽*/
-	/*border-radius: 10upx; 边框圆角*/
-}
 
-.gao1 {
-	/* width: 10%; */
-	/* margin: auto; */
-	/* height: 65upx; */
-	/* padding: 2upx 0 2upx 20upx; */
-	/* padding: 0 0 0 20upx; */
-	padding: 0 20upx 5upx 10upx;
-	margin: 0 20upx 0 9upx;
-	border: 1upx solid #e0e1e0; /*边框*/
-	border-style: solid; /*边框样式*/
-	border-color: #e0e1e0; /*边框颜色*/
-	border-width: 1upx; /*	边框宽*/
-	border-radius: 10upx; /*边框圆角*/
-}
-.sou2 {
-	padding: 0 76upx 5upx 10upx;
-}
-.gao2 {
-	border: 1upx solid #e0e1e0; /*边框*/
-	border-style: solid; /*边框样式*/
-	border-color: #e0e1e0; /*边框颜色*/
-	border-width: 1upx; /*	边框宽*/
-	border-radius: 10upx; /*边框圆角*/
-}
-.shang2 {
-	/* margin-left:0px */
-	padding: 13upx 0 14upx 15upx;
-}
-.shang {
-	/* margin-left:0px */
-	padding: 12upx 0 0 10upx;
-}
-.hui {
-	background: #edece8;
-}
-.chengshi {
-	height: 77upx;
-	/* margin-left:0px */
-	/* padding: 12upx 0 0 10upx; */
-}
-.xianshicheng {
-	line-height: 36upx;
-	font-size: 30upx;
-	color: #606266;
-}
 </style>
