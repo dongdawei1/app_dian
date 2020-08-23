@@ -74,7 +74,5 @@
 	flex-wrap: wrap;
 	justify-content: space-between;
 }
-.index-list4{	
-}
 
 </style>

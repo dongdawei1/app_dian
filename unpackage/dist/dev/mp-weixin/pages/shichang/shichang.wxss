@@ -1,14 +1,14 @@
 
-.kong {
+.kong.data-v-90c15a04 {
 	padding: 0 30rpx 0 30rpx;
 }
-.mini-class {
+.mini-class.data-v-90c15a04 {
 	font-size: 30rpx;
 }
-.so {
+.so.data-v-90c15a04 {
 	padding: 12rpx 30rpx 10rpx 30rpx;
 }
-.sou {
+.sou.data-v-90c15a04 {
 	padding: 1rpx 1rpx 1rpx 0;/*不设边框出不来*/
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -23,24 +23,24 @@
 /*	border-width: 1upx; 边框宽*/
 	border-radius: 10rpx; /*边框圆角*/
 }
-.so_pifa{
+.so_pifa.data-v-90c15a04{
 	padding: 12rpx 40rpx 10rpx 40rpx;
 }
-.gao{
+.gao.data-v-90c15a04{
 	height: 72rpx;
 	margin: auto;
 }
-.gao1{
+.gao1.data-v-90c15a04{
 	margin: auto;
-	height: 59rpx; /*不设置圆角出不来*/
+	height: 72rpx; /*不设置圆角出不来*/
 	padding: 2rpx 0 2rpx 39rpx;
 }
-.meishuju {
+.meishuju.data-v-90c15a04 {
 	font-size: 30rpx;
 	text-align: center;
 	padding: 100rpx 50rpx 10rpx 50rpx;
 }
-button::after{ border: none;}
+button.data-v-90c15a04::after{ border: none;}
 
 /*去除按钮边框*/
 

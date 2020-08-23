@@ -1,5 +1,5 @@
 <template>
-	<view></view>
+	<view>新建订单</view>
 </template>
 
 <script>

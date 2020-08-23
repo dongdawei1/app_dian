@@ -1909,8 +1909,13 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   getUserRealName: 'realName/getUserRealName',
   getfabulista: 'fabu/getfabulista',
   getfabubyid: 'fabu/getfabubyid',
+  getmyfabu: 'fabu/getmyfabu',
+  upfabu: 'fabu/upfabu',
+
 
   getWholesaleCommodityPublicId: 'wholesaleCommodity/getWholesaleCommodityPublicId',
+  get_myWholesaleCommodity_list: 'wholesaleCommodity/get_myWholesaleCommodity_list',
+  operation_userWholesaleCommodity: 'wholesaleCommodity/operation_userWholesaleCommodity',
   get_position_all: 'releaseWelfare/get_position_all',
   getContact: 'getPublishings/getContact',
 
@@ -1928,6 +1933,8 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
   select_resume_by_id: 'resume/select_resume_by_id',
   operation_resume: 'resume/operation_resume',
   create_resume: 'resume/create_resume',
+
+  myPurchaseOrder: 'order/myPurchaseOrder',
   // websocket地址11
   websocketUrl: "ws://localhost:8080/api/v1/vp/so/",
   // 消息提示tabbar索引
@@ -9407,7 +9414,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ 383:
+/***/ 396:
 /*!******************************************************************!*\
   !*** E:/ceshi/app_dian/components/w-picker/areadata/areadata.js ***!
   \******************************************************************/
@@ -10502,7 +10509,7 @@ main();
   },
 
 
-  //首页显示操作按钮
+  //首页显示操作按钮    除了其他发布,其他删掉
   getdaohao: function getdaohao() {
     var daohao = [];
 
@@ -10533,7 +10540,7 @@ main();
 
         {
           name: '发布商品信息',
-          paths: '/pages/creqp/creqp', //电器
+          paths: '/pages/crefabu/crefabu', //电器
           ioc: '/static/shou/g3.png' },
 
         {
@@ -10567,7 +10574,7 @@ main();
 
         {
           name: '发布商品信息',
-          paths: '/pages/crejiu/crejiu',
+          paths: '/pages/crefabu/crefabu',
           ioc: '/static/shou/g3.png' },
 
         {
@@ -10584,7 +10591,7 @@ main();
 
         {
           name: '发布租房信息',
-          paths: '/pages/crezu/crezu',
+          paths: '/pages/crefabu/crefabu',
           ioc: '/static/shou/g3.png' },
 
         {
@@ -10601,7 +10608,7 @@ main();
 
         {
           name: '发布服务信息',
-          paths: '/pages/crezhuang/crezhuang',
+          paths: '/pages/crefabu/crefabu',
           ioc: '/static/shou/g3.png' },
 
         {
@@ -10635,7 +10642,7 @@ main();
 
         {
           name: '发布商品信息',
-          paths: '/pages/crebai/crebai',
+          paths: '/pages/crefabu/crefabu',
           ioc: '/static/shou/g3.png' },
 
         {
@@ -11093,7 +11100,7 @@ module.exports = {"_from":"@dcloudio/uni-stat@alpha","_id":"@dcloudio/uni-stat@2
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/login/login": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/reg/reg": { "navigationBarTitleText": "注册", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/logmain/logmain": { "navigationBarTitleText": "", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/pwd/pwd": { "navigationBarTitleText": "找回密码", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/index/index": { "navigationBarTitleText": "首页", "usingComponents": { "purchase-conduct-order": "/components/comindord/PurchaseConductOrder" }, "usingAutoImportComponents": {} }, "pages/creord/creord": { "navigationBarTitleText": "发布实时采购", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/qitafabu/qitafabu": { "navigationBarTitleText": "其他需求信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/creqp/creqp": { "navigationBarTitleText": "发布商品服务信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/jinxingorder/jinxingorder": { "navigationBarTitleText": "全部订单", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/crejiu/crejiu": { "navigationBarTitleText": "发布酒水/消毒餐具信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/crezu/crezu": { "navigationBarTitleText": "发布出租信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/crezhuang/crezhuang": { "navigationBarTitleText": "发布服务信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/crebai/crebai": { "navigationBarTitleText": "发布百货信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/crejianli/crejianli": { "navigationBarTitleText": "创建简历", "usingComponents": { "xfl-select": "/components/xfl-select/xfl-select", "w-picker": "/components/w-picker/w-picker" }, "usingAutoImportComponents": {} }, "pages/crejianliup/crejianliup": { "navigationBarTitleText": "编辑简历", "usingComponents": { "xfl-select": "/components/xfl-select/xfl-select", "w-picker": "/components/w-picker/w-picker" }, "usingAutoImportComponents": {} }, "pages/crezhaopin/crezhaopin": { "navigationBarTitleText": "发布招聘信息", "usingComponents": { "xfl-select": "/components/xfl-select/xfl-select" }, "usingAutoImportComponents": {} }, "pages/quanbu/quanbu": { "navigationBarTitleText": "全部信息", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/shichang/shichang": { "usingComponents": { "index-no": "/components/shichang/index-no", "zhaopin-no": "/components/shichang/zhaopin-no", "jianli-no": "/components/shichang/jianli-no", "pifa-no": "/components/shichang/pifa-no", "swiper-tab-head": "/components/index/swiper-tab-head", "lotus-loading": "/components/Winglau14-lotusLoading/Winglau14-LotusLoading", "uni-load-more": "/components/uni-load-more/uni-load-more", "noshiming": "/components/noshiming/noshiming", "w-picker": "/components/w-picker/w-picker", "uni-nav-bar": "/components/uni-nav-bar/uni-nav-bar", "xfl-select": "/components/xfl-select/xfl-select" }, "usingAutoImportComponents": {} }, "pages/xiangqing/xiangqing": { "navigationBarTitleText": "发布详情", "usingComponents": { "lotus-loading": "/components/Winglau14-lotusLoading/Winglau14-LotusLoading", "pingjia": "/components/pingjia/pingjia", "lunbo": "/components/lunbo/lunbo" }, "usingAutoImportComponents": {} }, "pages/myRelease/myRelease": { "navigationBarTitleText": "我的发布", "usingComponents": { "swiper-tab-head": "/components/index/swiper-tab-head", "lotus-loading": "/components/Winglau14-lotusLoading/Winglau14-LotusLoading", "uni-load-more": "/components/uni-load-more/uni-load-more", "xfl-select": "/components/xfl-select/xfl-select", "noshiming": "/components/noshiming/noshiming", "myjianli": "/components/myRelease/myjianli", "myzhaopin": "/components/myRelease/myzhaopin" }, "usingAutoImportComponents": {} }, "pages/yonghu/yonghu": { "navigationBarTitleText": "用户中心", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/jiedan/jiedan": { "navigationBarTitleText": "接单中心", "usingComponents": { "swiper-tab-head": "/components/index/swiper-tab-head", "daijiedan": "/components/jiedan/daijiedan", "baojiazhong": "/components/jiedan/baojiazhong", "jinqidingdan": "/components/jiedan/jinqidingdan" }, "usingAutoImportComponents": {} }, "pages/jiedanbaojia/jiedanbaojia": { "navigationBarTitleText": "订单报价", "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/lunbo/lunbo": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/xieyi/xieyi": { "usingComponents": {}, "usingAutoImportComponents": {} }, "pages/crezhaopinup/crezhaopinup": { "navigationBarTitleText": "编辑招聘信息" } }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarBackgroundColor": "#FC5640", "backgroundColor": "#F8F8F8" } };exports.default = _default;
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = { "pages": { "pages/login/login": {}, "pages/reg/reg": { "navigationBarTitleText": "注册" }, "pages/logmain/logmain": { "navigationBarTitleText": "" }, "pages/pwd/pwd": { "navigationBarTitleText": "找回密码" }, "pages/index/index": { "navigationBarTitleText": "首页" }, "pages/creord/creord": { "navigationBarTitleText": "发布实时采购" }, "pages/qitafabu/qitafabu": { "navigationBarTitleText": "其他需求信息" }, "pages/crefabu/crefabu": { "navigationBarTitleText": "发布信息" }, "pages/crepifa/crepifa": { "navigationBarTitleText": "批发信息" }, "pages/jinxingorder/jinxingorder": { "navigationBarTitleText": "全部订单" }, "pages/crejianli/crejianli": { "navigationBarTitleText": "创建简历" }, "pages/crejianliup/crejianliup": { "navigationBarTitleText": "编辑简历" }, "pages/crezhaopin/crezhaopin": { "navigationBarTitleText": "发布招聘信息" }, "pages/crezhaopinup/crezhaopinup": { "navigationBarTitleText": "编辑招聘信息" }, "pages/quanbu/quanbu": { "navigationBarTitleText": "全部信息" }, "pages/shichang/shichang": {}, "pages/xiangqing/xiangqing": { "navigationBarTitleText": "发布详情" }, "pages/xiangqingmyfabu/xiangqingmyfabu": { "navigationBarTitleText": "我的发布详情" }, "pages/myRelease/myRelease": { "navigationBarTitleText": "我的发布" }, "pages/yonghu/yonghu": { "navigationBarTitleText": "用户中心" }, "pages/jiedan/jiedan": { "navigationBarTitleText": "接单中心" }, "pages/jiedanbaojia/jiedanbaojia": { "navigationBarTitleText": "订单报价" }, "pages/lunbo/lunbo": {}, "pages/xieyi/xieyi": {} }, "globalStyle": { "navigationBarTextStyle": "black", "navigationBarBackgroundColor": "#FC5640", "backgroundColor": "#F8F8F8" } };exports.default = _default;
 
 /***/ }),
 

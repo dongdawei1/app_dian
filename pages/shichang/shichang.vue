@@ -389,7 +389,7 @@ noshiming,
 };
 </script>
 
-<style>
+<style scoped>
 .kong {
 	padding: 0 30upx 0 30upx;
 }
@@ -419,7 +419,7 @@ noshiming,
 }
 .gao1{
 	margin: auto;
-	height: 59upx; /*不设置圆角出不来*/
+	height: 72upx; /*不设置圆角出不来*/
 	padding: 2upx 0 2upx 39upx;
 }
 .meishuju {

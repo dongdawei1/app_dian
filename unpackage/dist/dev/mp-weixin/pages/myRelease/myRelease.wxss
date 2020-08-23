@@ -73,16 +73,16 @@
 }
 
 
-.kong {
+.kong.data-v-37c6ef56 {
 	padding: 0 30rpx 0 30rpx;
 }
-.mini-class {
+.mini-class.data-v-37c6ef56 {
 	font-size: 30rpx;
 }
-.so {
+.so.data-v-37c6ef56 {
 	padding: 12rpx 30rpx 10rpx 30rpx;
 }
-.sou {
+.sou.data-v-37c6ef56 {
 	padding: 1rpx 1rpx 1rpx 0; /*不设边框出不来*/
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -97,17 +97,17 @@
 	/*	border-width: 1upx; 边框宽*/
 	border-radius: 10rpx; /*边框圆角*/
 }
-.wai {
+.wai.data-v-37c6ef56 {
 	width: 100%;
 	/* border-top: 1upx solid #eeeeee; */
-	padding: 10rpx 20rpx 20rpx 20rpx;
+	padding: 10rpx 30rpx 20rpx 30rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
 	-webkit-flex-wrap: nowrap;
 	        flex-wrap: nowrap; /*父级容器 属性,默认情况下,子元素都排在一条线(又称"轴线")上,flex-wrap属性定义,如果一条轴线排不下,如何换行*/
 }
-.liebiao {
+.liebiao.data-v-37c6ef56 {
 	padding: 0 5% 0 0;
 	width: 45%;
 	display: -webkit-box;
@@ -122,7 +122,7 @@
 		flex-grow:1;
 		height: 450upx;*/
 }
-.liebiaobu {
+.liebiaobu.data-v-37c6ef56 {
 	width: 20%;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -136,24 +136,18 @@
 		flex-grow:1;
 		height: 450upx;*/
 }
-.so_pifa {
+.so_pifa.data-v-37c6ef56 {
 	padding: 12rpx 40rpx 10rpx 40rpx;
 }
-.gao {
-	height: 72rpx;
-	margin: auto;
+.gerenxiani.data-v-37c6ef56 {
+								padding: 15rpx 40rpx 15rpx 0;
 }
-.gao1 {
-	margin: auto;
-	height: 59rpx; /*不设置圆角出不来*/
-	padding: 2rpx 0 2rpx 39rpx;
-}
-.meishuju {
+.meishuju.data-v-37c6ef56 {
 	font-size: 30rpx;
 	text-align: center;
 	padding: 100rpx 50rpx 10rpx 50rpx;
 }
-button::after {
+button.data-v-37c6ef56::after {
 	border: none;
 }
 

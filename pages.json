@@ -1,6 +1,14 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页,
 
+// {
+// 			"path": "pages/w-picker-demo/w-picker-demo",
+// 			"style": {
+// 				//"navigationBarTitleText": "登录"
+// 			}
+// 		},
+
+
 		{
 			"path": "pages/login/login",
 			"style": {
@@ -44,10 +52,18 @@
 				"navigationBarTitleText": "其他需求信息"
 			}
 		},
+		
 		{
-			"path": "pages/creqp/creqp",
+			"path": "pages/crefabu/crefabu",
 			"style": {
-				"navigationBarTitleText": "发布商品服务信息"
+				"navigationBarTitleText": "发布信息"
+			}
+		},
+		
+		{
+			"path": "pages/crepifa/crepifa",
+			"style": {
+				"navigationBarTitleText": "批发信息"
 			}
 		},
 		{
@@ -57,29 +73,12 @@
 			}
 		},
 
-		{
-			"path": "pages/crejiu/crejiu",
-			"style": {
-				"navigationBarTitleText": "发布酒水/消毒餐具信息"
-			}
-		},
-		{
-			"path": "pages/crezu/crezu",
-			"style": {
-				"navigationBarTitleText": "发布出租信息"
-			}
-		},
-		{
-			"path": "pages/crezhuang/crezhuang",
-			"style": {
-				"navigationBarTitleText": "发布服务信息"
-			}
-		}, {
-			"path": "pages/crebai/crebai",
-			"style": {
-				"navigationBarTitleText": "发布百货信息"
-			}
-		},
+	
+		
+		
+		
+		
+		
 		{
 			"path": "pages/crejianli/crejianli",
 			"style": {
@@ -98,7 +97,7 @@
 				"navigationBarTitleText": "发布招聘信息"
 			}
 		},
-{
+		{
 			"path": "pages/crezhaopinup/crezhaopinup",
 			"style": {
 				"navigationBarTitleText": "编辑招聘信息"
@@ -125,6 +124,12 @@
 			"path": "pages/xiangqing/xiangqing",
 			"style": {
 				"navigationBarTitleText": "发布详情"
+			}
+		},
+		{
+			"path": "pages/xiangqingmyfabu/xiangqingmyfabu",
+			"style": {
+				"navigationBarTitleText": "我的发布详情"
 			}
 		},
 

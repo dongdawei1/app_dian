@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "发布信息",
+  "usingComponents": {
+    "xfl-select": "/components/xfl-select/xfl-select"
+  }
+}

@@ -19,8 +19,13 @@ export default {
 	getUserRealName:'realName/getUserRealName',
 	getfabulista:'fabu/getfabulista',
 	getfabubyid:'fabu/getfabubyid',
+	getmyfabu:'fabu/getmyfabu',
+	upfabu:'fabu/upfabu',
+	
 	
 	getWholesaleCommodityPublicId:'wholesaleCommodity/getWholesaleCommodityPublicId',
+	get_myWholesaleCommodity_list:'wholesaleCommodity/get_myWholesaleCommodity_list',
+	operation_userWholesaleCommodity:'wholesaleCommodity/operation_userWholesaleCommodity',
 	get_position_all:'releaseWelfare/get_position_all',
 	getContact:'getPublishings/getContact',
 	
@@ -38,6 +43,8 @@ export default {
 	select_resume_by_id:'resume/select_resume_by_id',
 	operation_resume:'resume/operation_resume',
 	create_resume:'resume/create_resume',
+	
+	myPurchaseOrder:'order/myPurchaseOrder',
 	// websocket地址11
 	websocketUrl: "ws://localhost:8080/api/v1/vp/so/",
 	// 消息提示tabbar索引

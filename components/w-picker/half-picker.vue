@@ -10,9 +10,9 @@
 			<picker-view-column>
 				<view class="w-picker-item" v-for="(item,index) in range.days" :key="index">{{item}}日</view>
 			</picker-view-column>
-			<picker-view-column>
+			<!-- <picker-view-column>
 				<view class="w-picker-item" v-for="(item,index) in range.sections" :key="index">{{item}}</view>
-			</picker-view-column>
+			</picker-view-column> -->
 		</picker-view>
 	</view>
 </template>
@@ -65,7 +65,8 @@
 				return (Number(n)<10?'0'+Number(n):Number(n)+'');
 			},
 			checkValue(value){
-				let strReg=/^\d{4}-\d{2}-\d{2} [\u4e00-\u9fa5]{2}$/,example;
+				//let strReg=/^\d{4}-\d{2}-\d{2} [\u4e00-\u9fa5]{2}$/,example;
+				let strReg=/^\d{4}-\d{2}-\d{2}$/,example;
 				if(!strReg.test(value)){
 					console.log(new Error("请传入与mode、fields匹配的value值，例value="+example+""))
 				}
@@ -158,8 +159,8 @@
 					curMonth,
 					curMonthdays,
 					curDay,
-					curHour,
-					curSection
+					curHour
+					//curSection
 				}
 			},
 			getDefaultDate(){
@@ -280,12 +281,13 @@
 				month=dVal[1]?dVal[1]:months[0];
 				day=dVal[2]?dVal[2]:days[0];
 				section=dVal[3]?dVal[3]:sections[0];
-				result=full=`${year+'-'+month+'-'+day+' '+section}`;
+				//result=full=`${year+'-'+month+'-'+day+' '+section}`;
+				result=full=`${year+'-'+month+'-'+day}`;
 				obj={
 					year,
 					month,
-					day,
-					section
+					day
+					//section
 				}
 				this.range=range;
 				this.checkObj=obj;
@@ -326,8 +328,8 @@
 				obj={
 					year,
 					month,
-					day,
-					section
+					day
+					//section
 				}
 				this.checkObj=obj;
 				this.$emit("change",{

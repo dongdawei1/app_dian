@@ -50,6 +50,10 @@
 		<view class="index-list4" v-if="item.welfareStatus !== 4">
 			<view>失效时间 : {{ item.termOfValidity }}</view>
 		</view>
+		
+		<view class="index-list4">
+			<view>福利 : {{ item.welfare }}</view>
+		</view>
 		<view class="index-list4">
 			<view>职位描述 : {{ item.describeOne }}</view>
 		</view>

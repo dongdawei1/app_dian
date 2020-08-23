@@ -7,6 +7,9 @@
     "xfl-select": "/components/xfl-select/xfl-select",
     "noshiming": "/components/noshiming/noshiming",
     "myjianli": "/components/myRelease/myjianli",
-    "myzhaopin": "/components/myRelease/myzhaopin"
+    "myzhaopin": "/components/myRelease/myzhaopin",
+    "myfabu": "/components/myRelease/myfabu",
+    "w-picker": "/components/w-picker/w-picker",
+    "myord": "/components/myRelease/myord"
   }
 }

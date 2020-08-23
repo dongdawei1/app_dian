@@ -1,4 +1,5 @@
 <template>
+	<!--和pc端保持一致只有几个字段可以编辑后期优化-->
 	<view class="mybody">
 		<view class="xinxiyouxiaoqi">信息有效期为30天,到期后可手动延期</view>
 		<view class="sou">
@@ -6,6 +7,7 @@
 				<xfl-select
 					:list="list_position"
 					:clearable="false"
+					:disabled="true"  
 					:showItemNum="5"
 					:listShow="false"
 					:isCanInput="false"
@@ -15,8 +17,8 @@
 					@change="change"
 				></xfl-select>
 			</view>
-			<view class="gao1" style="width: 38%; margin-bottom: 21px;">
-				<input class="shang" v-model="ruleForm.number" maxlength="3" type="number" placeholder="输入招聘人数小于100" />
+			<view class="gao1 hui" style="width: 38%; margin-bottom: 21px;">
+				<input class="shang" :disabled="true" v-model="ruleForm.number" maxlength="3" type="number" placeholder="输入招聘人数小于100" />
 			</view>
 		</view>
 
@@ -25,6 +27,7 @@
 				<xfl-select
 					:list="list_salary"
 					:clearable="false"
+					:disabled="true" 
 					:showItemNum="5"
 					:listShow="false"
 					:isCanInput="false"
@@ -40,6 +43,7 @@
 					:list="list_education"
 					:clearable="false"
 					:showItemNum="5"
+					:disabled="true" 
 					:listShow="false"
 					:isCanInput="false"
 					:style_Container="'height: 36px; font-size: 16px; '"
@@ -56,6 +60,7 @@
 					:list="list_experience"
 					:clearable="false"
 					:showItemNum="5"
+					:disabled="true" 
 					:listShow="false"
 					:isCanInput="false"
 					:style_Container="'height: 36px; font-size: 16px; '"
@@ -67,6 +72,7 @@
 
 			<view class="so_no" style="width: 42%; margin-bottom: 20px;">
 				<xfl-select
+				:disabled="true" 
 					:list="list_age"
 					:clearable="false"
 					:showItemNum="5"
@@ -83,6 +89,7 @@
 		<view class="sou">
 			<view class="so_no" style="width: 42%; margin-bottom: 20px;">
 				<xfl-select
+				:disabled="true" 
 					:list="list_isPublishContact"
 					:clearable="false"
 					:showItemNum="3"
@@ -107,6 +114,7 @@
 		<view class="sou">
 			<view class="so_no" style="width: 26%; margin-bottom: 20px;">
 				<xfl-select
+				:disabled="true" 
 					:list="list_gender"
 					:clearable="false"
 					:showItemNum="5"
@@ -121,6 +129,7 @@
 
 			<view class="so_no" style="width: 58%; margin-bottom: 20px;">
 				<xfl-select
+				:disabled="true" 
 					:list="list_introductoryAward"
 					:clearable="false"
 					:showItemNum="5"
@@ -136,7 +145,7 @@
 
 		<view class="sou">
 			<view class="wenzi" style="width: 40%; margin-bottom: 21px;"><text class="shang">联系人姓名</text></view>
-			<view class="gao1" style="width: 42%; margin-bottom: 21px;"><input class="shang" v-model="ruleForm.consigneeName" maxlength="6" placeholder="联系人" /></view>
+			<view class="gao1 hui" style="width: 42%; margin-bottom: 21px;"><input class="shang" :disabled="true"  v-model="ruleForm.consigneeName" maxlength="6" placeholder="联系人" /></view>
 		</view>
 
 		<view class="sou">
@@ -150,7 +159,7 @@
 		<!--公司名-->
 		<view class="sou2 ">
 			<view class="gao2 hui">
-				<view class="shang2">{{ ruleForm.workingAddress }}</view>
+				<view class="shang2">{{ ruleForm.companyName }}</view>
 			</view>
 		</view>
 
@@ -158,7 +167,8 @@
 		<view class="danxuan">
 			<checkbox-group @change="change_welfare">
 				<label v-for="item in list_welfare" :key="item.value">
-					<checkbox :value="item.value" :checked="!item.checked" style="transform:scale(0.6)"></checkbox>
+					
+					<checkbox :disabled="true"  :value="item.value" :checked="item.checked" style="transform:scale(0.6)"></checkbox>
 					<test>{{ item.value }}</test>
 				</label>
 			</checkbox-group>
@@ -194,11 +204,11 @@ export default {
 				'每人500元入职一个月后奖励'
 			],
 			list_welfare: [
-				{ value: '五险', checked: 'false' },
-				{ value: '包住', checked: 'false' },
-				{ value: '包吃', checked: 'false' },
-				{ value: '13薪', checked: 'false' },
-				{ value: '其他', checked: 'false' }
+				{ value: '五险', checked: false },
+				{ value: '包住', checked: false },
+				{ value: '包吃', checked: false },
+				{ value: '13薪', checked: false },
+				{ value: '其他', checked: false }
 			],
 
 			no: 0,
@@ -243,26 +253,18 @@ export default {
 		}else{
 			this.isPublishContact='公开邮箱';
 		}
-		
+		console.log(this.ruleForm )
 		let welfare=this.ruleForm.welfare;
-		console.log(welfare);
+		welfare=welfare.substring(0,welfare.length-1);
 		
-		let welfare_list=
-		
-		var checked = e.target.value;
-		// detail:
-		// value: (4) ["五险", "包住", "包吃", "13薪"]
+		let welfare_split_list=welfare.split("/")
 		var changed = {};
 		for (var i = 0; i < this.list_welfare.length; i++) {
-			if (checked.indexOf(this.list_welfare[i].value) !== -1) {
-				changed['checkboxItems[' + i + '].checked'] = true;
-			} else {
-				changed['checkboxItems[' + i + '].checked'] = false;
-			}
+			if (welfare_split_list.indexOf(this.list_welfare[i].value) !== -1) {
+				this.list_welfare[i].checked=true;
+			} 
 		}
-		this.ruleForm.welfare = checked;
-		
-	//	this.list_welfare
+		this.ruleForm.welfare = welfare_split_list;
 		this.__init();
 	},
 
@@ -307,18 +309,8 @@ export default {
 		},
 		//福利
 		change_welfare(e) {
-			var checked = e.target.value;
-			// detail:
-			// value: (4) ["五险", "包住", "包吃", "13薪"]
-			var changed = {};
-			for (var i = 0; i < this.list_welfare.length; i++) {
-				if (checked.indexOf(this.list_welfare[i].value) !== -1) {
-					changed['checkboxItems[' + i + '].checked'] = true;
-				} else {
-					changed['checkboxItems[' + i + '].checked'] = false;
-				}
-			}
-			this.ruleForm.welfare = checked;
+			this.ruleForm.welfare =  e.target.value;
+			
 		},
 		save() {
 			let er = false;
@@ -381,22 +373,27 @@ export default {
 				return false;
 			}
 			this.loading = true;
-			//操作
-			this.$http.post(this.$urlconfig.create_position, this.ruleForm, {}).then(data => {
+			 this.ruleForm.type=6;
+			//编辑
+			this.$http.post(this.$urlconfig.position_operation, this.ruleForm, {}).then(data => {
 				this.loading = false;
 				if (data.status === 0) {
 					uni.showModal({
 						title: '',
-						content: '创建职位成功,我们将尽快审核;是否继续创建',
+						content: '编辑职位成功,我们将尽快审核;',
 						success: function(res) {
-							 if (res.cancel) {
-								uni.switchTab({
-									url: '/pages/myRelease/myRelease'
-								});
-							}
+							//  if (res.cancel) {
+							// 	uni.switchTab({
+							// 		url: '/pages/myRelease/myRelease'
+							// 	});
+							// }else{
+							// }
+							uni.switchTab({
+								url: '/pages/myRelease/myRelease'
+							});
 						}
 					});
-					this.ruleForm.describeOne='';
+					
 				}
 			});
 		},

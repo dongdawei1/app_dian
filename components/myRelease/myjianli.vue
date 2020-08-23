@@ -141,25 +141,5 @@ export default {
 </script>
 
 <style scoped>
-.index-list {
-	padding: 10upx 55upx 0 0;
-	border-bottom: 1upx solid #eeeeee;
-}
-.biaoti {
-	font-size: 38upx;
-}
 
-.index-list4 {
-	padding: 0 20upx 0 20upx;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
-}
-.index-list4 view {
-	font-size: 33upx;
-}
-
-.juzhong {
-	text-align: center;
-}
 </style>

@@ -214,3 +214,27 @@
 			color: #cf0000;
 		}
 		/*我的发布中,创建 ,编辑 多选组件结束*/
+		
+		/*我的简历和采购开始*/
+		.index-list {
+			padding: 10upx 55upx 15upx 0;
+			border-bottom: 1upx solid #eeeeee;
+		}
+		.biaoti {
+			font-size: 38upx;
+		}
+		
+		.index-list4 {
+			padding: 0 20upx 0 20upx;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+		}
+		.index-list4 view {
+			font-size: 33upx;
+		}
+		
+		.juzhong {
+			text-align: center;
+		}
+		/*我的简历和采购结束*/

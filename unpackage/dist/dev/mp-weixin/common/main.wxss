@@ -5001,5 +5001,31 @@ to {
 			color: #cf0000;
 }
 /*我的发布中,创建 ,编辑 多选组件结束*/
+/*我的简历和采购开始*/
+.index-list {
+			padding: 10rpx 55rpx 15rpx 0;
+			border-bottom: 1rpx solid #eeeeee;
+}
+.biaoti {
+			font-size: 38rpx;
+}
+.index-list4 {
+			padding: 0 20rpx 0 20rpx;
+			display: -webkit-box;
+			display: -webkit-flex;
+			display: flex;
+			-webkit-flex-wrap: wrap;
+			        flex-wrap: wrap;
+			-webkit-box-pack: justify;
+			-webkit-justify-content: space-between;
+			        justify-content: space-between;
+}
+.index-list4 view {
+			font-size: 33rpx;
+}
+.juzhong {
+			text-align: center;
+}
+/*我的简历和采购结束*/
 
 

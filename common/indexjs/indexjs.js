@@ -174,7 +174,7 @@ export default {
 	},
 
 
-	//首页显示操作按钮
+	//首页显示操作按钮    除了其他发布,其他删掉
 	getdaohao() {
 		let daohao = [];
 
@@ -205,7 +205,7 @@ export default {
 					},
 					{
 						name: '发布商品信息',
-						paths: '/pages/creqp/creqp', //电器
+						paths: '/pages/crefabu/crefabu', //电器
 						ioc: '/static/shou/g3.png'
 					},
 					{
@@ -239,7 +239,7 @@ export default {
 					},
 					{
 						name: '发布商品信息',
-						paths: '/pages/crejiu/crejiu',
+						paths: '/pages/crefabu/crefabu',
 						ioc: '/static/shou/g3.png'
 					},
 					{
@@ -256,7 +256,7 @@ export default {
 					},
 					{
 						name: '发布租房信息',
-						paths: '/pages/crezu/crezu',
+						paths: '/pages/crefabu/crefabu',
 						ioc: '/static/shou/g3.png'
 					},
 					{
@@ -273,7 +273,7 @@ export default {
 					},
 					{
 						name: '发布服务信息',
-						paths: '/pages/crezhuang/crezhuang',
+						paths: '/pages/crefabu/crefabu',
 						ioc: '/static/shou/g3.png'
 					},
 					{
@@ -307,7 +307,7 @@ export default {
 					},
 					{
 						name: '发布商品信息',
-						paths: '/pages/crebai/crebai',
+						paths: '/pages/crefabu/crefabu',
 						ioc: '/static/shou/g3.png'
 					},
 					{
